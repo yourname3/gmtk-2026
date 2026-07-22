@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="gmtk2026"
+run/main_scene="uid://1bape5xetsht"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [physics]
 
