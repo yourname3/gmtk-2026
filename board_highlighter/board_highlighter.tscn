@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dwkpyk486w1so"]
+
+[ext_resource type="Script" uid="uid://d3lbmbsmsiu2m" path="res://board_highlighter/board_highlighter.gd" id="1_sf6hr"]
+
+[node name="BoardHighlighter" type="Node2D" unique_id=1546895326]
+script = ExtResource("1_sf6hr")

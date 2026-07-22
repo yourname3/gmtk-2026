@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+extends Area2D
 class_name Piece
 
 const COLOR_WHITE: Color = Color("f5ece0")
@@ -32,3 +32,13 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		update_appearance()
 		return
+
+func move_this() -> void:
+	var target = await BoardHighlighter.select_move(self)
+	position = target * 256
+	
+
+func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.is_pressed():
+			move_this()

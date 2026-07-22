@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://dwkpyk486w1so" path="res://board_highlighter/board_highlighter.tscn" id="3_oi3di"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
 texture = ExtResource("1_u52ul")
@@ -30,3 +31,5 @@ position = Vector2(512, 512)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1583186163]
 position = Vector2(640, 640)
 zoom = Vector2(0.44, 0.44)
+
+[node name="BoardHighlighter" parent="." unique_id=1546895326 instance=ExtResource("3_oi3di")]
