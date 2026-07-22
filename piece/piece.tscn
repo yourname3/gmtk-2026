@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c2kifjh1wo0y5"]
+
+[ext_resource type="Script" uid="uid://ha6h0kq47yon" path="res://piece/piece.gd" id="1_6byuq"]
+[ext_resource type="Texture2D" uid="uid://bv041j16pukgw" path="res://chessboard/pieces.png" id="1_l0ktr"]
+
+[node name="Piece" type="Node2D" unique_id=677818219]
+script = ExtResource("1_6byuq")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1279465721]
+unique_name_in_owner = true
+modulate = Color(0.9607268, 0.92429495, 0.8793711, 1)
+position = Vector2(128, 128)
+texture = ExtResource("1_l0ktr")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)
