@@ -6,6 +6,7 @@ static var instance: BoardHighlighter = null
 enum SelectState {
 	NONE,
 	PIECE,
+	PIECE_ONLY,
 	LOCATION,
 }
 

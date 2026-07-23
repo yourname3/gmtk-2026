@@ -29,6 +29,12 @@ script = ExtResource("7_n6hdu")
 ability = 1
 description = "Repeat Move"
 
+[sub_resource type="Resource" id="Resource_i2t4f"]
+script = ExtResource("7_n6hdu")
+activation = 1
+ability = 2
+description = "Transform ANY piece into a Rook."
+
 [node name="Level" type="Node2D" unique_id=1114344541]
 
 [node name="ChessBoard" type="TileMap" parent="." unique_id=854148038]
@@ -61,16 +67,21 @@ position = Vector2(641, 1638)
 script = ExtResource("5_1ainy")
 
 [node name="Card" parent="CardHand" unique_id=1845239000 instance=ExtResource("5_f2txt")]
-position = Vector2(-192.00002, 3.8397443)
-rotation = -0.020000001
+position = Vector2(-383.99997, 15.355904)
+rotation = -0.039999995
 scale = Vector2(1.0000001, 1.0000001)
 data = SubResource("Resource_km5ld")
 
 [node name="Card3" parent="CardHand" unique_id=1865166656 instance=ExtResource("5_f2txt")]
-position = Vector2(192.00002, 3.8397443)
-rotation = 0.020000001
+position = Vector2(1e-45, 1e-45)
 scale = Vector2(1.0000001, 1.0000001)
 data = SubResource("Resource_n6hdu")
+
+[node name="Card4" parent="CardHand" unique_id=2102699138 instance=ExtResource("5_f2txt")]
+position = Vector2(383.99997, 15.355904)
+rotation = 0.039999995
+scale = Vector2(1.0000001, 1.0000001)
+data = SubResource("Resource_i2t4f")
 
 [node name="CardAnchor" type="Node2D" parent="." unique_id=625709137]
 position = Vector2(-593, 647)

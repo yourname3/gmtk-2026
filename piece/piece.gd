@@ -103,6 +103,15 @@ func move_this() -> void:
 	if target != BoardHighlighter.MOVE_NULL:
 		BoardHighlighter.select_state = BoardHighlighter.SelectState.NONE
 		Board.move(self, target)
+		
+func select_this() -> void:
+	SignalBus.piece_selected.emit(self)
+
+	
+func transform_into(type: Type) -> void:
+	self.type = type
+	%AnimationPlayer.play("transform")
+	await %AnimationPlayer.animation_finished
 	
 # Actually moves a piece.
 func move(target: Vector2i) -> void:
@@ -141,6 +150,8 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.is_pressed():
 			if BoardHighlighter.select_state == BoardHighlighter.SelectState.PIECE:
 				move_this()
+			elif BoardHighlighter.select_state == BoardHighlighter.SelectState.PIECE_ONLY:
+				select_this()
 			elif BoardHighlighter.select_state == BoardHighlighter.SelectState.LOCATION:
 				var is_selector = _is_move_selector
 				# If we are not ourselves highlighted, we are allowed to steal the selection state.

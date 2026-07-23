@@ -6,10 +6,19 @@ class_name CardHand
 func select_card(card: Card) -> void:
 	Card.selected_card = card
 	
+	var set_select_state := false
+	
 	if Card.is_activated_on_piece_move():
-		if BoardHighlighter.select_state == BoardHighlighter.SelectState.NONE:
+		if BoardHighlighter.select_state != BoardHighlighter.SelectState.LOCATION: # Todo...
 			BoardHighlighter.select_state = BoardHighlighter.SelectState.PIECE
-	else:
+		set_select_state = true
+		
+	if Card.is_activated_on_piece_select():
+		BoardHighlighter.select_state = BoardHighlighter.SelectState.PIECE_ONLY
+		set_select_state = true
+		
+	if not set_select_state:
+		# Reset to NONE
 		BoardHighlighter.select_state = BoardHighlighter.SelectState.NONE
 
 func arrange_cards() -> void:

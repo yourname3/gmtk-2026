@@ -31,6 +31,10 @@ static func is_activated_on_piece_move() -> bool:
 	if selected_card != null:
 		return selected_card.data.activation == CardData.Activate.PieceMove
 	return false
+static func is_activated_on_piece_select() -> bool:
+	if selected_card != null:
+		return selected_card.data.activation == CardData.Activate.PieceSelect
+	return false
 
 #func _ready() -> void:
 	#mouse_entered.connect(func(): highlighted_card = self)
@@ -85,7 +89,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		highlight.visible = false
 		
-func play() -> void:
+func play(selected_piece: Piece = null) -> void:
 	card_playing = true
 	_state = State.PLAYING
 	
@@ -96,7 +100,7 @@ func play() -> void:
 	
 	# Resolve each other step in the card...
 	await data.await_activation_full_resolve()
-	await data.perform_additional_steps()
+	await data.perform_additional_steps(selected_piece)
 	
 	_state = State.DYING
 	card_playing = false
@@ -121,4 +125,9 @@ func _ready() -> void:
 	SignalBus.piece_started_moving.connect(func():
 		if is_selected() and is_activated_on_piece_move():
 			play()
+	)
+	
+	SignalBus.piece_selected.connect(func(piece: Piece):
+		if is_selected() and is_activated_on_piece_select():
+			play(piece)
 	)
