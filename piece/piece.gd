@@ -47,6 +47,12 @@ func get_undo_pos() -> Vector2i:
 		return undo_states.back().tile_pos
 	return tile_pos() # Last ditch effort
 	
+func get_undo_alive() -> bool:
+	if undo_states.size() > 0:
+		#print(undo_states.size(), ": type: ", type, " alive: ", undo_states.back().alive)
+		return undo_states.back().alive
+	return false # like... if we came into being...?
+	
 func pop_undo_state() -> void:
 	if undo_states.size() > 0:
 		var state = undo_states.pop_back()
@@ -64,7 +70,8 @@ func pop_undo_state() -> void:
 		alive = state.alive
 		is_black = state.is_black
 		
-		show()
+		if alive: show()
+		else: hide()
 		%AnimationPlayer.play("RESET")
 		update_appearance()
 		
@@ -228,7 +235,6 @@ func move(target: Vector2i, capture: Piece) -> void:
 
 	var time := 0.2 + 0.1 * abs_dist
 	
-	SignalBus.piece_started_moving.emit()
 	%AnimationPlayer.stop()
 	tween.tween_property(self, ^"position", target * 256.0, time).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	%AnimationPlayer.play(anim, -1, 0.2 / time)
