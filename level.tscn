@@ -20,27 +20,13 @@ sources/0 = SubResource("TileSetAtlasSource_vonw3")
 
 [sub_resource type="Resource" id="Resource_km5ld"]
 script = ExtResource("7_n6hdu")
+description = "Move Any Piece"
+metadata/_custom_type_script = "uid://dfant1e3uq18d"
 
-[sub_resource type="Resource" id="Resource_i2t4f"]
+[sub_resource type="Resource" id="Resource_n6hdu"]
 script = ExtResource("7_n6hdu")
-
-[sub_resource type="Resource" id="Resource_8cye3"]
-script = ExtResource("7_n6hdu")
-
-[sub_resource type="Resource" id="Resource_2orkt"]
-script = ExtResource("7_n6hdu")
-
-[sub_resource type="Resource" id="Resource_aicyk"]
-script = ExtResource("7_n6hdu")
-
-[sub_resource type="Resource" id="Resource_8b0r0"]
-script = ExtResource("7_n6hdu")
-
-[sub_resource type="Resource" id="Resource_h6smj"]
-script = ExtResource("7_n6hdu")
-
-[sub_resource type="Resource" id="Resource_v5j5c"]
-script = ExtResource("7_n6hdu")
+ability = 1
+description = "Repeat Move"
 
 [node name="Level" type="Node2D" unique_id=1114344541]
 
@@ -50,37 +36,17 @@ format = 2
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 65537, 0, 0, 131074, 0, 0, 196611, 0, 0, 262148, 0, 0, 1, 65536, 0, 65538, 65536, 0, 131075, 65536, 0, 196612, 65536, 0, 65536, 65536, 0, 131073, 65536, 0, 196610, 65536, 0, 262147, 65536, 0, 2, 0, 0, 65539, 0, 0, 131076, 0, 0, 131072, 0, 0, 196609, 0, 0, 262146, 0, 0, 196608, 65536, 0, 262145, 65536, 0, 262144, 0, 0, 3, 65536, 0, 65540, 65536, 0, 4, 0, 0)
 script = ExtResource("2_0b4ue")
 
-[node name="Piece" parent="." unique_id=1279465721 instance=ExtResource("2_vonw3")]
-type = 4
-is_black = false
-
-[node name="Piece3" parent="." unique_id=1638246795 instance=ExtResource("2_vonw3")]
-position = Vector2(768, 0)
-type = 4
-is_black = false
-
 [node name="Piece4" parent="." unique_id=804999838 instance=ExtResource("2_vonw3")]
 position = Vector2(1024, 256)
 type = 4
 is_black = false
 
-[node name="Piece2" parent="." unique_id=677818219 instance=ExtResource("2_vonw3")]
-position = Vector2(512, 512)
-
 [node name="Piece7" parent="." unique_id=554331140 instance=ExtResource("2_vonw3")]
 position = Vector2(1024, 512)
 type = 3
 
-[node name="Piece8" parent="." unique_id=1943055152 instance=ExtResource("2_vonw3")]
-position = Vector2(768, 1024)
-type = 5
-
-[node name="Piece5" parent="." unique_id=684865396 instance=ExtResource("2_vonw3")]
-position = Vector2(256, 512)
-type = 1
-
 [node name="Piece6" parent="." unique_id=1908941343 instance=ExtResource("2_vonw3")]
-position = Vector2(0, 768)
+position = Vector2(0, 1024)
 type = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1583186163]
@@ -94,49 +60,13 @@ position = Vector2(641, 1638)
 script = ExtResource("5_1ainy")
 
 [node name="Card" parent="CardHand" unique_id=1845239000 instance=ExtResource("5_f2txt")]
-position = Vector2(-1343.9999, 187.54593)
-rotation = -0.13999999
+position = Vector2(-192.00002, 3.8397443)
+rotation = -0.020000001
 scale = Vector2(1.0000001, 1.0000001)
 data = SubResource("Resource_km5ld")
 
-[node name="Card2" parent="CardHand" unique_id=337932815 instance=ExtResource("5_f2txt")]
-position = Vector2(-959.99994, 95.84007)
-rotation = -0.099999994
-scale = Vector2(1.0000001, 1.0000001)
-data = SubResource("Resource_i2t4f")
-
 [node name="Card3" parent="CardHand" unique_id=1865166656 instance=ExtResource("5_f2txt")]
-position = Vector2(-575.99994, 34.539265)
-rotation = -0.059999995
+position = Vector2(192.00002, 3.8397443)
+rotation = 0.020000001
 scale = Vector2(1.0000001, 1.0000001)
-data = SubResource("Resource_8cye3")
-
-[node name="Card4" parent="CardHand" unique_id=1228237210 instance=ExtResource("5_f2txt")]
-z_index = 2
-position = Vector2(-191.99998, -29.999998)
-scale = Vector2(1.1499999, 1.1499999)
-data = SubResource("Resource_2orkt")
-
-[node name="Card5" parent="CardHand" unique_id=1189207938 instance=ExtResource("5_f2txt")]
-position = Vector2(192.00002, 3.8397439)
-rotation = 0.019999998
-scale = Vector2(1.0000001, 1.0000001)
-data = SubResource("Resource_aicyk")
-
-[node name="Card6" parent="CardHand" unique_id=1096020293 instance=ExtResource("5_f2txt")]
-position = Vector2(576.00006, 34.539265)
-rotation = 0.059999995
-scale = Vector2(1.0000001, 1.0000001)
-data = SubResource("Resource_8b0r0")
-
-[node name="Card7" parent="CardHand" unique_id=807533421 instance=ExtResource("5_f2txt")]
-position = Vector2(960.00006, 95.84007)
-rotation = 0.099999994
-scale = Vector2(1.0000001, 1.0000001)
-data = SubResource("Resource_h6smj")
-
-[node name="Card8" parent="CardHand" unique_id=99005393 instance=ExtResource("5_f2txt")]
-position = Vector2(1343.9999, 187.54593)
-rotation = 0.13999999
-scale = Vector2(1.0000001, 1.0000001)
-data = SubResource("Resource_v5j5c")
+data = SubResource("Resource_n6hdu")

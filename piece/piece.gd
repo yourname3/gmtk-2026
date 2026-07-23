@@ -5,6 +5,10 @@ class_name Piece
 const COLOR_WHITE: Color = Color("f5ece0")
 const COLOR_BLACK: Color = Color("1e130f")
 
+static var last_move_start: Vector2i = Vector2i.ZERO
+static var last_move_end: Vector2i = Vector2i.ZERO
+static var last_move_piece: Piece = null
+
 enum Type {
 	PAWN,
 	ROOK,
@@ -102,6 +106,9 @@ func move_this() -> void:
 	
 # Actually moves a piece.
 func move(target: Vector2i) -> void:
+	last_move_piece = self
+	last_move_start = tile_pos()
+	last_move_end = target
 	var tween = create_tween()
 	
 	var anim := &"hop"
@@ -115,7 +122,7 @@ func move(target: Vector2i) -> void:
 	var time := 0.2 + 0.1 * abs_dist
 	
 	SignalBus.piece_started_moving.emit()
-	
+	%AnimationPlayer.stop()
 	tween.tween_property(self, ^"position", target * 256.0, time).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	%AnimationPlayer.play(anim, -1, 0.2 / time)
 	await tween.finished

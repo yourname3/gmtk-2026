@@ -34,6 +34,10 @@ func is_highlighted() -> bool:
 func is_selected() -> bool:
 	return selected_card == self
 
+func _update_text() -> void:
+	%Title.text = "title"
+	%Description.text = data.description
+
 func _update_pos() -> void:
 	var tpos := target_position
 	var tscale := target_scale
@@ -54,6 +58,7 @@ func _update_pos() -> void:
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		_update_pos()
+		_update_text()
 		return
 	
 	_update_pos()
@@ -73,12 +78,17 @@ func play() -> void:
 	
 	# Resolve each other step in the card...
 	await data.await_activation_full_resolve()
+	await data.perform_additional_steps()
 	
 	queue_free()
 	card_playing = false
 	SignalBus.card_finished_playing.emit()
 	
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
+	
+	_update_text()
+	
 	SignalBus.piece_started_moving.connect(func():
 		if is_selected() and is_activated_on_piece_move():
 			play()

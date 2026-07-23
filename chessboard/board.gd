@@ -12,10 +12,10 @@ static func move(piece: Piece, position: Vector2i) -> void:
 func _move(piece: Piece, position: Vector2i) -> void:
 	piece_map.erase(piece.tile_pos())
 	var existing = piece_map.get(position)
+	piece_map[position] = piece
+	await piece.move(position)
 	if existing:
 		existing.kill()
-	piece_map[position] = piece
-	piece.move(position)
 	
 func add_if_on_board(pos: Vector2i, out: MoveCalculator) -> bool:
 	var tile = get_cell_source_id(0, pos)
