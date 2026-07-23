@@ -102,6 +102,10 @@ func move_this() -> void:
 	
 # Actually moves a piece.
 func move(target: Vector2i) -> void:
+	var tween = create_tween()
+	tween.tween_property(self, ^"position", target * 256.0, 0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	%AnimationPlayer.play("hop")
+	await tween.finished
 	position = target * 256
 	SignalBus.piece_moved.emit()
 	
