@@ -184,8 +184,11 @@ func tile_pos() -> Vector2i:
 	return Vector2i(position / 256)
 	
 func will_be_captured() -> void:
+	alive = false
 	z_index = -1
+var alive: bool = true
 func kill() -> void:
+	
 	%AnimationPlayer.play(&"captured")
 	await %AnimationPlayer.animation_finished
 	queue_free()

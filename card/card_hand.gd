@@ -107,12 +107,30 @@ func _ready() -> void:
 	SignalBus.card_finished_playing.connect(func():
 		Clock.instance.update(active_cards.size())
 		
+		if active_cards.is_empty():
+			var success = true
+			for piece in get_tree().get_nodes_in_group(&"Piece"):
+				if piece.alive and not piece.is_black:
+					print("Alive piece: ", piece.type)
+					success = false
+			print("success: ", success)
+			if success:
+				%Success.show()
+		
 		await get_tree().process_frame
 		if Card.selected_card == null:
 			for child in active_cards:
 				if not child.is_queued_for_deletion():
 					select_card(child)
 					break
+	)
+	
+	%Success.hide()
+	%NextButton.pressed.connect(func():
+		if Global.current_level >= 0:
+			Global.save_data.completed_levels[Global.current_level] = true
+			Global.save_save_data()
+		SceneTransition.change_scene_to_path("res://level_select/level_select.tscn")
 	)
 	
 	await get_tree().process_frame

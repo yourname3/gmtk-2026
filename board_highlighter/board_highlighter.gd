@@ -40,7 +40,6 @@ func _add_highlight(x: int, y: int) -> void:
 	
 func _clear_highlights() -> void:
 	for child in get_children():
-		print("queue_free: ", child)
 		child.queue_free()
 	highlight_map.clear()
 
