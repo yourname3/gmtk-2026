@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dp4drbd12s5ua"]
+
+[ext_resource type="Texture2D" uid="uid://dx42uokggtguh" path="res://cards/card.png" id="1_ivai2"]
+[ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="2_nwofj"]
+
+[node name="Card" type="Sprite2D" unique_id=1845239000]
+texture = ExtResource("1_ivai2")
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=1129753730]
+unique_name_in_owner = true
+offset_left = -191.0
+offset_top = 1.0
+offset_right = 192.0
+offset_bottom = 53.0
+theme_override_colors/default_color = Color(0.18084842, 0.14448956, 0.10098284, 1)
+theme_override_colors/font_outline_color = Color(0.8, 0.73333335, 0.64705884, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("2_nwofj")
+theme_override_font_sizes/normal_font_size = 36
+text = "Move"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="." unique_id=571133378]
+unique_name_in_owner = true
+offset_left = -191.0
+offset_top = 66.0
+offset_right = 192.0
+offset_bottom = 276.0
+theme_override_colors/default_color = Color(0.18084842, 0.14448956, 0.10098284, 1)
+theme_override_fonts/normal_font = ExtResource("2_nwofj")
+theme_override_font_sizes/normal_font_size = 30
+text = "Move one of your pieces.
+Repeat that move X times."
+horizontal_alignment = 1
+vertical_alignment = 1

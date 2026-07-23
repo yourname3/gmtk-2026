@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dlpshbooq0wub" path="res://chessboard/board.gd" id="2_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://dwkpyk486w1so" path="res://board_highlighter/board_highlighter.tscn" id="3_oi3di"]
+[ext_resource type="PackedScene" uid="uid://dp4drbd12s5ua" path="res://cards/card.tscn" id="5_f2txt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
 texture = ExtResource("1_u52ul")
@@ -57,7 +58,10 @@ position = Vector2(0, 768)
 type = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1583186163]
-position = Vector2(640, 640)
-zoom = Vector2(0.44, 0.44)
+position = Vector2(640, 896)
+zoom = Vector2(0.335, 0.335)
 
 [node name="BoardHighlighter" parent="." unique_id=1546895326 instance=ExtResource("3_oi3di")]
+
+[node name="Card" parent="." unique_id=1845239000 instance=ExtResource("5_f2txt")]
+position = Vector2(605, 1605)
