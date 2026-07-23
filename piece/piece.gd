@@ -38,8 +38,8 @@ func _process(delta: float) -> void:
 		return
 		
 	# TODO: Not this.
-	if BoardHighlighter.select_state == BoardHighlighter.SelectState.NONE:
-		BoardHighlighter.select_state = BoardHighlighter.SelectState.PIECE
+	#if BoardHighlighter.select_state == BoardHighlighter.SelectState.NONE:
+		#BoardHighlighter.select_state = BoardHighlighter.SelectState.PIECE
 
 func _rook_moves(out: MoveCalculator) -> void:
 	var b := Board.instance # Should be non-null cause we should only call this from calculate_moves

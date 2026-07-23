@@ -74,3 +74,4 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event is InputEventMouseButton:
 				if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.is_pressed():
 					SignalBus.move_selected.emit(null) # Deselect
+					

@@ -2,6 +2,16 @@
 extends Node2D
 class_name CardHand
 
+# Applies any relevant state updates when a new card becomes "selected" for real.
+func select_card(card: Card) -> void:
+	Card.selected_card = card
+	
+	if Card.is_activated_on_piece_move():
+		if BoardHighlighter.select_state == BoardHighlighter.SelectState.NONE:
+			BoardHighlighter.select_state = BoardHighlighter.SelectState.PIECE
+	else:
+		BoardHighlighter.select_state = BoardHighlighter.SelectState.NONE
+
 func arrange_cards() -> void:
 	const w: float = 384
 	const phi: float = 0.04
@@ -40,28 +50,30 @@ func arrange_cards() -> void:
 		if closest_dist < select_dist_threshold * select_dist_threshold:
 			Card.highlighted_card = closest
 			if not Card.selected_hard:
-				Card.selected_card = Card.highlighted_card
+				select_card(Card.highlighted_card)
 			if Input.is_action_just_pressed("select_card"):
 				# TODO: Consider making this some sort of _unhandled_input instead
 				if Card.selected_hard and Card.selected_card == Card.highlighted_card:
 					Card.selected_hard = false
 				else:
-					Card.selected_card = Card.highlighted_card
 					Card.selected_hard = true
+					select_card(Card.highlighted_card)
+					
+			
 		
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	arrange_cards()
 	
 	if get_child_count() > 0:
-		Card.selected_card = get_child(0)
+		select_card(get_child(0))
 	
 	SignalBus.card_finished_playing.connect(func():
 		await get_tree().process_frame
 		if Card.selected_card == null:
 			for child in get_children():
 				if not child.is_queued_for_deletion():
-					Card.selected_card = child
+					select_card(child)
 					break
 	)
 
