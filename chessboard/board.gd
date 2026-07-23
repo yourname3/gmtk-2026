@@ -13,6 +13,8 @@ func _move(piece: Piece, position: Vector2i) -> void:
 	piece_map.erase(piece.tile_pos())
 	var existing = piece_map.get(position)
 	piece_map[position] = piece
+	if existing:
+		existing.will_be_captured()
 	await piece.move(position)
 	if existing:
 		existing.kill()

@@ -110,7 +110,7 @@ func select_this() -> void:
 	
 func transform_into(type: Type) -> void:
 	self.type = type
-	%AnimationPlayer.play("transform")
+	%AnimationPlayer.play(&"transform")
 	await %AnimationPlayer.animation_finished
 	
 # Actually moves a piece.
@@ -119,6 +119,8 @@ func move(target: Vector2i) -> void:
 	last_move_start = tile_pos()
 	last_move_end = target
 	var tween = create_tween()
+	
+	z_index = 4
 	
 	var anim := &"hop"
 	var abs_dist: int = maxi(absi(target.x - tile_pos().x), absi(target.y - tile_pos().y))
@@ -136,13 +138,19 @@ func move(target: Vector2i) -> void:
 	%AnimationPlayer.play(anim, -1, 0.2 / time)
 	await tween.finished
 	
+	z_index = 0
+	
 	position = target * 256 # lock position down
 	SignalBus.piece_moved.emit()
 	
 func tile_pos() -> Vector2i:
 	return Vector2i(position / 256)
 	
+func will_be_captured() -> void:
+	z_index = -1
 func kill() -> void:
+	%AnimationPlayer.play(&"captured")
+	await %AnimationPlayer.animation_finished
 	queue_free()
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
