@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dlpshbooq0wub" path="res://chessboard/board.gd" id="2_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://dwkpyk486w1so" path="res://board_highlighter/board_highlighter.tscn" id="3_oi3di"]
+[ext_resource type="Script" uid="uid://bhcwosb87ke46" path="res://cards/card_hand.gd" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://dp4drbd12s5ua" path="res://cards/card.tscn" id="5_f2txt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
@@ -63,5 +64,38 @@ zoom = Vector2(0.335, 0.335)
 
 [node name="BoardHighlighter" parent="." unique_id=1546895326 instance=ExtResource("3_oi3di")]
 
-[node name="Card" parent="." unique_id=1845239000 instance=ExtResource("5_f2txt")]
-position = Vector2(605, 1605)
+[node name="CardHand" type="Node2D" parent="." unique_id=742805357]
+position = Vector2(641, 1536)
+script = ExtResource("5_1ainy")
+
+[node name="Card" parent="CardHand" unique_id=1845239000 instance=ExtResource("5_f2txt")]
+position = Vector2(-1331.6595, 184.36801)
+rotation = -0.13871454
+
+[node name="Card2" parent="CardHand" unique_id=337932815 instance=ExtResource("5_f2txt")]
+position = Vector2(-947.6595, 93.63741)
+rotation = -0.098714545
+
+[node name="Card3" parent="CardHand" unique_id=1865166656 instance=ExtResource("5_f2txt")]
+position = Vector2(-563.6595, 33.31888)
+rotation = -0.05871453
+
+[node name="Card4" parent="CardHand" unique_id=1228237210 instance=ExtResource("5_f2txt")]
+position = Vector2(-179.65955, 3.6055605)
+rotation = -0.018714536
+
+[node name="Card5" parent="CardHand" unique_id=1189207938 instance=ExtResource("5_f2txt")]
+position = Vector2(204.34045, 4.5925136)
+rotation = 0.021285465
+
+[node name="Card6" parent="CardHand" unique_id=1096020293 instance=ExtResource("5_f2txt")]
+position = Vector2(588.3217, 36.27321)
+rotation = 0.061283506
+
+[node name="Card7" parent="CardHand" unique_id=807533421 instance=ExtResource("5_f2txt")]
+position = Vector2(971.6476, 98.40184)
+rotation = 0.1012133
+
+[node name="Card8" parent="CardHand" unique_id=99005393 instance=ExtResource("5_f2txt")]
+position = Vector2(1324.5422, 183.5176)
+rotation = 0.13797316

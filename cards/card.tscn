@@ -1,12 +1,27 @@
 [gd_scene format=3 uid="uid://dp4drbd12s5ua"]
 
 [ext_resource type="Texture2D" uid="uid://dx42uokggtguh" path="res://cards/card.png" id="1_ivai2"]
+[ext_resource type="Script" uid="uid://ca7gsmmd2qmjj" path="res://cards/card.gd" id="2_4k7q8"]
+[ext_resource type="Texture2D" uid="uid://cqtgcturyds76" path="res://cards/card_highlight.png" id="2_f61jr"]
 [ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="2_nwofj"]
 
-[node name="Card" type="Sprite2D" unique_id=1845239000]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4k7q8"]
+size = Vector2(376, 572)
+
+[node name="Area2D" type="Area2D" unique_id=2102699138]
+script = ExtResource("2_4k7q8")
+
+[node name="Highlight" type="Sprite2D" parent="." unique_id=2051649585]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.66270703, 0.84218407, 0.91626066, 1)
+scale = Vector2(1.0208334, 1.0171233)
+texture = ExtResource("2_f61jr")
+
+[node name="Card" type="Sprite2D" parent="." unique_id=1845239000]
 texture = ExtResource("1_ivai2")
 
-[node name="Title" type="RichTextLabel" parent="." unique_id=1129753730]
+[node name="Title" type="RichTextLabel" parent="Card" unique_id=1129753730]
 unique_name_in_owner = true
 offset_left = -191.0
 offset_top = 1.0
@@ -21,7 +36,7 @@ text = "Move"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="RichTextLabel" parent="." unique_id=571133378]
+[node name="Description" type="RichTextLabel" parent="Card" unique_id=571133378]
 unique_name_in_owner = true
 offset_left = -191.0
 offset_top = 66.0
@@ -34,3 +49,7 @@ text = "Move one of your pieces.
 Repeat that move X times."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=16640784]
+visible = false
+shape = SubResource("RectangleShape2D_4k7q8")

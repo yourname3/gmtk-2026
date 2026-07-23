@@ -97,12 +97,13 @@ func move_this() -> void:
 	var target = await BoardHighlighter.select_move(self)
 	_is_move_selector = false
 	if target != BoardHighlighter.MOVE_NULL:
-		Board.move(self, target)
 		BoardHighlighter.select_state = BoardHighlighter.SelectState.NONE
+		Board.move(self, target)
 	
 # Actually moves a piece.
 func move(target: Vector2i) -> void:
 	position = target * 256
+	SignalBus.piece_moved.emit()
 	
 func tile_pos() -> Vector2i:
 	return Vector2i(position / 256)
