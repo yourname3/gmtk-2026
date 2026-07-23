@@ -1,6 +1,8 @@
 extends Node2D
 class_name CardHand
 
+var active_cards: Array[Card] = []
+
 # Applies any relevant state updates when a new card becomes "selected" for real.
 func select_card(card: Card) -> void:
 	Card.selected_card = card
@@ -23,10 +25,10 @@ func select_card(card: Card) -> void:
 func arrange_cards() -> void:
 	const w: float = 384
 	const phi: float = 0.04
-	var total_w: float = (get_child_count() * w)
+	var total_w: float = (active_cards.size() * w)
 	var cur_x: float = -total_w / 2 + w / 2
 	
-	var total_phi: float = (get_child_count() * phi)
+	var total_phi: float = (active_cards.size() * phi)
 	var cur_angle: float = -total_phi / 2 + phi /2
 	
 	#var i = -get_child_count() / 2
@@ -38,7 +40,7 @@ func arrange_cards() -> void:
 	var select_dist_threshold: float = 128 * 8
 	
 	#Card.highlighted_card = null
-	for child: Card in get_children():
+	for child: Card in active_cards:
 		child.target_position.y = cur_x * sin(cur_angle)
 		child.target_position.x = cur_x
 		
@@ -53,8 +55,10 @@ func arrange_cards() -> void:
 			closest_dist = dist
 			
 	if Engine.is_editor_hint(): return
+	
+	var mouse_valid: bool = %RefRect.get_rect().has_point(mouse)
 			
-	if mouse.y > (-768 / 2) + 30 and not Card.card_playing:
+	if mouse_valid and not Card.card_playing:#mouse.y > (-768 / 2) + 30 and not Card.card_playing:
 		if closest_dist < select_dist_threshold * select_dist_threshold:
 			Card.highlighted_card = closest
 			if not Card.selected_hard:
@@ -67,23 +71,39 @@ func arrange_cards() -> void:
 					Card.selected_hard = true
 					select_card(Card.highlighted_card)
 					
-			
+	if not mouse_valid:
+		Card.highlighted_card = null
 		
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
+	
+	SignalBus.card_played.connect(func(card: Card):
+		active_cards.erase(card)
+	)
+	
+	for child in get_children():
+		if child is Card:
+			active_cards.push_back(child)
+	
 	arrange_cards()
 	
-	if get_child_count() > 0:
-		select_card(get_child(0))
+	if active_cards.size() > 0:
+		select_card(active_cards[0])
 	
 	SignalBus.card_finished_playing.connect(func():
 		await get_tree().process_frame
 		if Card.selected_card == null:
-			for child in get_children():
+			for child in active_cards:
 				if not child.is_queued_for_deletion():
 					select_card(child)
 					break
 	)
+	
+func get_height() -> float:
+	return %RefRect.get_rect().size.y
+	
+func move_to_align_bottom_y_with(desired_bottom_y: float) -> void:
+	position.y = desired_bottom_y - %RefRect.get_rect().size.y - %RefRect.position.y
 
 func _process(delta: float) -> void:
 	#if Engine.is_editor_hint():

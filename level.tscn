@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://1bape5xetsht"]
 
+[ext_resource type="Script" uid="uid://cplkyd3ikt0ds" path="res://level_camera.gd" id="1_i2t4f"]
 [ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="1_u52ul"]
 [ext_resource type="Script" uid="uid://dlpshbooq0wub" path="res://chessboard/board.gd" id="2_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://dwkpyk486w1so" path="res://board_highlighter/board_highlighter.tscn" id="3_oi3di"]
-[ext_resource type="Script" uid="uid://bhcwosb87ke46" path="res://cards/card_hand.gd" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://dp4drbd12s5ua" path="res://cards/card.tscn" id="5_f2txt"]
+[ext_resource type="PackedScene" uid="uid://dlxncimif4ag5" path="res://cards/card_hand.tscn" id="5_km5ld"]
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://cards/card_data.gd" id="7_n6hdu"]
 [ext_resource type="Script" uid="uid://b06p13p7337hc" path="res://cards/card_anchor.gd" id="8_km5ld"]
 
@@ -37,7 +38,13 @@ description = "Transform ANY piece into a Rook."
 
 [node name="Level" type="Node2D" unique_id=1114344541]
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1583186163]
+position = Vector2(640, 896)
+zoom = Vector2(0.335, 0.335)
+script = ExtResource("1_i2t4f")
+
 [node name="ChessBoard" type="TileMap" parent="." unique_id=854148038]
+unique_name_in_owner = true
 z_index = -10
 tile_set = SubResource("TileSet_5xgho")
 format = 2
@@ -56,33 +63,28 @@ type = 3
 position = Vector2(0, 512)
 is_black = false
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1583186163]
-position = Vector2(640, 896)
-zoom = Vector2(0.335, 0.335)
-
 [node name="BoardHighlighter" parent="." unique_id=1546895326 instance=ExtResource("3_oi3di")]
 
-[node name="CardHand" type="Node2D" parent="." unique_id=742805357]
-position = Vector2(641, 1638)
-script = ExtResource("5_1ainy")
+[node name="CardHand" parent="." unique_id=850826435 instance=ExtResource("5_km5ld")]
+unique_name_in_owner = true
+position = Vector2(641, 1518)
+
+[node name="CardAnchor" type="Node2D" parent="CardHand" unique_id=625709137]
+position = Vector2(-1234, -871)
+script = ExtResource("8_km5ld")
 
 [node name="Card" parent="CardHand" unique_id=1845239000 instance=ExtResource("5_f2txt")]
-position = Vector2(-383.99997, 15.355904)
+position = Vector2(-383.99997, 15.355957)
 rotation = -0.039999995
 scale = Vector2(1.0000001, 1.0000001)
 data = SubResource("Resource_km5ld")
 
 [node name="Card3" parent="CardHand" unique_id=1865166656 instance=ExtResource("5_f2txt")]
-position = Vector2(1e-45, 1e-45)
 scale = Vector2(1.0000001, 1.0000001)
 data = SubResource("Resource_n6hdu")
 
 [node name="Card4" parent="CardHand" unique_id=2102699138 instance=ExtResource("5_f2txt")]
-position = Vector2(383.99997, 15.355904)
+position = Vector2(384, 15.355957)
 rotation = 0.039999995
 scale = Vector2(1.0000001, 1.0000001)
 data = SubResource("Resource_i2t4f")
-
-[node name="CardAnchor" type="Node2D" parent="." unique_id=625709137]
-position = Vector2(-593, 647)
-script = ExtResource("8_km5ld")

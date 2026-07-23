@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dlxncimif4ag5"]
+
+[ext_resource type="Script" uid="uid://bhcwosb87ke46" path="res://cards/card_hand.gd" id="1_6uf4r"]
+
+[node name="CardHand" type="Node2D" unique_id=850826435]
+script = ExtResource("1_6uf4r")
+
+[node name="RefRect" type="ReferenceRect" parent="." unique_id=1373739576]
+unique_name_in_owner = true
+offset_left = -4096.0
+offset_top = -371.0
+offset_right = 4096.0
+offset_bottom = 312.0
+border_width = 5.0

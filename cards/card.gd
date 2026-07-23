@@ -92,6 +92,7 @@ func _physics_process(delta: float) -> void:
 func play(selected_piece: Piece = null) -> void:
 	card_playing = true
 	_state = State.PLAYING
+	SignalBus.card_played.emit(self)
 	
 	# Remove selection
 	selected_card = null
