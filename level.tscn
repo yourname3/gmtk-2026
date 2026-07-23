@@ -40,6 +40,22 @@ is_black = false
 [node name="Piece2" parent="." unique_id=677818219 instance=ExtResource("2_vonw3")]
 position = Vector2(512, 512)
 
+[node name="Piece7" parent="." unique_id=554331140 instance=ExtResource("2_vonw3")]
+position = Vector2(1024, 512)
+type = 3
+
+[node name="Piece8" parent="." unique_id=1943055152 instance=ExtResource("2_vonw3")]
+position = Vector2(768, 1024)
+type = 5
+
+[node name="Piece5" parent="." unique_id=684865396 instance=ExtResource("2_vonw3")]
+position = Vector2(256, 512)
+type = 1
+
+[node name="Piece6" parent="." unique_id=1908941343 instance=ExtResource("2_vonw3")]
+position = Vector2(0, 768)
+type = 2
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1583186163]
 position = Vector2(640, 640)
 zoom = Vector2(0.44, 0.44)

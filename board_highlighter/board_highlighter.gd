@@ -44,9 +44,14 @@ func _select_move(piece: Piece) -> Vector2i:
 	select_state = SelectState.LOCATION
 	select_id += 1
 	
-	for i in range(0, 3):
-		for j in range(0, 5):
-			_add_highlight(i, j)
+	var moves = MoveCalculator.new()
+	# By default, set the capture rules normally...
+	moves.capture_black = not piece.is_black
+	moves.capture_white = piece.is_black
+	piece.calculate_moves(moves)
+	
+	for move in moves.moves:
+		_add_highlight(move.x, move.y)
 			
 	var bh: BoardHighlight = await SignalBus.move_selected
 	var pos := MOVE_NULL
