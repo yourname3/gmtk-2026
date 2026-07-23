@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_2bxtk")
-activation = null
 piece_filter = 1
 ability = 4
+name = "MAD"
 description = "Move ANY piece. If it captures, sacrifice it."
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

@@ -22,6 +22,7 @@ enum SpecialAbility {
 @export var activation: Activate = Activate.PieceMove
 @export var piece_filter: PieceFilter = PieceFilter.SAME_SIDE
 @export var ability: SpecialAbility = SpecialAbility.None
+@export var name: String = "Card Name"
 @export var description: String = "Card description"
 
 func await_activation_full_resolve() -> void:

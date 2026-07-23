@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://31dtge7qj30u"]
+
+[ext_resource type="Script" uid="uid://olmykxerofge" path="res://level_select/level_select.gd" id="1_kp0lh"]
+[ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="1_sv8in"]
+[ext_resource type="Script" uid="uid://dlpshbooq0wub" path="res://chessboard/board.gd" id="2_kxnyd"]
+[ext_resource type="PackedScene" uid="uid://se1uxpdyqo3b" path="res://level_select/level_select_button.tscn" id="3_kxnyd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kp0lh"]
+texture = ExtResource("1_sv8in")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mtmfa"]
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetAtlasSource_kp0lh")
+
+[node name="LevelSelect" type="Node2D" unique_id=1519824190]
+script = ExtResource("1_kp0lh")
+
+[node name="ChessBoard" type="TileMap" parent="." unique_id=1297443004]
+unique_name_in_owner = true
+z_index = -10
+tile_set = SubResource("TileSet_mtmfa")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 0, 0, 196611, 0, 0, 262148, 0, 0, 1, 65536, 0, 131075, 65536, 0, 196612, 65536, 0, 65536, 65536, 0, 262147, 65536, 0, 2, 0, 0, 65539, 0, 0, 131076, 0, 0, 262146, 0, 0, 262145, 65536, 0, 3, 65536, 0, 65540, 65536, 0, 4, 0, 0, 327682, 65536, 0, 327683, 0, 0, 327684, 65536, 0, 327685, 0, 0, 131077, 65536, 0, -65535, 0, 0, 131073, 65536, 0, 131072, 0, 0, -65534, 65536, 0)
+script = ExtResource("2_kxnyd")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2045557199]
+position = Vector2(888, 646)
+zoom = Vector2(0.315, 0.315)
+
+[node name="Button" parent="." unique_id=324410128 instance=ExtResource("3_kxnyd")]
+offset_top = 512.0
+offset_bottom = 767.0
+text = "1"
+
+[node name="Button2" parent="." unique_id=878363925 instance=ExtResource("3_kxnyd")]
+offset_left = 256.0
+offset_top = 512.0
+offset_right = 512.0
+offset_bottom = 767.0
+text = "2"
+number = 1
+
+[node name="Button3" parent="." unique_id=844356856 instance=ExtResource("3_kxnyd")]
+offset_top = 256.0
+offset_bottom = 511.0
+text = "3"
+number = 2
+
+[node name="Button4" parent="." unique_id=2048051211 instance=ExtResource("3_kxnyd")]
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 512.0
+offset_bottom = 511.0
+text = "4"
+number = 3
+
+[node name="Button5" parent="." unique_id=600536476 instance=ExtResource("3_kxnyd")]
+offset_left = 256.0
+offset_right = 512.0
+text = "5"
+number = 4
+
+[node name="Button6" parent="." unique_id=1584553499 instance=ExtResource("3_kxnyd")]
+offset_left = 256.0
+offset_top = -256.0
+offset_right = 512.0
+offset_bottom = -1.0
+text = "6"
+number = 5
+
+[node name="Button7" parent="." unique_id=1746998881 instance=ExtResource("3_kxnyd")]
+offset_left = 512.0
+offset_top = -256.0
+offset_right = 768.0
+offset_bottom = -1.0
+text = "7"
+number = 6
+
+[node name="Button8" parent="." unique_id=942043987 instance=ExtResource("3_kxnyd")]
+offset_left = 512.0
+offset_right = 768.0
+text = "8"
+number = 7
+
+[node name="Button9" parent="." unique_id=2119975314 instance=ExtResource("3_kxnyd")]
+offset_left = 768.0
+offset_right = 1024.0
+text = "9"
+number = 8
+
+[node name="Button10" parent="." unique_id=691804079 instance=ExtResource("3_kxnyd")]
+offset_left = 1024.0
+offset_right = 1280.0
+text = "10"
+number = 9
+
+[node name="Button11" parent="." unique_id=1105051445 instance=ExtResource("3_kxnyd")]
+offset_left = 1024.0
+offset_top = 256.0
+offset_right = 1280.0
+offset_bottom = 511.0
+text = "11"
+number = 10
+
+[node name="Button12" parent="." unique_id=117081686 instance=ExtResource("3_kxnyd")]
+offset_left = 768.0
+offset_top = 256.0
+offset_right = 1024.0
+offset_bottom = 511.0
+text = "12"
+number = 11
+
+[node name="Button13" parent="." unique_id=1781662565 instance=ExtResource("3_kxnyd")]
+offset_left = 768.0
+offset_top = 512.0
+offset_right = 1024.0
+offset_bottom = 767.0
+text = "13"
+number = 12
+
+[node name="Button14" parent="." unique_id=1007305185 instance=ExtResource("3_kxnyd")]
+offset_left = 1024.0
+offset_top = 512.0
+offset_right = 1280.0
+offset_bottom = 767.0
+text = "14"
+number = 13
+
+[node name="Button15" parent="." unique_id=1731613347 instance=ExtResource("3_kxnyd")]
+offset_left = 1280.0
+offset_top = 512.0
+offset_right = 1536.0
+offset_bottom = 767.0
+text = "15"
+number = 14
+
+[node name="Button16" parent="." unique_id=1468558147 instance=ExtResource("3_kxnyd")]
+offset_left = 1024.0
+offset_top = 768.0
+offset_right = 1280.0
+offset_bottom = 1023.0
+text = "16"
+number = 15
+
+[node name="Button17" parent="." unique_id=2127793266 instance=ExtResource("3_kxnyd")]
+offset_left = 768.0
+offset_top = 768.0
+offset_right = 1024.0
+offset_bottom = 1023.0
+text = "17"
+number = 16
+
+[node name="Button18" parent="." unique_id=404317645 instance=ExtResource("3_kxnyd")]
+offset_left = 1024.0
+offset_top = 1024.0
+offset_right = 1280.0
+offset_bottom = 1279.0
+text = "18"
+number = 17
+
+[node name="Button19" parent="." unique_id=54575893 instance=ExtResource("3_kxnyd")]
+offset_left = 768.0
+offset_top = 1024.0
+offset_right = 1024.0
+offset_bottom = 1279.0
+text = "19"
+number = 18
+
+[node name="Button20" parent="." unique_id=618172446 instance=ExtResource("3_kxnyd")]
+offset_left = 512.0
+offset_top = 1024.0
+offset_right = 768.0
+offset_bottom = 1279.0
+text = "20"
+number = 19
+
+[node name="Button21" parent="." unique_id=727779849 instance=ExtResource("3_kxnyd")]
+offset_left = 256.0
+offset_top = 1024.0
+offset_right = 512.0
+offset_bottom = 1279.0
+text = "21"
+number = 20
+
+[node name="Button22" parent="." unique_id=198209036 instance=ExtResource("3_kxnyd")]
+offset_left = 512.0
+offset_top = 1280.0
+offset_right = 768.0
+offset_bottom = 1535.0
+text = "22"
+number = 21
+
+[node name="Button23" parent="." unique_id=858262032 instance=ExtResource("3_kxnyd")]
+offset_left = 768.0
+offset_top = 1280.0
+offset_right = 1024.0
+offset_bottom = 1535.0
+text = "23"
+number = 22
+
+[node name="Button24" parent="." unique_id=590187296 instance=ExtResource("3_kxnyd")]
+offset_left = 1024.0
+offset_top = 1280.0
+offset_right = 1280.0
+offset_bottom = 1535.0
+text = "24"
+number = 23
+
+[node name="Button25" parent="." unique_id=1000407654 instance=ExtResource("3_kxnyd")]
+offset_left = 1280.0
+offset_top = 1280.0
+offset_right = 1536.0
+offset_bottom = 1535.0
+text = "25"
+number = 24

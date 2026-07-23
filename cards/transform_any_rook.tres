@@ -7,5 +7,6 @@ script = ExtResource("1_65fmm")
 activation = 1
 piece_filter = 1
 ability = 2
+name = "Fortify"
 description = "Transform ANY piece into a Rook."
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

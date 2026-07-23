@@ -6,5 +6,6 @@
 script = ExtResource("1_drwby")
 piece_filter = 1
 ability = 3
+name = "World Tour"
 description = "Move ANY piece X times."
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

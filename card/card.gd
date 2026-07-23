@@ -47,7 +47,7 @@ func is_selected() -> bool:
 	return selected_card == self
 
 func _update_text() -> void:
-	%Title.text = "title"
+	%Title.text = data.name
 	%Description.text = data.description
 
 func _update_pos() -> void:
