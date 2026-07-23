@@ -34,7 +34,9 @@ func arrange_cards() -> void:
 			closest = child
 			closest_dist = dist
 			
-	if mouse.y > (-768 / 2) - 60:
+	if Engine.is_editor_hint(): return
+			
+	if mouse.y > (-768 / 2) + 30:
 		if closest_dist < select_dist_threshold * select_dist_threshold:
 			Card.highlighted_card = closest
 			if not Card.selected_hard:
@@ -50,6 +52,9 @@ func arrange_cards() -> void:
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	arrange_cards()
+	
+	if get_child_count() > 0:
+		Card.selected_card = get_child(0)
 	
 	SignalBus.card_finished_playing.connect(func():
 		await get_tree().process_frame

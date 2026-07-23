@@ -42,7 +42,7 @@ func _update_pos() -> void:
 	z_index = 0
 	if is_highlighted() or is_selected():
 		tpos.y = -30
-		tscale = Vector2(1.2, 1.2)
+		tscale = Vector2(1.15, 1.15)
 		trot = 0
 		z_index = 2
 	
