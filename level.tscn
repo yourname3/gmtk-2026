@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bhcwosb87ke46" path="res://cards/card_hand.gd" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://dp4drbd12s5ua" path="res://cards/card.tscn" id="5_f2txt"]
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://cards/card_data.gd" id="7_n6hdu"]
+[ext_resource type="Script" uid="uid://b06p13p7337hc" path="res://cards/card_anchor.gd" id="8_km5ld"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
 texture = ExtResource("1_u52ul")
@@ -70,3 +71,7 @@ position = Vector2(192.00002, 3.8397443)
 rotation = 0.020000001
 scale = Vector2(1.0000001, 1.0000001)
 data = SubResource("Resource_n6hdu")
+
+[node name="CardAnchor" type="Node2D" parent="." unique_id=625709137]
+position = Vector2(-593, 647)
+script = ExtResource("8_km5ld")
