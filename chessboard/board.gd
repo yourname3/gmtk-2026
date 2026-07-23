@@ -15,9 +15,15 @@ func _move(piece: Piece, position: Vector2i) -> void:
 	piece_map[position] = piece
 	if existing:
 		existing.will_be_captured()
-	await piece.move(position)
+	await piece.move(position, existing)
 	if existing:
 		existing.kill()
+		
+func kill_piece(piece: Piece) -> void:
+	piece_map.erase(piece.tile_pos())
+	piece.will_be_captured()
+	piece.kill()
+	
 	
 func add_if_on_board(pos: Vector2i, out: MoveCalculator) -> bool:
 	var tile = get_cell_source_id(0, pos)

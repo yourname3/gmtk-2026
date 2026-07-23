@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwkpyk486w1so" path="res://board_highlighter/board_highlighter.tscn" id="4_x6ek4"]
 [ext_resource type="PackedScene" uid="uid://dlxncimif4ag5" path="res://card/card_hand.tscn" id="5_a5rkb"]
 [ext_resource type="Script" uid="uid://b06p13p7337hc" path="res://card/card_anchor.gd" id="6_e6jnn"]
+[ext_resource type="PackedScene" uid="uid://dkp8oou7e0gjs" path="res://clock/clock.tscn" id="7_ucx4l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
 texture = ExtResource("2_ucx4l")
@@ -41,3 +42,6 @@ position = Vector2(641, 1518)
 [node name="CardAnchor" type="Node2D" parent="CardHand" unique_id=625709137]
 position = Vector2(-1234, -871)
 script = ExtResource("6_e6jnn")
+
+[node name="Clock" parent="." unique_id=444931598 instance=ExtResource("7_ucx4l")]
+position = Vector2(1817, 343)

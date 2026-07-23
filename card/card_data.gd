@@ -16,6 +16,7 @@ enum SpecialAbility {
 	RepeatMove,
 	TransformRook,
 	MoveSamePieceX,
+	SACRIFICE_ON_CAPTURE,
 }
 
 @export var activation: Activate = Activate.PieceMove
@@ -37,6 +38,9 @@ func perform_additional_steps(selected_piece: Piece) -> void:
 				pos += diff
 				Board.move(piece, pos)
 				await SignalBus.piece_moved
+		SpecialAbility.SACRIFICE_ON_CAPTURE:
+			if Piece.last_move_capture != null:
+				Board.instance.kill_piece(Piece.last_move_piece)
 		SpecialAbility.TransformRook:
 			await selected_piece.transform_into(Piece.Type.ROOK)
 		SpecialAbility.MoveSamePieceX:

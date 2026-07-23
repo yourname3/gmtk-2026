@@ -8,6 +8,7 @@ const COLOR_BLACK: Color = Color("1e130f")
 static var last_move_start: Vector2i = Vector2i.ZERO
 static var last_move_end: Vector2i = Vector2i.ZERO
 static var last_move_piece: Piece = null
+static var last_move_capture: Piece = null
 
 enum Type {
 	PAWN,
@@ -149,10 +150,11 @@ func transform_into(type: Type) -> void:
 	await %AnimationPlayer.animation_finished
 	
 # Actually moves a piece.
-func move(target: Vector2i) -> void:
+func move(target: Vector2i, capture: Piece) -> void:
 	last_move_piece = self
 	last_move_start = tile_pos()
 	last_move_end = target
+	last_move_capture = capture
 	var tween = create_tween()
 	
 	z_index = 4
@@ -197,6 +199,8 @@ func is_selectable() -> bool:
 	return false
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+	if Engine.is_editor_hint(): return
+	
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.is_pressed():
 			if is_selectable():
