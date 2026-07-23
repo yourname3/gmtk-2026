@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b65g2hykn5yqq"]
+
+[ext_resource type="PackedScene" uid="uid://1bape5xetsht" path="res://level_base.tscn" id="1_1hcpy"]
+[ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_88bnr"]
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="3_ncwog"]
+[ext_resource type="Resource" uid="uid://2j0d8g238d0v" path="res://cards/move_any_then_sacrifice_on_capture.tres" id="4_vhriu"]
+[ext_resource type="Resource" uid="uid://blm2qo2rq08c6" path="res://cards/repeat_move_once.tres" id="5_dqnsy"]
+[ext_resource type="Resource" uid="uid://bpt24de36uqyt" path="res://cards/transform_any_rook.tres" id="6_jwtk1"]
+
+[node name="Level" unique_id=1114344541 instance=ExtResource("1_1hcpy")]
+
+[node name="Piece" parent="." index="2" unique_id=1638246795 instance=ExtResource("2_88bnr")]
+position = Vector2(512, 768)
+type = 3
+
+[node name="Piece2" parent="." index="3" unique_id=1501895522 instance=ExtResource("2_88bnr")]
+position = Vector2(0, 512)
+is_black = false
+
+[node name="Piece3" parent="." index="4" unique_id=499957309 instance=ExtResource("2_88bnr")]
+position = Vector2(1024, 256)
+is_black = false
+
+[node name="CardHand" parent="." index="6" unique_id=850826435]
+cards = Array[ExtResource("3_ncwog")]([ExtResource("4_vhriu"), ExtResource("5_dqnsy"), ExtResource("6_jwtk1")])

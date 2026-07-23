@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bpt24de36uqyt"]
+
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_65fmm"]
+
+[resource]
+script = ExtResource("1_65fmm")
+activation = 1
+ability = 2
+description = "Transform ANY piece into a Rook."
+metadata/_custom_type_script = "uid://dfant1e3uq18d"

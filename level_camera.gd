@@ -10,12 +10,12 @@ func _ready() -> void:
 	var margin_x = 128
 	var margin_y = 32
 	
-	var width = tiles.size.x * 256 + margin_x * 2
-	var height = tiles.size.y * 256 + margin_y * 2 + hand_h
+	var width: float = tiles.size.x * 256.0 + margin_x * 2.0
+	var height: float = tiles.size.y * 256.0 + margin_y * 2.0 + hand_h
 	
 	var viewport = get_viewport_rect()
-	var zoom_x = viewport.size.x / width
-	var zoom_y = viewport.size.y / height
+	var zoom_x: float = viewport.size.x / width
+	var zoom_y: float = viewport.size.y / height
 	
 	zoom = min(zoom_x, zoom_y) * Vector2.ONE
 	position = Vector2(width / 2 - margin_x, height / 2 - margin_y)

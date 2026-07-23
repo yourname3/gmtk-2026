@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://2j0d8g238d0v"]
+
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_2bxtk"]
+
+[resource]
+script = ExtResource("1_2bxtk")
+description = "Move ANY piece. If it captures, sacrifice it."
+metadata/_custom_type_script = "uid://dfant1e3uq18d"

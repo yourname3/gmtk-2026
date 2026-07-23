@@ -3,6 +3,8 @@ class_name CardHand
 
 var active_cards: Array[Card] = []
 
+@export var cards: Array[CardData] = []
+
 # Applies any relevant state updates when a new card becomes "selected" for real.
 func select_card(card: Card) -> void:
 	Card.selected_card = card
@@ -84,6 +86,12 @@ func _ready() -> void:
 	for child in get_children():
 		if child is Card:
 			active_cards.push_back(child)
+			
+	for card in cards:
+		var c: Card = preload("res://card/card.tscn").instantiate()
+		c.data = card
+		add_child(c)
+		active_cards.push_back(c)
 	
 	arrange_cards()
 	

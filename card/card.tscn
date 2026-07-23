@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dp4drbd12s5ua"]
 
-[ext_resource type="Texture2D" uid="uid://dx42uokggtguh" path="res://cards/card.png" id="1_ivai2"]
-[ext_resource type="Script" uid="uid://ca7gsmmd2qmjj" path="res://cards/card.gd" id="2_4k7q8"]
-[ext_resource type="Texture2D" uid="uid://cqtgcturyds76" path="res://cards/card_highlight.png" id="2_f61jr"]
+[ext_resource type="Texture2D" uid="uid://dx42uokggtguh" path="res://card/card.png" id="1_ivai2"]
+[ext_resource type="Script" uid="uid://ca7gsmmd2qmjj" path="res://card/card.gd" id="2_4k7q8"]
+[ext_resource type="Texture2D" uid="uid://cqtgcturyds76" path="res://card/card_highlight.png" id="2_f61jr"]
 [ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="2_nwofj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k7q8"]
