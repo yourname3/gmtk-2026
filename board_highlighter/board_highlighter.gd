@@ -57,7 +57,10 @@ func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 	for move in moves.moves:
 		_add_highlight(move.x, move.y)
 			
-	var bh: BoardHighlight = await SignalBus.move_selected
+	var bh: BoardHighlight = null
+			
+	if not (location_only and moves.moves.is_empty()):
+		bh = await SignalBus.move_selected
 	var pos := MOVE_NULL
 	if bh != null:
 		pos = Vector2i(bh.position / 256)

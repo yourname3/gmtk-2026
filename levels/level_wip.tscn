@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d0dj8ai7dro67"]
+
+[ext_resource type="PackedScene" uid="uid://1bape5xetsht" path="res://level_base.tscn" id="1_74x63"]
+[ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_swfah"]
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="2_xt7qn"]
+[ext_resource type="Resource" uid="uid://d0deoaiqlkevd" path="res://cards/move_any_x_times.tres" id="3_6gaki"]
+
+[node name="Level" unique_id=1114344541 instance=ExtResource("1_74x63")]
+
+[node name="CardHand" parent="." index="3" unique_id=850826435]
+cards = Array[ExtResource("2_xt7qn")]([ExtResource("3_6gaki"), ExtResource("3_6gaki"), ExtResource("3_6gaki")])
+
+[node name="Piece" parent="." index="5" unique_id=1638246795 instance=ExtResource("2_swfah")]
+position = Vector2(512, 512)
