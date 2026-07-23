@@ -25,6 +25,36 @@ enum Type {
 @export var type: Type = Type.PAWN
 @export var is_black: bool = true
 
+class UndoState:
+	var tile_pos: Vector2i
+	var type: Type
+	var alive: bool
+	var is_black: bool
+	
+var undo_states: Array[UndoState] = []
+	
+func push_undo_state() -> void:
+	var state := UndoState.new()
+	state.tile_pos = tile_pos()
+	state.type = type
+	state.alive = alive
+	state.is_black = is_black
+	
+	undo_states.push_back(state)
+	
+func pop_undo_state() -> void:
+	if undo_states.size() > 0:
+		var state = undo_states.pop_back()
+		position = state.tile_pos * 256
+		type = state.type
+		alive = state.alive
+		is_black = state.is_black
+		
+		show()
+		%AnimationPlayer.play("RESET")
+		
+		update_appearance()
+
 func update_appearance() -> void:
 	sprite.region_rect.position.x = (256 * 5) - int(type) * 256
 	sprite.self_modulate = COLOR_BLACK if is_black else COLOR_WHITE
@@ -188,10 +218,10 @@ func will_be_captured() -> void:
 	z_index = -1
 var alive: bool = true
 func kill() -> void:
-	
 	%AnimationPlayer.play(&"captured")
 	await %AnimationPlayer.animation_finished
-	queue_free()
+	hide()
+	#queue_free()
 	
 func is_selectable() -> bool:
 	match BoardHighlighter.instance.select_filter:

@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dlxncimif4ag5" path="res://card/card_hand.tscn" id="5_a5rkb"]
 [ext_resource type="Script" uid="uid://b06p13p7337hc" path="res://card/card_anchor.gd" id="6_e6jnn"]
 [ext_resource type="PackedScene" uid="uid://dkp8oou7e0gjs" path="res://clock/clock.tscn" id="7_ucx4l"]
+[ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="8_agx4c"]
+[ext_resource type="Script" uid="uid://boelojhpopqmn" path="res://level/undo_button.gd" id="9_x6ek4"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x6ek4"]
 texture = ExtResource("2_ucx4l")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
@@ -16,7 +18,7 @@ texture_region_size = Vector2i(256, 256)
 
 [sub_resource type="TileSet" id="TileSet_5xgho"]
 tile_size = Vector2i(256, 256)
-sources/0 = SubResource("TileSetAtlasSource_vonw3")
+sources/0 = SubResource("TileSetAtlasSource_x6ek4")
 
 [node name="Level" type="Node2D" unique_id=1114344541]
 
@@ -45,3 +47,14 @@ script = ExtResource("6_e6jnn")
 
 [node name="Clock" parent="." unique_id=444931598 instance=ExtResource("7_ucx4l")]
 position = Vector2(1817, 343)
+
+[node name="UndoButton" type="Button" parent="." unique_id=298706982]
+unique_name_in_owner = true
+offset_left = -767.0
+offset_top = 408.0
+offset_right = -370.0
+offset_bottom = 743.0
+theme_override_fonts/font = ExtResource("8_agx4c")
+theme_override_font_sizes/font_size = 133
+text = "Undo"
+script = ExtResource("9_x6ek4")

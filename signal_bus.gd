@@ -10,3 +10,5 @@ signal piece_selected(piece: Piece) # for piece-select-only actions
 
 signal card_played(card: Card)
 signal card_finished_playing()
+
+signal undo() # Emitted to resolve undos not handled by Board

@@ -19,6 +19,8 @@ const HIGHLIGHT_HARD: Color = Color("a9d7ea")
 
 @export var data: CardData = CardData.new()
 
+var hand_pos: int = 0
+
 enum State {
 	NORMAL,
 	PLAYING,
@@ -107,7 +109,7 @@ func play(selected_piece: Piece = null) -> void:
 	card_playing = false
 	SignalBus.card_finished_playing.emit()
 	
-	die_anim()
+	#die_anim()
 	
 func die_anim() -> void:
 	# To die... animate out?

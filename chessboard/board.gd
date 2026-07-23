@@ -44,9 +44,23 @@ func get_move_beam(start: Vector2i, increment: Vector2i, out: MoveCalculator) ->
 	var tile = start + increment
 	while add_if_on_board(tile, out):
 		tile += increment
+		
+func undo() -> void:
+	piece_map.clear()
+	for node: Piece in get_tree().get_nodes_in_group(&"Piece"):
+		node.pop_undo_state()
+		if node.alive:
+			piece_map[node.tile_pos()] = node
+			
+	SignalBus.undo.emit()
 
 func _ready() -> void:
 	instance = self
 	for node: Piece in get_tree().get_nodes_in_group(&"Piece"):
 		piece_map[node.tile_pos()] = node
+		
+	SignalBus.card_played.connect(func(card: Card):
+		for node: Piece in get_tree().get_nodes_in_group(&"Piece"):
+			node.push_undo_state()
+	)
 	

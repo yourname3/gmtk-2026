@@ -2,6 +2,7 @@ extends Node2D
 class_name CardHand
 
 var active_cards: Array[Card] = []
+var card_undo_stack: Array[Card] = []
 
 @export var cards: Array[CardData] = []
 
@@ -82,11 +83,25 @@ func arrange_cards() -> void:
 	if not mouse_valid:
 		Card.highlighted_card = null
 		
+		
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	
 	SignalBus.card_played.connect(func(card: Card):
+		card.hand_pos = active_cards.find(card)
 		active_cards.erase(card)
+		
+		card_undo_stack.append(card)
+	)
+	
+	SignalBus.undo.connect(func():
+		if card_undo_stack.size() > 0:
+			var card = card_undo_stack.pop_back()
+			var pos = card.hand_pos
+			if pos < 0 or pos > active_cards.size():
+				pos = 0
+			active_cards.insert(pos, card)
+			card._state = Card.State.NORMAL
 	)
 	
 	for child in get_children():
