@@ -6,6 +6,11 @@ enum Activate {
 	PieceSelect,
 }
 
+enum PieceFilter {
+	SAME_SIDE,
+	ANY,
+}
+
 enum SpecialAbility {
 	None,
 	RepeatMove,
@@ -13,6 +18,7 @@ enum SpecialAbility {
 }
 
 @export var activation: Activate = Activate.PieceMove
+@export var piece_filter: PieceFilter = PieceFilter.SAME_SIDE
 @export var ability: SpecialAbility = SpecialAbility.None
 @export var description: String = "Card description"
 
@@ -31,4 +37,4 @@ func perform_additional_steps(selected_piece: Piece) -> void:
 				Board.move(piece, pos)
 				await SignalBus.piece_moved
 		SpecialAbility.TransformRook:
-			selected_piece.transform_into(Piece.Type.ROOK)
+			await selected_piece.transform_into(Piece.Type.ROOK)

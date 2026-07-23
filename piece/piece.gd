@@ -19,23 +19,58 @@ enum Type {
 }
 
 @onready var sprite := %Sprite
+# @onready var highlight := %Highlight
 
 @export var type: Type = Type.PAWN
 @export var is_black: bool = true
 
 func update_appearance() -> void:
 	sprite.region_rect.position.x = (256 * 5) - int(type) * 256
-	sprite.modulate = COLOR_BLACK if is_black else COLOR_WHITE
+	sprite.self_modulate = COLOR_BLACK if is_black else COLOR_WHITE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_appearance()
+	
+	if not Engine.is_editor_hint():
+		sprite.set_instance_shader_parameter(&"line_thickness", 0.0)
+		sprite.set_instance_shader_parameter(&"line_colour", Card.HIGHLIGHT_SOFT)
+
+var _highlight_tween: Tween = null
+var _highlight_state: bool = false
+var _highlight_hard: bool = false
+
+func _set_highlight(hl: bool, hard: bool = false) -> void:
+	if hl == _highlight_state and hard == _highlight_hard: return
+	
+	if _highlight_tween:
+		_highlight_tween.kill()
+		_highlight_tween = null
+		
+	_highlight_tween = create_tween()
+	if hl != _highlight_state:
+		_highlight_tween.tween_property(sprite, ^"instance_shader_parameters/line_thickness",
+			0.008 if hl else 0.0, 0.1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	if hard != _highlight_hard:
+		_highlight_tween.parallel().tween_property(sprite, ^"instance_shader_parameters/line_colour",
+			Card.HIGHLIGHT_HARD if hard else Card.HIGHLIGHT_SOFT, 0.1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		
+	_highlight_state = hl
+	_highlight_hard = hard
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		update_appearance()
 		return
+		
+	if BoardHighlighter.select_state == BoardHighlighter.SelectState.PIECE or \
+		BoardHighlighter.select_state == BoardHighlighter.SelectState.PIECE_ONLY:
+		_set_highlight(is_selectable())
+	elif BoardHighlighter.select_state == BoardHighlighter.SelectState.LOCATION:
+		_set_highlight(is_selectable() and not BoardHighlighter.is_tile_highlighted(tile_pos()), _is_move_selector)
+	else:
+		_set_highlight(false)
 		
 	# TODO: Not this.
 	#if BoardHighlighter.select_state == BoardHighlighter.SelectState.NONE:
@@ -106,7 +141,7 @@ func move_this() -> void:
 		
 func select_this() -> void:
 	SignalBus.piece_selected.emit(self)
-
+	BoardHighlighter.select_state = BoardHighlighter.SelectState.NONE
 	
 func transform_into(type: Type) -> void:
 	self.type = type
@@ -152,20 +187,29 @@ func kill() -> void:
 	%AnimationPlayer.play(&"captured")
 	await %AnimationPlayer.animation_finished
 	queue_free()
+	
+func is_selectable() -> bool:
+	match BoardHighlighter.instance.select_filter:
+		CardData.PieceFilter.SAME_SIDE:
+			return is_black
+		CardData.PieceFilter.ANY:
+			return true
+	return false
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.is_pressed():
-			if BoardHighlighter.select_state == BoardHighlighter.SelectState.PIECE:
-				move_this()
-			elif BoardHighlighter.select_state == BoardHighlighter.SelectState.PIECE_ONLY:
-				select_this()
-			elif BoardHighlighter.select_state == BoardHighlighter.SelectState.LOCATION:
-				var is_selector = _is_move_selector
-				# If we are not ourselves highlighted, we are allowed to steal the selection state.
-				if not BoardHighlighter.is_tile_highlighted(tile_pos()):
-					# First, remove the existing highlights...
-					SignalBus.move_selected.emit(null)
-					# Then invoke ourselves, unless we were already selected (in that case deselect)
-					if not is_selector: move_this()
+			if is_selectable():
+				if BoardHighlighter.select_state == BoardHighlighter.SelectState.PIECE:
+					move_this()
+				elif BoardHighlighter.select_state == BoardHighlighter.SelectState.PIECE_ONLY:
+					select_this()
+				elif BoardHighlighter.select_state == BoardHighlighter.SelectState.LOCATION:
+					var is_selector = _is_move_selector
+					# If we are not ourselves highlighted, we are allowed to steal the selection state.
+					if not BoardHighlighter.is_tile_highlighted(tile_pos()):
+						# First, remove the existing highlights...
+						SignalBus.move_selected.emit(null)
+						# Then invoke ourselves, unless we were already selected (in that case deselect)
+						if not is_selector: move_this()
 	

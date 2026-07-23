@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://2j0d8g238d0v" path="res://cards/move_any_then_sacrifice_on_capture.tres" id="4_vhriu"]
 [ext_resource type="Resource" uid="uid://blm2qo2rq08c6" path="res://cards/repeat_move_once.tres" id="5_dqnsy"]
 [ext_resource type="Resource" uid="uid://bpt24de36uqyt" path="res://cards/transform_any_rook.tres" id="6_jwtk1"]
+[ext_resource type="PackedScene" uid="uid://dkp8oou7e0gjs" path="res://clock/clock.tscn" id="7_vhriu"]
 
 [node name="Level" unique_id=1114344541 instance=ExtResource("1_1hcpy")]
 
@@ -23,3 +24,6 @@ is_black = false
 
 [node name="CardHand" parent="." index="6" unique_id=850826435]
 cards = Array[ExtResource("3_ncwog")]([ExtResource("4_vhriu"), ExtResource("5_dqnsy"), ExtResource("6_jwtk1")])
+
+[node name="Clock" parent="." index="7" unique_id=444931598 instance=ExtResource("7_vhriu")]
+position = Vector2(1817, 343)

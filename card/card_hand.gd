@@ -7,6 +7,9 @@ var active_cards: Array[Card] = []
 
 # Applies any relevant state updates when a new card becomes "selected" for real.
 func select_card(card: Card) -> void:
+	if card != Card.selected_card: # Reset board selection for now..
+		if BoardHighlighter.select_state == BoardHighlighter.SelectState.LOCATION:
+			SignalBus.move_selected.emit(null)
 	Card.selected_card = card
 	
 	var set_select_state := false
@@ -22,7 +25,10 @@ func select_card(card: Card) -> void:
 		
 	if not set_select_state:
 		# Reset to NONE
+
 		BoardHighlighter.select_state = BoardHighlighter.SelectState.NONE
+		
+	BoardHighlighter.select_filter = card.data.piece_filter
 
 func arrange_cards() -> void:
 	const w: float = 384
@@ -99,6 +105,8 @@ func _ready() -> void:
 		select_card(active_cards[0])
 	
 	SignalBus.card_finished_playing.connect(func():
+		Clock.instance.update(active_cards.size())
+		
 		await get_tree().process_frame
 		if Card.selected_card == null:
 			for child in active_cards:
@@ -106,6 +114,10 @@ func _ready() -> void:
 					select_card(child)
 					break
 	)
+	
+	await get_tree().process_frame
+	await get_tree().process_frame
+	Clock.instance.update(active_cards.size())
 	
 func get_height() -> float:
 	return %RefRect.get_rect().size.y

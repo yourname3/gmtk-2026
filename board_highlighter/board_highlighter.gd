@@ -11,6 +11,7 @@ enum SelectState {
 }
 
 static var select_state := SelectState.NONE
+static var select_filter: CardData.PieceFilter = CardData.PieceFilter.SAME_SIDE
 # Integer id to determine if we're on the same select or not
 static var select_id := 0
 
