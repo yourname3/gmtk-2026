@@ -45,14 +45,26 @@ func get_move_beam(start: Vector2i, increment: Vector2i, out: MoveCalculator) ->
 	while add_if_on_board(tile, out):
 		tile += increment
 		
+var undo_stacks: int = 0
+
+var outstanding_undos: int = 0
+		
 func undo() -> void:
+	if undo_stacks == 0: return
+	
+	undo_stacks -= 1
+	SignalBus.undo.emit()
+	
 	piece_map.clear()
 	for node: Piece in get_tree().get_nodes_in_group(&"Piece"):
 		node.pop_undo_state()
+		outstanding_undos += 1
 		if node.alive:
 			piece_map[node.tile_pos()] = node
 			
-	SignalBus.undo.emit()
+	while true:
+		if outstanding_undos <= 0: break
+		await get_tree().process_frame
 
 func _ready() -> void:
 	instance = self
@@ -60,6 +72,7 @@ func _ready() -> void:
 		piece_map[node.tile_pos()] = node
 		
 	SignalBus.card_played.connect(func(card: Card):
+		undo_stacks += 1
 		for node: Piece in get_tree().get_nodes_in_group(&"Piece"):
 			node.push_undo_state()
 	)

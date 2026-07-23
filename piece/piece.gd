@@ -41,19 +41,44 @@ func push_undo_state() -> void:
 	state.is_black = is_black
 	
 	undo_states.push_back(state)
+
 	
 func pop_undo_state() -> void:
 	if undo_states.size() > 0:
 		var state = undo_states.pop_back()
-		position = state.tile_pos * 256
+		
+		var anim: StringName = &"<none>"
+		if alive != state.alive:
+			position = state.tile_pos * 256 # immediately return position
+			anim = &"reanimate"
+		elif tile_pos() != state.tile_pos:
+			anim = &"hop"
+		elif type != state.type or is_black != state.is_black:
+			anim = &"undo"
+		var animate: bool = (tile_pos() != state.tile_pos) or (type != state.type) or (alive != state.alive) or (is_black != state.is_black)
 		type = state.type
 		alive = state.alive
 		is_black = state.is_black
 		
 		show()
 		%AnimationPlayer.play("RESET")
-		
 		update_appearance()
+		
+		if anim == &"hop":
+			var target: Vector2i = state.tile_pos
+			var abs_dist: int = maxi(absi(target.x - tile_pos().x), absi(target.y - tile_pos().y))
+			var time := 0.2 + 0.1 * abs_dist
+			
+			%AnimationPlayer.play(anim, -1, 0.2 / time)
+			var tween = create_tween()
+			tween.tween_property(self, ^"position", target * 256.0, time)
+			await tween.finished
+		elif anim != &"<none>":
+			%AnimationPlayer.play(anim)
+			await %AnimationPlayer.animation_finished
+		
+		Board.instance.outstanding_undos -= 1 # Tell board we are done
+		position = state.tile_pos * 256
 
 func update_appearance() -> void:
 	sprite.region_rect.position.x = (256 * 5) - int(type) * 256

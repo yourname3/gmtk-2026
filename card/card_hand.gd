@@ -102,6 +102,8 @@ func _ready() -> void:
 				pos = 0
 			active_cards.insert(pos, card)
 			card._state = Card.State.NORMAL
+			
+			Clock.instance.update(active_cards.size())
 	)
 	
 	for child in get_children():

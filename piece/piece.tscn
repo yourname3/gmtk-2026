@@ -63,6 +63,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_r30h7"]
 resource_name = "captured"
@@ -118,6 +130,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(128, 256), Vector2(128, 184), Vector2(128, 256)]
+}
+
+[sub_resource type="Animation" id="Animation_avj1a"]
+resource_name = "reanimate"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1.318), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(128, 400), Vector2(128, 200), Vector2(128, 256)]
 }
 
 [sub_resource type="Animation" id="Animation_4wn1d"]
@@ -230,14 +270,32 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_kstg8"]
+resource_name = "undo"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.11502087, 0.20269859, -0.32738867, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2eswf"]
 _data = {
 &"RESET": SubResource("Animation_2eswf"),
 &"captured": SubResource("Animation_r30h7"),
 &"hop": SubResource("Animation_6byuq"),
+&"reanimate": SubResource("Animation_avj1a"),
 &"slide_left": SubResource("Animation_4wn1d"),
 &"slide_right": SubResource("Animation_ibp41"),
-&"transform": SubResource("Animation_uuefi")
+&"transform": SubResource("Animation_uuefi"),
+&"undo": SubResource("Animation_kstg8")
 }
 
 [node name="Piece" type="Area2D" unique_id=1638246795 groups=["Piece"]]
