@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://se1uxpdyqo3b"]
 
-[ext_resource type="FontFile" uid="uid://dmwmybf6dnayf" path="res://font/cinzel.regular.ttf" id="1_43pcx"]
+[ext_resource type="FontFile" uid="uid://b0cmpo6ruibd6" path="res://font/cinzel.bold.ttf" id="1_1sqxu"]
 [ext_resource type="Script" uid="uid://b42x6sq4wusul" path="res://level_select/level_select_button.gd" id="2_1sqxu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kp0lh"]
@@ -16,7 +16,7 @@ bg_color = Color(1, 1, 1, 0.18431373)
 [node name="Button" type="Button" unique_id=324410128]
 offset_right = 256.0
 offset_bottom = 255.0
-theme_override_fonts/font = ExtResource("1_43pcx")
+theme_override_fonts/font = ExtResource("1_1sqxu")
 theme_override_font_sizes/font_size = 125
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kp0lh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mtmfa")
