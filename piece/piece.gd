@@ -37,14 +37,22 @@ func _process(delta: float) -> void:
 	if BoardHighlighter.select_state == BoardHighlighter.SelectState.NONE:
 		BoardHighlighter.select_state = BoardHighlighter.SelectState.PIECE
 
+# Performs the UI for moving the piece.
 func move_this() -> void:
 	var target = await BoardHighlighter.select_move(self)
 	if target != BoardHighlighter.MOVE_NULL:
-		position = target * 256
+		Board.move(self, target)
 		BoardHighlighter.select_state = BoardHighlighter.SelectState.NONE
+	
+# Actually moves a piece.
+func move(target: Vector2i) -> void:
+	position = target * 256
 	
 func tile_pos() -> Vector2i:
 	return Vector2i(position / 256)
+	
+func kill() -> void:
+	queue_free()
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6byuq"]
 size = Vector2(240, 240)
 
-[node name="Piece" type="Area2D" unique_id=1638246795]
+[node name="Piece" type="Area2D" unique_id=1638246795 groups=["Piece"]]
 script = ExtResource("1_6byuq")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1279465721]
