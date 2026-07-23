@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bbwlltidqr0ka"]
+
+[ext_resource type="Texture2D" uid="uid://dir55g7id30e3" path="res://scene_transition/white_square.png" id="1_ffqbk"]
+[ext_resource type="Script" uid="uid://bacost4p0aq8b" path="res://scene_transition/scene_transition_square.gd" id="2_ffqbk"]
+
+[node name="SceneTransitionSquare" type="Sprite2D" unique_id=2053347105]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ffqbk")
+region_enabled = true
+region_rect = Rect2(256, 0, 256, 256)
+script = ExtResource("2_ffqbk")

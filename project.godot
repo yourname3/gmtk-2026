@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://bcwnquerwf4bq"
 
 SignalBus="*uid://dwgar66fbo30"
 Global="*uid://dchfhr1jy61vy"
+SceneTransition="*uid://ccbmp2rmp8rwi"
 
 [display]
 

@@ -11,7 +11,7 @@ func _ready() -> void:
 	text = str(number + 1)
 	if Engine.is_editor_hint(): return
 	
-	
+	pressed.connect(func(): Global.load_level(number))
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
