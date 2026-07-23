@@ -103,10 +103,24 @@ func move_this() -> void:
 # Actually moves a piece.
 func move(target: Vector2i) -> void:
 	var tween = create_tween()
-	tween.tween_property(self, ^"position", target * 256.0, 0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-	%AnimationPlayer.play("hop")
+	
+	var anim := &"hop"
+	var abs_dist: int = maxi(absi(target.x - tile_pos().x), absi(target.y - tile_pos().y))
+	if abs_dist > 1 and type != Type.KNIGHT:
+		if target.x > tile_pos().x:
+			anim = &"slide_right"
+		elif target.x < tile_pos().x:
+			anim = &"slide_left"
+
+	var time := 0.2 + 0.1 * abs_dist
+	
+	SignalBus.piece_started_moving.emit()
+	
+	tween.tween_property(self, ^"position", target * 256.0, time).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	%AnimationPlayer.play(anim, -1, 0.2 / time)
 	await tween.finished
-	position = target * 256
+	
+	position = target * 256 # lock position down
 	SignalBus.piece_moved.emit()
 	
 func tile_pos() -> Vector2i:

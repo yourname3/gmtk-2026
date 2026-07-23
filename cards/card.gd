@@ -65,15 +65,21 @@ func _physics_process(delta: float) -> void:
 		
 func play() -> void:
 	card_playing = true
+	
+	# Remove selection
+	selected_card = null
+	highlighted_card = null
+	selected_hard = false
+	
 	# Resolve each other step in the card...
+	await data.await_activation_full_resolve()
+	
 	queue_free()
 	card_playing = false
-	# No longer possible.
-	selected_hard = false
 	SignalBus.card_finished_playing.emit()
 	
 func _ready() -> void:
-	SignalBus.piece_moved.connect(func():
+	SignalBus.piece_started_moving.connect(func():
 		if is_selected() and is_activated_on_piece_move():
 			play()
 	)

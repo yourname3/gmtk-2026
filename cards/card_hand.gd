@@ -36,7 +36,7 @@ func arrange_cards() -> void:
 			
 	if Engine.is_editor_hint(): return
 			
-	if mouse.y > (-768 / 2) + 30:
+	if mouse.y > (-768 / 2) + 30 and not Card.card_playing:
 		if closest_dist < select_dist_threshold * select_dist_threshold:
 			Card.highlighted_card = closest
 			if not Card.selected_hard:
