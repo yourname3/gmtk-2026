@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://d0deoaiqlkevd"]
+
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_drwby"]
+
+[resource]
+script = ExtResource("1_drwby")
+piece_filter = 1
+ability = 3
+description = "Move ANY piece X times."
+metadata/_custom_type_script = "uid://dfant1e3uq18d"

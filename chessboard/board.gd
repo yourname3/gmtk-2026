@@ -7,7 +7,7 @@ var piece_map: Dictionary[Vector2i, Piece] = {}
 
 static func move(piece: Piece, position: Vector2i) -> void:
 	if instance != null:
-		instance._move(piece, position)
+		await instance._move(piece, position)
 
 func _move(piece: Piece, position: Vector2i) -> void:
 	piece_map.erase(piece.tile_pos())

@@ -8,6 +8,7 @@ enum SelectState {
 	PIECE,
 	PIECE_ONLY,
 	LOCATION,
+	LOCATION_ONLY,
 }
 
 static var select_state := SelectState.NONE
@@ -20,9 +21,9 @@ const MOVE_NULL: Vector2i = Vector2i(-99999999,-99999999)
 var highlight_map: Dictionary[Vector2i, BoardHighlight]
 
 # Async: shows highlights on the board and selects a move. 
-static func select_move(piece: Piece) -> Vector2i:
+static func select_move(piece: Piece, location_only: bool = false) -> Vector2i:
 	if instance != null:
-		return await instance._select_move(piece)
+		return await instance._select_move(piece, location_only)
 	return Vector2i.ZERO
 	
 static func is_tile_highlighted(tile: Vector2i) -> bool:
@@ -39,11 +40,12 @@ func _add_highlight(x: int, y: int) -> void:
 	
 func _clear_highlights() -> void:
 	for child in get_children():
+		print("queue_free: ", child)
 		child.queue_free()
 	highlight_map.clear()
 
-func _select_move(piece: Piece) -> Vector2i:
-	select_state = SelectState.LOCATION
+func _select_move(piece: Piece, location_only: bool) -> Vector2i:
+	select_state = SelectState.LOCATION_ONLY if location_only else SelectState.LOCATION
 	select_id += 1
 	
 	var moves = MoveCalculator.new()
@@ -62,7 +64,7 @@ func _select_move(piece: Piece) -> Vector2i:
 	
 	_clear_highlights()
 		
-	select_state = SelectState.PIECE
+	select_state = SelectState.NONE if select_state == SelectState.LOCATION_ONLY else SelectState.PIECE
 	return pos
 	
 func _ready() -> void:
@@ -76,4 +78,5 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event is InputEventMouseButton:
 				if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.is_pressed():
 					SignalBus.move_selected.emit(null) # Deselect
+		
 					

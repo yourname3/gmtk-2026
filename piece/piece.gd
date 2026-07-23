@@ -131,13 +131,13 @@ func calculate_moves(out: MoveCalculator) -> void:
 var _is_move_selector: bool = false
 
 # Performs the UI for moving the piece.
-func move_this() -> void:
+func move_this(location_only: bool = false) -> void:
 	_is_move_selector = true
-	var target = await BoardHighlighter.select_move(self)
+	var target = await BoardHighlighter.select_move(self, location_only)
 	_is_move_selector = false
 	if target != BoardHighlighter.MOVE_NULL:
 		BoardHighlighter.select_state = BoardHighlighter.SelectState.NONE
-		Board.move(self, target)
+		await Board.move(self, target)
 		
 func select_this() -> void:
 	SignalBus.piece_selected.emit(self)

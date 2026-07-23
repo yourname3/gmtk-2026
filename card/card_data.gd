@@ -15,6 +15,7 @@ enum SpecialAbility {
 	None,
 	RepeatMove,
 	TransformRook,
+	MoveSamePieceX,
 }
 
 @export var activation: Activate = Activate.PieceMove
@@ -38,3 +39,9 @@ func perform_additional_steps(selected_piece: Piece) -> void:
 				await SignalBus.piece_moved
 		SpecialAbility.TransformRook:
 			await selected_piece.transform_into(Piece.Type.ROOK)
+		SpecialAbility.MoveSamePieceX:
+			var additional_moves: int = Clock.instance.count - 1
+			for i in range(0, additional_moves):
+				await Piece.last_move_piece.move_this(true)
+				
+				
