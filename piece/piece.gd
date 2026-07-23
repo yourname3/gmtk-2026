@@ -32,13 +32,30 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		update_appearance()
 		return
+		
+	# TODO: Not this.
+	if BoardHighlighter.select_state == BoardHighlighter.SelectState.NONE:
+		BoardHighlighter.select_state = BoardHighlighter.SelectState.PIECE
 
 func move_this() -> void:
 	var target = await BoardHighlighter.select_move(self)
-	position = target * 256
+	if target != BoardHighlighter.MOVE_NULL:
+		position = target * 256
+		BoardHighlighter.select_state = BoardHighlighter.SelectState.NONE
 	
+func tile_pos() -> Vector2i:
+	return Vector2i(position / 256)
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.is_pressed():
-			move_this()
+			if BoardHighlighter.select_state == BoardHighlighter.SelectState.PIECE:
+				move_this()
+			elif BoardHighlighter.select_state == BoardHighlighter.SelectState.LOCATION:
+				# If we are not ourselves highlighted, we are allowed to steal the selection state.
+				if not BoardHighlighter.is_tile_highlighted(tile_pos()):
+					# First, remove the existing highlights...
+					SignalBus.move_selected.emit(null)
+					# Then invoke ourselves
+					move_this()
+	
