@@ -42,6 +42,10 @@ func push_undo_state() -> void:
 	
 	undo_states.push_back(state)
 
+func get_undo_pos() -> Vector2i:
+	if undo_states.size() > 0:
+		return undo_states.back().tile_pos
+	return tile_pos() # Last ditch effort
 	
 func pop_undo_state() -> void:
 	if undo_states.size() > 0:

@@ -60,12 +60,13 @@ func _update_pos() -> void:
 	var trot := target_rotation
 	
 	if not Engine.is_editor_hint():
-		z_index = 0
-		if is_highlighted() or is_selected():
-			tpos.y = -30
-			tscale = Vector2(1.15, 1.15)
-			trot = 0
-			z_index = 2
+		if _state == State.NORMAL:
+			z_index = 0
+			if is_highlighted() or is_selected():
+				tpos.y = -30
+				tscale = Vector2(1.15, 1.15)
+				trot = 0
+				z_index = 2
 			
 		if _state == State.PLAYING:
 			tpos = get_parent().to_local(CardAnchor.instance.global_position)

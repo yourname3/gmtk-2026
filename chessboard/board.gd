@@ -57,10 +57,11 @@ func undo() -> void:
 	
 	piece_map.clear()
 	for node: Piece in get_tree().get_nodes_in_group(&"Piece"):
+		var next_tile_undo_pos = node.get_undo_pos()
 		node.pop_undo_state()
 		outstanding_undos += 1
 		if node.alive:
-			piece_map[node.tile_pos()] = node
+			piece_map[next_tile_undo_pos] = node
 			
 	while true:
 		if outstanding_undos <= 0: break

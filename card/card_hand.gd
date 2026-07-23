@@ -92,6 +92,7 @@ func _ready() -> void:
 		active_cards.erase(card)
 		
 		card_undo_stack.append(card)
+		card.z_index = card_undo_stack.size()
 	)
 	
 	SignalBus.undo.connect(func():
@@ -102,6 +103,7 @@ func _ready() -> void:
 				pos = 0
 			active_cards.insert(pos, card)
 			card._state = Card.State.NORMAL
+			card.z_index = 0
 			
 			Clock.instance.update(active_cards.size())
 	)
@@ -155,7 +157,7 @@ func _ready() -> void:
 	Clock.instance.update(active_cards.size())
 	
 func get_height() -> float:
-	return %RefRect.get_rect().size.y
+	return %RefRect.get_rect().size.y * global_scale.y
 	
 func move_to_align_bottom_y_with(desired_bottom_y: float) -> void:
 	position.y = desired_bottom_y - %RefRect.get_rect().size.y - %RefRect.position.y

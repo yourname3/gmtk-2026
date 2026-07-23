@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bqgafk00m65fr"]
+
+[ext_resource type="PackedScene" uid="uid://1bape5xetsht" path="res://level_base.tscn" id="1_m1ci0"]
+[ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_wpkpm"]
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="3_n07kv"]
+[ext_resource type="Resource" uid="uid://d0deoaiqlkevd" path="res://cards/move_any_x_times.tres" id="4_xidpv"]
+[ext_resource type="Resource" uid="uid://blm2qo2rq08c6" path="res://cards/repeat_move_once.tres" id="5_ecs2h"]
+[ext_resource type="Resource" uid="uid://bpt24de36uqyt" path="res://cards/transform_any_rook.tres" id="6_87i47"]
+
+[node name="Level" unique_id=1114344541 instance=ExtResource("1_m1ci0")]
+
+[node name="ChessBoard" parent="." index="1" unique_id=854148038]
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65537, 0, 0, 131074, 0, 0, 1, 65536, 0, 65538, 65536, 0, 131075, 65536, 0, 65536, 65536, 0, 131073, 65536, 0, 2, 0, 0, 65539, 0, 0, 131076, 0, 0, 131072, 0, 0, 3, 65536, 0, 65540, 65536, 0, 4, 0, 0)
+
+[node name="Piece" parent="." index="2" unique_id=1638246795 instance=ExtResource("2_wpkpm")]
+position = Vector2(512, 512)
+type = 3
+
+[node name="Piece2" parent="." index="3" unique_id=1501895522 instance=ExtResource("2_wpkpm")]
+position = Vector2(0, 256)
+is_black = false
+
+[node name="Piece3" parent="." index="4" unique_id=499957309 instance=ExtResource("2_wpkpm")]
+position = Vector2(1024, 0)
+is_black = false
+
+[node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
+cards = Array[ExtResource("3_n07kv")]([ExtResource("4_xidpv"), ExtResource("5_ecs2h"), ExtResource("6_87i47")])
+
+[node name="UndoButton" parent="CanvasLayer/Control/CardHand" index="2" unique_id=298706982]
+offset_left = -1395.0
+offset_top = -485.0
+offset_right = -1012.0
+offset_bottom = -342.0
+rotation = -0.08234839
+theme_override_font_sizes/font_size = 100

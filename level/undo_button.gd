@@ -5,10 +5,10 @@ class_name UndoButton
 func _ready() -> void:
 	pressed.connect(func():
 		if not Card.card_playing:
-			Card.card_playing = true
+			Card.card_playing = true # To keep things from doing stuff
 			await Board.instance.undo()
 			Card.card_playing = false
 	)
 
 func _process(delta: float) -> void:
-	visible = not Card.card_playing
+	visible = (not Card.card_playing and Board.instance.undo_stacks > 0)

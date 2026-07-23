@@ -37,24 +37,35 @@ script = ExtResource("3_agx4c")
 
 [node name="BoardHighlighter" parent="." unique_id=1546895326 instance=ExtResource("4_x6ek4")]
 
-[node name="CardHand" parent="." unique_id=850826435 instance=ExtResource("5_a5rkb")]
-unique_name_in_owner = true
-position = Vector2(641, 1518)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=934646317]
 
-[node name="CardAnchor" type="Node2D" parent="CardHand" unique_id=625709137]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=746026494]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 3459.0
+offset_bottom = 1924.0
+scale = Vector2(0.33275524, 0.33275524)
+mouse_filter = 2
+
+[node name="CardHand" parent="CanvasLayer/Control" unique_id=850826435 instance=ExtResource("5_a5rkb")]
+unique_name_in_owner = true
+position = Vector2(1724, 1628.0513)
+
+[node name="CardAnchor" type="Node2D" parent="CanvasLayer/Control/CardHand" unique_id=625709137]
 position = Vector2(-1234, -871)
 script = ExtResource("6_e6jnn")
 
-[node name="Clock" parent="." unique_id=444931598 instance=ExtResource("7_ucx4l")]
-position = Vector2(1817, 343)
-
-[node name="UndoButton" type="Button" parent="." unique_id=298706982]
+[node name="UndoButton" type="Button" parent="CanvasLayer/Control/CardHand" unique_id=1976124487]
 unique_name_in_owner = true
-offset_left = -767.0
-offset_top = 408.0
-offset_right = -370.0
-offset_bottom = 743.0
+offset_left = -1395.0
+offset_top = -485.0
+offset_right = -1012.0
+offset_bottom = -342.0
+rotation = -0.08234839
 theme_override_fonts/font = ExtResource("8_agx4c")
-theme_override_font_sizes/font_size = 133
+theme_override_font_sizes/font_size = 100
 text = "Undo"
 script = ExtResource("9_x6ek4")
+
+[node name="Clock" parent="CanvasLayer/Control" unique_id=444931598 instance=ExtResource("7_ucx4l")]
+position = Vector2(2900, 423)
