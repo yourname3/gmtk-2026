@@ -17,3 +17,14 @@ cards = Array[ExtResource("2_xt7qn")]([ExtResource("3_6gaki"), ExtResource("3_6g
 [node name="Piece" parent="." index="4" unique_id=1638246795 instance=ExtResource("2_swfah")]
 position = Vector2(512, 768)
 type = 1
+
+[node name="Piece2" parent="." index="5" unique_id=229057562 instance=ExtResource("2_swfah")]
+position = Vector2(1024, 768)
+
+[node name="Piece3" parent="." index="6" unique_id=1369443560 instance=ExtResource("2_swfah")]
+position = Vector2(1024, 512)
+is_black = false
+
+[node name="Piece4" parent="." index="7" unique_id=880058884 instance=ExtResource("2_swfah")]
+position = Vector2(768, 512)
+is_black = false

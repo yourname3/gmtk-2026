@@ -166,7 +166,7 @@ func calculate_moves(out: MoveCalculator) -> void:
 	match type:
 		Type.PAWN: # Black pawns move up, white pawns move down
 			var up: int = -1 if is_black else 1
-			b.add_if_on_board(pos + Vector2i(0, up), out)
+			b.add_if_not_captureable(pos + Vector2i(0, up), out)
 			b.add_if_captureable(pos + Vector2i(-1, up), out)
 			b.add_if_captureable(pos + Vector2i( 1, up), out)
 		Type.ROOK:

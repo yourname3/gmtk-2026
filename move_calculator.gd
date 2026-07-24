@@ -6,13 +6,16 @@ var capture_white: bool = false
 
 var moves: Array[Vector2i] = []
 
-func add(move: Vector2i, piece: Piece, require_capturable: bool = false) -> bool:
+func add(move: Vector2i, piece: Piece, require_capturable: bool = false, require_uncapturable: bool = false) -> bool:
 	var allow_further_moves: bool = true
 	
 	if piece != null:
 		# Filter based on piece
 		if piece.is_black and not capture_black: return false
 		if not piece.is_black and not capture_white: return false
+		
+		# We are able to capture this, so don't add the move
+		if require_uncapturable: return false
 		
 		# we hit a piece, stop allowing moves in general
 		allow_further_moves = false

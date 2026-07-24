@@ -18,6 +18,8 @@ enum SpecialAbility {
 	MoveSamePieceX,
 	SACRIFICE_ON_CAPTURE,
 	KNIGHT_ON_CAPTURE,
+	REPEAT_X,
+	REPEAT_TWO,
 }
 
 @export var activation: Activate = Activate.PieceMove
@@ -37,6 +39,23 @@ func perform_additional_steps(selected_piece: Piece) -> void:
 			var pos := Piece.last_move_end
 			var diff := Piece.last_move_end - Piece.last_move_start
 			for i in range(0, 1):
+				pos += diff
+				Board.move(piece, pos)
+				await SignalBus.piece_moved
+		SpecialAbility.REPEAT_TWO:
+			var piece = Piece.last_move_piece
+			var pos := Piece.last_move_end
+			var diff := Piece.last_move_end - Piece.last_move_start
+			for i in range(0, 2):
+				pos += diff
+				Board.move(piece, pos)
+				await SignalBus.piece_moved
+		SpecialAbility.REPEAT_X:
+			var piece = Piece.last_move_piece
+			var pos := Piece.last_move_end
+			var diff := Piece.last_move_end - Piece.last_move_start
+			var repeats := Clock.instance.count
+			for i in range(0, repeats):
 				pos += diff
 				Board.move(piece, pos)
 				await SignalBus.piece_moved
