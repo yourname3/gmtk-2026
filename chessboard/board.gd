@@ -8,6 +8,24 @@ var piece_map: Dictionary[Vector2i, Piece] = {}
 static func move(piece: Piece, position: Vector2i) -> void:
 	if instance != null:
 		await instance._move(piece, position)
+	
+# TODO: Also handle other kinds of borders...?
+func build_rectangle_border() -> void:
+	var trim := %Trim
+	
+	var rect: Rect2i = get_used_rect()
+	for x in range(0, rect.size.x):
+		trim.set_cell(Vector2i(x,          -1), 0, Vector2i(1, 0)) # top trim
+		trim.set_cell(Vector2i(x, rect.size.y), 0, Vector2i(1, 2)) # bottom trim
+	for y in range(0, rect.size.y):
+		trim.set_cell(Vector2i(         -1, y), 0, Vector2i(0, 1)) # left trim
+		trim.set_cell(Vector2i(rect.size.x, y), 0, Vector2i(2, 1)) # right trim
+		
+	trim.set_cell(Vector2i(-1, -1),                   0, Vector2i(0, 0))
+	trim.set_cell(Vector2i(-1, rect.size.y),          0, Vector2i(0, 2))
+	trim.set_cell(Vector2i(rect.size.x, -1),          0, Vector2i(2, 0))
+	trim.set_cell(Vector2i(rect.size.x, rect.size.y), 0, Vector2i(2, 2))
+		
 		
 # For now, clamps moves like so:
 # - Any move with directionality is clamped based on repeating it as many times
@@ -124,6 +142,8 @@ func _ready() -> void:
 	instance = self
 	for node: Piece in get_tree().get_nodes_in_group(&"Piece"):
 		piece_map[node.tile_pos()] = node
+		
+	build_rectangle_border()
 		
 	SignalBus.card_played.connect(func(card: Card):
 		undo_stacks += 1

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://olmykxerofge" path="res://level_select/level_select.gd" id="1_kp0lh"]
 [ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="1_sv8in"]
-[ext_resource type="Script" uid="uid://dlpshbooq0wub" path="res://chessboard/board.gd" id="2_kxnyd"]
 [ext_resource type="PackedScene" uid="uid://se1uxpdyqo3b" path="res://level_select/level_select_button.tscn" id="3_kxnyd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kp0lh"]
@@ -24,7 +23,6 @@ z_index = -10
 tile_set = SubResource("TileSet_mtmfa")
 format = 2
 layer_0/tile_data = PackedInt32Array(65537, 0, 0, 196611, 0, 0, 262148, 0, 0, 1, 65536, 0, 131075, 65536, 0, 196612, 65536, 0, 65536, 65536, 0, 262147, 65536, 0, 2, 0, 0, 65539, 0, 0, 131076, 0, 0, 262146, 0, 0, 262145, 65536, 0, 3, 65536, 0, 65540, 65536, 0, 4, 0, 0, 327682, 65536, 0, 327683, 0, 0, 327684, 65536, 0, 327685, 0, 0, 131077, 65536, 0, -65535, 0, 0, 131073, 65536, 0, 131072, 0, 0, -65534, 65536, 0)
-script = ExtResource("2_kxnyd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2045557199]
 position = Vector2(888, 646)
