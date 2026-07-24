@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://b3gif8w5gjjkt"]
+
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_v4gkf"]
+
+[resource]
+script = ExtResource("1_v4gkf")
+piece_filter = 1
+ability = 5
+name = "Horsing Around"
+description = "Move ANY piece. If it captures, it transforms into a Knight."
+metadata/_custom_type_script = "uid://dfant1e3uq18d"

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dfo7xfkvwc8p7"]
+
+[ext_resource type="PackedScene" uid="uid://1bape5xetsht" path="res://level_base.tscn" id="1_my33m"]
+[ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_vafrk"]
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="3_0lspk"]
+[ext_resource type="Resource" uid="uid://caqlqi7aenrmf" path="res://cards/move.tres" id="4_tttib"]
+[ext_resource type="Resource" uid="uid://b3gif8w5gjjkt" path="res://cards/move_any_then_knight_on_capture.tres" id="5_mq55n"]
+[ext_resource type="Resource" uid="uid://blm2qo2rq08c6" path="res://cards/repeat_move_once.tres" id="6_pc8t3"]
+[ext_resource type="Resource" uid="uid://d0deoaiqlkevd" path="res://cards/move_any_x_times.tres" id="7_434d8"]
+
+[node name="Level" unique_id=1114344541 instance=ExtResource("1_my33m")]
+
+[node name="ChessBoard" parent="." index="1" unique_id=854148038]
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65537, 0, 0, 131074, 0, 0, 196611, 0, 0, 262148, 0, 0, 1, 65536, 0, 65538, 65536, 0, 131075, 65536, 0, 196612, 65536, 0, 65536, 65536, 0, 131073, 65536, 0, 196610, 65536, 0, 262147, 65536, 0, 2, 0, 0, 65539, 0, 0, 131076, 0, 0, 131072, 0, 0, 196609, 0, 0, 262146, 0, 0, 196608, 65536, 0, 262145, 65536, 0, 262144, 0, 0, 3, 65536, 0, 65540, 65536, 0, 4, 0, 0, 5, 65536, 0, 65541, 0, 0, 131077, 65536, 0, 196613, 0, 0, 262149, 65536, 0, 6, 0, 0, 65542, 65536, 0, 131078, 0, 0, 196614, 65536, 0, 262150, 0, 0, 7, 65536, 0, 65543, 0, 0, 131079, 65536, 0, 196615, 0, 0, 262151, 65536, 0, 327680, 65536, 0, 393216, 0, 0, 327681, 0, 0, 393217, 65536, 0, 327682, 65536, 0, 393218, 0, 0, 327683, 0, 0, 393219, 65536, 0, 327684, 65536, 0, 393220, 0, 0, 327685, 0, 0, 393221, 65536, 0, 327686, 65536, 0, 393222, 0, 0, 327687, 0, 0, 393223, 65536, 0, 458752, 65536, 0, 458753, 0, 0, 458754, 65536, 0, 458755, 0, 0, 458756, 65536, 0, 458757, 0, 0, 458758, 65536, 0, 458759, 0, 0)
+
+[node name="Piece3" parent="." index="2" unique_id=372744390 instance=ExtResource("2_vafrk")]
+position = Vector2(1536, 256)
+
+[node name="Piece4" parent="." index="3" unique_id=1520085605 instance=ExtResource("2_vafrk")]
+position = Vector2(768, 1536)
+
+[node name="Piece2" parent="." index="4" unique_id=1651993651 instance=ExtResource("2_vafrk")]
+position = Vector2(768, 1024)
+type = 3
+is_black = false
+
+[node name="Piece5" parent="." index="5" unique_id=1638246795 instance=ExtResource("2_vafrk")]
+position = Vector2(1280, 1536)
+type = 3
+is_black = false
+
+[node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
+cards = Array[ExtResource("3_0lspk")]([ExtResource("4_tttib"), ExtResource("5_mq55n"), ExtResource("6_pc8t3"), ExtResource("7_434d8")])

@@ -17,6 +17,7 @@ enum SpecialAbility {
 	TransformRook,
 	MoveSamePieceX,
 	SACRIFICE_ON_CAPTURE,
+	KNIGHT_ON_CAPTURE,
 }
 
 @export var activation: Activate = Activate.PieceMove
@@ -42,6 +43,9 @@ func perform_additional_steps(selected_piece: Piece) -> void:
 		SpecialAbility.SACRIFICE_ON_CAPTURE:
 			if Piece.last_move_capture != null:
 				Board.instance.kill_piece(Piece.last_move_piece)
+		SpecialAbility.KNIGHT_ON_CAPTURE:
+			if Piece.last_move_capture != null:
+				await Piece.last_move_piece.transform_into(Piece.Type.KNIGHT)
 		SpecialAbility.TransformRook:
 			await selected_piece.transform_into(Piece.Type.ROOK)
 		SpecialAbility.MoveSamePieceX:
