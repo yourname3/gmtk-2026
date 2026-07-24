@@ -1,17 +1,32 @@
 [gd_scene format=3 uid="uid://dkp8oou7e0gjs"]
 
 [ext_resource type="Script" uid="uid://ddulvhcfbgc8t" path="res://clock/clock.gd" id="1_vx6em"]
+[ext_resource type="Texture2D" uid="uid://clew4a50g3cog" path="res://desk/clock.png" id="2_ru58x"]
 
 [node name="Clock" type="Node2D" unique_id=444931598]
 script = ExtResource("1_vx6em")
 
+[node name="Clock2" type="Sprite2D" parent="." unique_id=1096632994]
+position = Vector2(-256.28784, -41.5)
+scale = Vector2(1.3717105, 1.3717105)
+texture = ExtResource("2_ru58x")
+
 [node name="Clock" type="Label" parent="." unique_id=410796401]
 unique_name_in_owner = true
-offset_left = -79.0
-offset_top = -150.0
-offset_right = 137.0
-offset_bottom = 109.0
-rotation = 0.14304401
+offset_left = 72.0
+offset_top = -142.0
+offset_right = 288.0
+offset_bottom = 117.0
 theme_override_font_sizes/font_size = 189
-text = "3"
+text = "6"
+horizontal_alignment = 1
+
+[node name="Clock3" type="Label" parent="." unique_id=857517936]
+unique_name_in_owner = true
+offset_left = -89.0
+offset_top = -142.0
+offset_right = 127.0
+offset_bottom = 117.0
+theme_override_font_sizes/font_size = 189
+text = "0"
 horizontal_alignment = 1

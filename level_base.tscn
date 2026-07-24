@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://1bape5xetsht"]
 
 [ext_resource type="Script" uid="uid://cplkyd3ikt0ds" path="res://level_camera.gd" id="1_8rhms"]
+[ext_resource type="Texture2D" uid="uid://bay3xvjiy655h" path="res://desk/desktop.png" id="1_fdc3t"]
 [ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="2_ucx4l"]
 [ext_resource type="Script" uid="uid://dlpshbooq0wub" path="res://chessboard/board.gd" id="3_agx4c"]
 [ext_resource type="Texture2D" uid="uid://dklp2e8crecys" path="res://chessboard/board_trim.png" id="4_e6jnn"]
@@ -71,6 +72,23 @@ sources/0 = SubResource("TileSetAtlasSource_fdc3t")
 
 [node name="Level" type="Node2D" unique_id=1114344541]
 
+[node name="BG" type="CanvasLayer" parent="." unique_id=1601963410]
+layer = -1
+
+[node name="Control" type="Control" parent="BG" unique_id=729087268]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/Control" unique_id=1371710495]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_fdc3t")
+centered = false
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1583186163]
 position = Vector2(640, 896)
 zoom = Vector2(0.335, 0.335)
@@ -125,7 +143,8 @@ script = ExtResource("9_x6ek4")
 metadata/_edit_use_anchors_ = true
 
 [node name="Clock" parent="CanvasLayer/Control" unique_id=444931598 instance=ExtResource("7_ucx4l")]
-position = Vector2(2900, 423)
+position = Vector2(3071.3267, 898.5584)
+rotation = 0.14670411
 
 [node name="PauseMenu" parent="." unique_id=2069674681 instance=ExtResource("10_a5rkb")]
 layer = 2

@@ -15,7 +15,7 @@ func _process(dt:float) -> void:
 	
 	var viewport = get_viewport_rect()
 	viewport.size.y -= hand_h
-	viewport.size.x -= 512 # get some extra room width-wise
+	viewport.size.x -= 600 # get some extra room width-wise
 	var zoom_x: float = viewport.size.x / width
 	var zoom_y: float = viewport.size.y / height
 	
