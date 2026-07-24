@@ -110,9 +110,14 @@ func _ready() -> void:
 var _highlight_tween: Tween = null
 var _highlight_state: bool = false
 var _highlight_hard: bool = false
+var _highlight_special: bool = false
 
 func _set_highlight(hl: bool, hard: bool = false) -> void:
-	if hl == _highlight_state and hard == _highlight_hard: return
+	var special = false
+	if Card.cares_about_killers():
+		special = has_captured
+	
+	if hl == _highlight_state and hard == _highlight_hard and special == _highlight_special: return
 	
 	if _highlight_tween:
 		_highlight_tween.kill()
@@ -122,12 +127,16 @@ func _set_highlight(hl: bool, hard: bool = false) -> void:
 	if hl != _highlight_state:
 		_highlight_tween.tween_property(sprite, ^"instance_shader_parameters/line_thickness",
 			0.008 if hl else 0.0, 0.1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-	if hard != _highlight_hard:
+	if hard != _highlight_hard or special != _highlight_special:
+		var color: Color = Card.HIGHLIGHT_HARD if hard else Card.HIGHLIGHT_SOFT
+		if special:
+			color = Card.HIGHLIGHT_SPECIAL_HARD if hard else Card.HIGHLIGHT_SPECIAL_SOFT
 		_highlight_tween.parallel().tween_property(sprite, ^"instance_shader_parameters/line_colour",
-			Card.HIGHLIGHT_HARD if hard else Card.HIGHLIGHT_SOFT, 0.1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+			color, 0.1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		
 	_highlight_state = hl
 	_highlight_hard = hard
+	_highlight_special = special
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

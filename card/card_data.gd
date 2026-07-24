@@ -28,6 +28,7 @@ enum SpecialAbility {
 @export var ability: SpecialAbility = SpecialAbility.None
 @export var name: String = "Card Name"
 @export var description: String = "Card description"
+@export var cares_about_killers: bool = false
 
 func await_activation_full_resolve() -> void:
 	if activation == Activate.PieceMove:

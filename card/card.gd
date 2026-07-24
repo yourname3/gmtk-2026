@@ -15,6 +15,9 @@ var target_rotation: float = 0.0
 const HIGHLIGHT_SOFT: Color = Color("70b3cd")
 const HIGHLIGHT_HARD: Color = Color("a9d7ea")
 
+const HIGHLIGHT_SPECIAL_SOFT: Color = Color("cc8670")
+const HIGHLIGHT_SPECIAL_HARD: Color = Color("ebb8a9")
+
 @onready var highlight: Sprite2D = %Highlight
 
 @export var data: CardData = CardData.new()
@@ -36,6 +39,10 @@ static func is_activated_on_piece_move() -> bool:
 static func is_activated_on_piece_select() -> bool:
 	if selected_card != null:
 		return selected_card.data.activation == CardData.Activate.PieceSelect
+	return false
+static func cares_about_killers() -> bool:
+	if selected_card != null:
+		return selected_card.data.cares_about_killers
 	return false
 
 #func _ready() -> void:
