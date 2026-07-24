@@ -2,13 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ha6h0kq47yon" path="res://piece/piece.gd" id="1_6byuq"]
 [ext_resource type="Texture2D" uid="uid://bv041j16pukgw" path="res://chessboard/pieces.png" id="1_l0ktr"]
-[ext_resource type="Shader" uid="uid://ba51veyqlqd54" path="res://piece/piece.gdshader" id="2_2eswf"]
+[ext_resource type="Shader" uid="uid://dloq50xgl0gqr" path="res://piece/piece_v2.gdshader" id="2_4wn1d"]
+[ext_resource type="Texture2D" uid="uid://b8ybcygilqf3g" path="res://chessboard/piece_felt.png" id="4_4wn1d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wn1d"]
-shader = ExtResource("2_2eswf")
-shader_parameter/border_visibility = 1.0
-shader_parameter/gradient_intensity = 3.0
-shader_parameter/gradient_steps = 2.0000000475
+shader = ExtResource("2_4wn1d")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6byuq"]
 size = Vector2(240, 240)
@@ -322,13 +320,19 @@ script = ExtResource("1_6byuq")
 unique_name_in_owner = true
 self_modulate = Color(0.11764706, 0.07450981, 0.05882353, 1)
 material = SubResource("ShaderMaterial_4wn1d")
-instance_shader_parameters/line_colour = Color(0.92, 0.7225067, 0.66240007, 1)
+instance_shader_parameters/line_colour = Color(0.67125565, 0.4961869, 0.2601706, 1)
 instance_shader_parameters/line_thickness = 0.00800000038
 position = Vector2(128, 256)
 texture = ExtResource("1_l0ktr")
 offset = Vector2(0, -128)
 region_enabled = true
 region_rect = Rect2(1280, 0, 256, 256)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite" unique_id=862909206]
+visible = false
+show_behind_parent = true
+position = Vector2(0, -128)
+texture = ExtResource("4_4wn1d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=377802507]
 visible = false

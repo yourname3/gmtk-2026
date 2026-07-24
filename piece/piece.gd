@@ -5,6 +5,11 @@ class_name Piece
 const COLOR_WHITE: Color = Color("f5ece0")
 const COLOR_BLACK: Color = Color("1e130f")
 
+var COLOR_WHITE_LINE: Color = Color("ab7f42")
+var COLOR_BLACK_LINE: Color = Color("ae6c5e")
+
+#static var color_adjust: bool = true
+
 static var last_move_start: Vector2i = Vector2i.ZERO
 static var last_move_end: Vector2i = Vector2i.ZERO
 static var last_move_piece: Piece = null
@@ -102,11 +107,16 @@ func update_appearance() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#if color_adjust:
+		#color_adjust = false
+	COLOR_BLACK_LINE = COLOR_BLACK_LINE.lerp(COLOR_BLACK, 0.7)
+	COLOR_WHITE_LINE = COLOR_WHITE_LINE.lerp(COLOR_WHITE, 0.7)
+	
 	update_appearance()
 	
 	if not Engine.is_editor_hint():
 		sprite.set_instance_shader_parameter(&"line_thickness", 0.0)
-		sprite.set_instance_shader_parameter(&"line_colour", Card.HIGHLIGHT_SOFT)
+		sprite.set_instance_shader_parameter(&"line_colour", COLOR_BLACK_LINE if is_black else COLOR_WHITE_LINE)
 
 var _highlight_tween: Tween = null
 var _highlight_state: bool = false
@@ -128,10 +138,14 @@ func _set_highlight(hl: bool, hard: bool = false) -> void:
 	if hl != _highlight_state:
 		_highlight_tween.tween_property(sprite, ^"instance_shader_parameters/line_thickness",
 			0.008 if hl else 0.0, 0.1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-	if hard != _highlight_hard or special != _highlight_special:
-		var color: Color = Card.HIGHLIGHT_HARD if hard else Card.HIGHLIGHT_SOFT
-		if special:
-			color = Card.HIGHLIGHT_SPECIAL_HARD if hard else Card.HIGHLIGHT_SPECIAL_SOFT
+	if true: #hard != _highlight_hard or special != _highlight_special:
+		var color: Color = COLOR_BLACK_LINE if is_black else COLOR_WHITE_LINE
+		var color2 = color
+		if hl:
+			color2 = Card.HIGHLIGHT_HARD if hard else Card.HIGHLIGHT_SOFT
+			if special:
+				color2 = Card.HIGHLIGHT_SPECIAL_HARD if hard else Card.HIGHLIGHT_SPECIAL_SOFT
+		color = color2.lerp(color, 0.2)
 		_highlight_tween.parallel().tween_property(sprite, ^"instance_shader_parameters/line_colour",
 			color, 0.1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		
