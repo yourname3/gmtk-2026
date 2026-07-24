@@ -7,8 +7,10 @@ var save_data: SaveData = SaveData.new()
 var current_level: int = -1
 
 var level_names: Array[StringName] = [
-	&"levels/transform_rook.tscn",
-	&"levels/sacrifice_bishop_staredown.tscn",
+	&"res://levels/level_intro.tscn",
+	&"res://levels/level_intro_variation.tscn",
+	&"res://levels/transform_rook.tscn",
+	&"res://levels/sacrifice_bishop_staredown.tscn",
 ]
 
 func load_level(index: int) -> void:

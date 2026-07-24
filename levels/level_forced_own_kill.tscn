@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c0mcjso3ft6tv"]
+
+[ext_resource type="Script" uid="uid://cplkyd3ikt0ds" path="res://level_camera.gd" id="1_16k1l"]
+[ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="2_sbrny"]
+[ext_resource type="Script" uid="uid://dlpshbooq0wub" path="res://chessboard/board.gd" id="3_daxet"]
+[ext_resource type="PackedScene" uid="uid://dwkpyk486w1so" path="res://board_highlighter/board_highlighter.tscn" id="4_wyvao"]
+[ext_resource type="PackedScene" uid="uid://dlxncimif4ag5" path="res://card/card_hand.tscn" id="5_lse15"]
+[ext_resource type="Script" uid="uid://b06p13p7337hc" path="res://card/card_anchor.gd" id="6_i5uqt"]
+[ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="7_n5cx2"]
+[ext_resource type="Script" uid="uid://boelojhpopqmn" path="res://level/undo_button.gd" id="8_61p6p"]
+[ext_resource type="PackedScene" uid="uid://dkp8oou7e0gjs" path="res://clock/clock.tscn" id="9_be3r6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x6ek4"]
+texture = ExtResource("2_sbrny")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5xgho"]
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetAtlasSource_x6ek4")
+
+[node name="Level" type="Node2D" unique_id=1114344541]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1583186163]
+position = Vector2(640, 896)
+zoom = Vector2(0.335, 0.335)
+script = ExtResource("1_16k1l")
+
+[node name="ChessBoard" type="TileMap" parent="." unique_id=854148038]
+unique_name_in_owner = true
+z_index = -10
+tile_set = SubResource("TileSet_5xgho")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65537, 0, 0, 131074, 0, 0, 196611, 0, 0, 262148, 0, 0, 1, 65536, 0, 65538, 65536, 0, 131075, 65536, 0, 196612, 65536, 0, 65536, 65536, 0, 131073, 65536, 0, 196610, 65536, 0, 262147, 65536, 0, 2, 0, 0, 65539, 0, 0, 131076, 0, 0, 131072, 0, 0, 196609, 0, 0, 262146, 0, 0, 196608, 65536, 0, 262145, 65536, 0, 262144, 0, 0, 3, 65536, 0, 65540, 65536, 0, 4, 0, 0)
+script = ExtResource("3_daxet")
+
+[node name="BoardHighlighter" parent="." unique_id=1546895326 instance=ExtResource("4_wyvao")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=934646317]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=746026494]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 3459.0
+offset_bottom = 1924.0
+scale = Vector2(0.33275524, 0.33275524)
+mouse_filter = 2
+
+[node name="CardHand" parent="CanvasLayer/Control" unique_id=850826435 instance=ExtResource("5_lse15")]
+unique_name_in_owner = true
+position = Vector2(1724, 1628.0513)
+
+[node name="CardAnchor" type="Node2D" parent="CanvasLayer/Control/CardHand" unique_id=625709137]
+position = Vector2(-1234, -871)
+script = ExtResource("6_i5uqt")
+
+[node name="UndoButton" type="Button" parent="CanvasLayer/Control/CardHand" unique_id=1976124487]
+unique_name_in_owner = true
+offset_left = -1395.0
+offset_top = -485.0
+offset_right = -1012.0
+offset_bottom = -342.0
+rotation = -0.08234839
+theme_override_fonts/font = ExtResource("7_n5cx2")
+theme_override_font_sizes/font_size = 100
+text = "Undo"
+script = ExtResource("8_61p6p")
+
+[node name="Clock" parent="CanvasLayer/Control" unique_id=444931598 instance=ExtResource("9_be3r6")]
+position = Vector2(2900, 423)
