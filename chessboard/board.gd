@@ -145,17 +145,24 @@ func _ready() -> void:
 		
 	build_rectangle_border()
 	
-	var iter = 0
+	var iter0 = 0
+	var iter1 = 0
 	
 	for tile in get_used_cells(0):
 		var coord = get_cell_atlas_coords(0, tile)
-		var variation: int = (iter / 2) % 16
+		var variation: int = 0
 		var alt_id: int = 0
-		if coord.x == 0: alt_id |= TileSetAtlasSource.TRANSFORM_TRANSPOSE
+		if coord.x == 0:
+			variation = iter0 % 16
+			iter0 += 1
+			alt_id |= TileSetAtlasSource.TRANSFORM_TRANSPOSE
+		else:
+			variation = iter1 % 16
+			iter1 += 1
 		coord.x += (variation / 4) * 2
 		coord.y = variation % 4
+		#print("variation = ", variation, " : ", (variation / 4), " ", variation % 4)
 		set_cell(0, tile, 0, coord, alt_id)
-		iter += 1
 		
 	SignalBus.card_played.connect(func(card: Card):
 		undo_stacks += 1
