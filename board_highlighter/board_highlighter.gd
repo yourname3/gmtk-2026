@@ -72,6 +72,11 @@ func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 func _ready() -> void:
 	instance = self
 	
+	SignalBus.undo.connect(func():
+		if select_state != SelectState.NONE:
+			SignalBus.move_selected.emit(null)
+	)
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if select_state == SelectState.LOCATION:
 		var id = select_id
