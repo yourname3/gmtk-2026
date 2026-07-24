@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bef0yly2ol35p"]
+
+[ext_resource type="PackedScene" uid="uid://1bape5xetsht" path="res://level_base.tscn" id="1_g6gwb"]
+[ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_iqc87"]
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="3_dwgh0"]
+[ext_resource type="Resource" uid="uid://dvpmajg00ftlg" path="res://cards/sacrifice_into_pawns_queens.tres" id="4_8qtyv"]
+[ext_resource type="Resource" uid="uid://caqlqi7aenrmf" path="res://cards/move.tres" id="5_5nga8"]
+[ext_resource type="Resource" uid="uid://bpt24de36uqyt" path="res://cards/transform_any_rook.tres" id="6_8qtyv"]
+
+[node name="Level" unique_id=1114344541 instance=ExtResource("1_g6gwb")]
+
+[node name="Piece2" parent="." index="2" unique_id=89405100 instance=ExtResource("2_iqc87")]
+position = Vector2(256, 0)
+type = 1
+
+[node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
+cards = Array[ExtResource("3_dwgh0")]([ExtResource("4_8qtyv"), ExtResource("5_5nga8"), ExtResource("6_8qtyv")])

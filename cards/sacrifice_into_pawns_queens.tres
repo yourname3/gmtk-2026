@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dvpmajg00ftlg"]
+
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_aeqfn"]
+
+[resource]
+script = ExtResource("1_aeqfn")
+activation = 1
+rank_filter = 2
+ability = 9
+name = "Revolution"
+description = "Sacrifice a major piece. Transform ALL Pawns into Queens."
+metadata/_custom_type_script = "uid://dfant1e3uq18d"

@@ -11,6 +11,12 @@ enum PieceFilter {
 	ANY,
 }
 
+enum RankFilter {
+	NONE,
+	MINOR,
+	MAJOR,
+}
+
 enum SpecialAbility {
 	None,
 	RepeatMove,
@@ -21,10 +27,12 @@ enum SpecialAbility {
 	REPEAT_X,
 	REPEAT_TWO,
 	MOVE_TWICE_KILLER,
+	PAWNS_INTO_QUEENS,
 }
 
 @export var activation: Activate = Activate.PieceMove
 @export var piece_filter: PieceFilter = PieceFilter.SAME_SIDE
+@export var rank_filter: RankFilter = RankFilter.NONE
 @export var ability: SpecialAbility = SpecialAbility.None
 @export var name: String = "Card Name"
 @export var description: String = "Card description"
@@ -34,7 +42,7 @@ func await_activation_full_resolve() -> void:
 	if activation == Activate.PieceMove:
 		await SignalBus.piece_moved
 
-func perform_additional_steps(selected_piece: Piece) -> void:
+func perform_additional_steps(selected_piece: Piece, tree: SceneTree) -> void:
 	match ability:
 		SpecialAbility.RepeatMove:
 			var piece = Piece.last_move_piece
@@ -78,5 +86,16 @@ func perform_additional_steps(selected_piece: Piece) -> void:
 				var additional_moves: int = 1
 				for i in range(0, additional_moves):
 					await Piece.last_move_piece.move_this(true)
+		SpecialAbility.PAWNS_INTO_QUEENS:
+			Board.instance.kill_piece(selected_piece)
+			var todo: Array[Piece] = []
+			for piece: Piece in tree.get_nodes_in_group(&"Piece"):
+				if piece.type == Piece.Type.PAWN:
+					todo.append(piece)
+			for i in range(0, todo.size()):
+				if i == todo.size() - 1:
+					await todo[i].transform_into(Piece.Type.QUEEN)
+				else:
+					todo[i].transform_into(Piece.Type.QUEEN)
 				
 				

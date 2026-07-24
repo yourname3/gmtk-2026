@@ -30,6 +30,7 @@ func select_card(card: Card) -> void:
 		BoardHighlighter.select_state = BoardHighlighter.SelectState.NONE
 		
 	BoardHighlighter.select_filter = card.data.piece_filter
+	BoardHighlighter.select_rank_filter = card.data.rank_filter
 
 func arrange_cards() -> void:
 	const w: float = 384

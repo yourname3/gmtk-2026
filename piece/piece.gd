@@ -275,13 +275,24 @@ func kill() -> void:
 	hide()
 	#queue_free()
 	
-func is_selectable() -> bool:
+func is_selectable_side() -> bool:
 	match BoardHighlighter.instance.select_filter:
 		CardData.PieceFilter.SAME_SIDE:
 			return is_black
 		CardData.PieceFilter.ANY:
 			return true
 	return false
+func is_selectable_rank() -> bool:
+	match BoardHighlighter.instance.select_rank_filter:
+		CardData.RankFilter.MINOR:
+			return (type == Type.BISHOP) or (type == Type.KNIGHT)
+		CardData.RankFilter.MAJOR:
+			return (type == Type.ROOK) or (type == Type.QUEEN)
+		CardData.RankFilter.NONE:
+			return true
+	return false
+func is_selectable() -> bool:
+	return is_selectable_side() and is_selectable_rank()
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if Engine.is_editor_hint(): return

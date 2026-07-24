@@ -60,7 +60,7 @@ func _update_text() -> void:
 	%Description.text = data.description
 
 func _update_pos() -> void:
-	if _state == State.DYING: return # no updates here
+	#if _state == State.DYING: return # no updates here
 	
 	var tpos := target_position
 	var tscale := target_scale
@@ -75,7 +75,7 @@ func _update_pos() -> void:
 				trot = 0
 				z_index = 2
 			
-		if _state == State.PLAYING:
+		if _state == State.PLAYING or _state == State.DYING:
 			tpos = get_parent().to_local(CardAnchor.instance.global_position)
 			tscale = 1.2 * Vector2.ONE
 			trot = -PI / 38
@@ -111,7 +111,7 @@ func play(selected_piece: Piece = null) -> void:
 	
 	# Resolve each other step in the card...
 	await data.await_activation_full_resolve()
-	await data.perform_additional_steps(selected_piece)
+	await data.perform_additional_steps(selected_piece, get_tree())
 	
 	_state = State.DYING
 	card_playing = false
