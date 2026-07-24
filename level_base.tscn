@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dkp8oou7e0gjs" path="res://clock/clock.tscn" id="7_ucx4l"]
 [ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="8_agx4c"]
 [ext_resource type="Script" uid="uid://boelojhpopqmn" path="res://level/undo_button.gd" id="9_x6ek4"]
+[ext_resource type="PackedScene" uid="uid://bi3lyalojid0q" path="res://pause_menu/pause_menu.tscn" id="10_a5rkb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x6ek4"]
 texture = ExtResource("2_ucx4l")
@@ -72,3 +73,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Clock" parent="CanvasLayer/Control" unique_id=444931598 instance=ExtResource("7_ucx4l")]
 position = Vector2(2900, 423)
+
+[node name="PauseMenu" parent="." unique_id=2069674681 instance=ExtResource("10_a5rkb")]
+layer = 2

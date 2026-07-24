@@ -6,11 +6,15 @@ var next_scene: StringName = &"<avail>"
 const COLOR_ONE = Color("#aa8f6f")
 const COLOR_TWO = Color("#463b2e")
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 func change_scene_to_path(path: StringName) -> void:
 	if next_scene != &"<avail>":
 		return
 	
 	var size = get_viewport().get_visible_rect().size
+	get_tree().paused = true
 	
 	var x = 64
 	var xi: int = 0
@@ -50,6 +54,7 @@ func change_scene_to_path(path: StringName) -> void:
 		#try = load(path)
 	get_tree().change_scene_to_node(node)
 	await get_tree().create_timer(0.2, true).timeout
+	get_tree().paused = false
 	
 	for child in get_children():
 		child.second_anim()

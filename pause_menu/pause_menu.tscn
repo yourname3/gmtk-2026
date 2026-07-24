@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://bi3lyalojid0q"]
+
+[ext_resource type="FontFile" uid="uid://clh665yxwwet" path="res://font/Kelvinch-Bold.otf" id="1_5hbt6"]
+[ext_resource type="Script" uid="uid://d1vebeskhojli" path="res://pause_menu/pause_menu.gd" id="2_rd7dy"]
+
+[sub_resource type="Theme" id="Theme_5hbt6"]
+default_font = ExtResource("1_5hbt6")
+Button/font_sizes/font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hbt6"]
+bg_color = Color(0.6398211, 0.5506212, 0.42015097, 1)
+
+[sub_resource type="Animation" id="Animation_uwtdo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b4s0c"]
+resource_name = "close"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1), Vector2(0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.5211406, 0.5211406, 0.5211405, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rd7dy"]
+resource_name = "open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1.131), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5211406, 0.5211406, 0.5211405, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uwtdo"]
+_data = {
+&"RESET": SubResource("Animation_uwtdo"),
+&"close": SubResource("Animation_b4s0c"),
+&"open": SubResource("Animation_rd7dy")
+}
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=2069674681]
+
+[node name="Control" type="Control" parent="." unique_id=1948528632]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5hbt6")
+script = ExtResource("2_rd7dy")
+
+[node name="Panel" type="Panel" parent="Control" unique_id=1863923423]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_5hbt6")
+
+[node name="Label" type="Label" parent="Control/Panel" unique_id=1804845143]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -158.0
+offset_top = 1.9999999
+offset_right = 141.0
+offset_bottom = 99.0
+grow_horizontal = 2
+rotation = 0.06561379
+theme_override_fonts/font = ExtResource("1_5hbt6")
+theme_override_font_sizes/font_size = 72
+text = "PAUSED"
+
+[node name="Resume" type="Button" parent="Control/Panel" unique_id=1620684311]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 489.0
+offset_top = 146.0
+offset_right = 650.0
+offset_bottom = 207.0
+rotation = -0.10014474
+text = "Resume"
+
+[node name="LevelSelect" type="Button" parent="Control/Panel" unique_id=1324414092]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 533.0
+offset_top = 209.0
+offset_right = 751.09125
+offset_bottom = 270.0
+rotation = -0.057214953
+text = "Level Select"
+
+[node name="MainMenu" type="Button" parent="Control/Panel" unique_id=623167055]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 574.0
+offset_top = 274.00003
+offset_right = 792.09125
+offset_bottom = 335.00003
+rotation = -0.010604518
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="Control/Panel" unique_id=706336993]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 600.99994
+offset_top = 341.0
+offset_right = 815.8616
+offset_bottom = 402.0
+rotation = 0.035968754
+text = "Quit "
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control" unique_id=1320943917]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_uwtdo")
