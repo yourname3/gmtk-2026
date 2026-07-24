@@ -37,6 +37,7 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65537, 0, 0, 131074, 0, 0, 196611,
 script = ExtResource("3_agx4c")
 
 [node name="BoardHighlighter" parent="." unique_id=1546895326 instance=ExtResource("4_x6ek4")]
+z_index = 200
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=934646317]
 
