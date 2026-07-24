@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dabe0fvunmq2o"]
+
+[ext_resource type="PackedScene" uid="uid://1bape5xetsht" path="res://level_base.tscn" id="1_wa2w2"]
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="2_k6jc6"]
+[ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_pjdur"]
+[ext_resource type="Resource" uid="uid://d0deoaiqlkevd" path="res://cards/move_any_x_times.tres" id="3_lxoot"]
+[ext_resource type="Resource" uid="uid://bpt24de36uqyt" path="res://cards/transform_any_rook.tres" id="4_6m7ld"]
+[ext_resource type="Resource" uid="uid://blm2qo2rq08c6" path="res://cards/repeat_move_once.tres" id="5_m3ig5"]
+[ext_resource type="Resource" uid="uid://2j0d8g238d0v" path="res://cards/move_any_then_sacrifice_on_capture.tres" id="6_udp7p"]
+
+[node name="Level" unique_id=1114344541 instance=ExtResource("1_wa2w2")]
+
+[node name="ChessBoard" parent="." index="1" unique_id=854148038]
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65537, 0, 0, 131074, 0, 0, 196611, 0, 0, 262148, 0, 0, 1, 65536, 0, 65538, 65536, 0, 131075, 65536, 0, 196612, 65536, 0, 65536, 65536, 0, 131073, 65536, 0, 196610, 65536, 0, 262147, 65536, 0, 2, 0, 0, 65539, 0, 0, 131076, 0, 0, 131072, 0, 0, 196609, 0, 0, 262146, 0, 0, 196608, 65536, 0, 262145, 65536, 0, 262144, 0, 0, 3, 65536, 0, 65540, 65536, 0, 4, 0, 0, 327681, 0, 0, 327683, 0, 0, 327685, 0, 0, 196613, 0, 0, 65541, 0, 0, 327684, 65536, 0, 327682, 65536, 0, 327680, 65536, 0, 262149, 65536, 0, 131077, 65536, 0, 5, 65536, 0)
+
+[node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
+cards = Array[ExtResource("2_k6jc6")]([ExtResource("3_lxoot"), ExtResource("4_6m7ld"), ExtResource("5_m3ig5"), ExtResource("6_udp7p")])
+
+[node name="Piece" parent="." index="4" unique_id=1638246795 instance=ExtResource("2_pjdur")]
+position = Vector2(768, 0)
+is_black = false
+
+[node name="Piece2" parent="." index="5" unique_id=1095292664 instance=ExtResource("2_pjdur")]
+position = Vector2(768, 512)
+is_black = false
+
+[node name="Piece3" parent="." index="6" unique_id=1486503491 instance=ExtResource("2_pjdur")]
+position = Vector2(768, 1280)
+is_black = false
+
+[node name="Piece4" parent="." index="7" unique_id=1693009389 instance=ExtResource("2_pjdur")]
+position = Vector2(768, 1024)
+is_black = false
+
+[node name="Piece5" parent="." index="8" unique_id=1295722633 instance=ExtResource("2_pjdur")]
+type = 4
+is_black = false
+
+[node name="Piece6" parent="." index="9" unique_id=163862491 instance=ExtResource("2_pjdur")]
+position = Vector2(1280, 1280)
+type = 5
+is_black = false
+
+[node name="Piece7" parent="." index="10" unique_id=814800610 instance=ExtResource("2_pjdur")]
+position = Vector2(768, 768)
+
+[node name="Piece8" parent="." index="11" unique_id=1830396558 instance=ExtResource("2_pjdur")]
+position = Vector2(256, 1024)
+type = 2
