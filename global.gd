@@ -7,10 +7,19 @@ var save_data: SaveData = SaveData.new()
 var current_level: int = -1
 
 var level_names: Array[StringName] = [
-	&"res://levels/level_intro.tscn",
-	&"res://levels/level_intro_variation.tscn",
-	&"res://levels/transform_rook.tscn",
-	&"res://levels/sacrifice_bishop_staredown.tscn",
+	&"res://levels/level_intro.tscn",# easy enough
+	&"res://levels/level_intro_variation.tscn", # easy enough
+	&"res://levels/transform_rook.tscn", # not so hard
+	&"res://levels/sacrifice_bishop_staredown.tscn", # tricky
+	&"res://levels/careful_xmove_align.tscn", # medium
+	&"res://levels/charge_lineup_variation2.tscn", # < medium ?
+	&"res://levels/forced_own_kill.tscn", # trickier
+	&"res://levels/level_random1.tscn", # trickier (esp. as compared to careful_xmove_align)
+	&"res://levels/pawn_charge1.tscn", # tricky! hard! (first pawn up charge... need to pay attention to these.)
+	&"res://levels/rook_laser.tscn", # hard
+	&"res://levels/transform_rook_variation.tscn", # medium.. harder than other one?
+	&"res://levels/random2.tscn", # medium + slight trick (parity)
+	&"res://levels/turn_enemy_into_horse_for_movement.tscn", # hard due to pawn charge
 ]
 
 func load_level(index: int) -> void:

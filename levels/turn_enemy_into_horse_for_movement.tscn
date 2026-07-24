@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://caqlqi7aenrmf" path="res://cards/move.tres" id="4_tttib"]
 [ext_resource type="Resource" uid="uid://b3gif8w5gjjkt" path="res://cards/move_any_then_knight_on_capture.tres" id="5_mq55n"]
 [ext_resource type="Resource" uid="uid://blm2qo2rq08c6" path="res://cards/repeat_move_once.tres" id="6_pc8t3"]
-[ext_resource type="Resource" uid="uid://d0deoaiqlkevd" path="res://cards/move_any_x_times.tres" id="7_434d8"]
+[ext_resource type="Resource" uid="uid://cecxt4qg5sf8j" path="res://cards/move_any_twice_killer.tres" id="7_mq55n"]
 
 [node name="Level" unique_id=1114344541 instance=ExtResource("1_my33m")]
 
@@ -21,7 +21,6 @@ position = Vector2(768, 1536)
 
 [node name="Piece2" parent="." index="4" unique_id=1651993651 instance=ExtResource("2_vafrk")]
 position = Vector2(768, 1024)
-type = 3
 is_black = false
 
 [node name="Piece5" parent="." index="5" unique_id=1638246795 instance=ExtResource("2_vafrk")]
@@ -30,4 +29,4 @@ type = 3
 is_black = false
 
 [node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
-cards = Array[ExtResource("3_0lspk")]([ExtResource("4_tttib"), ExtResource("5_mq55n"), ExtResource("6_pc8t3"), ExtResource("7_434d8")])
+cards = Array[ExtResource("3_0lspk")]([ExtResource("4_tttib"), ExtResource("5_mq55n"), ExtResource("6_pc8t3"), ExtResource("7_mq55n")])

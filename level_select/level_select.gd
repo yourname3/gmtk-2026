@@ -19,10 +19,10 @@ func _ready() -> void:
 		var check_neighbor = func(x: int, y: int) -> bool:
 			var neighbor = dictionary.get(button.tile() + Vector2i(x, y))
 			if neighbor:
-				if Global.save_data.completed_levels.has(neighbor.number):
+				if Global.save_data.level_completed(neighbor.number):
 					return true
 			return false
-		if Global.save_data.completed_levels.has(button.number):
+		if Global.save_data.level_completed(button.number):
 			enabled = true
 		if button.number == 0:
 			enabled = true # You can always play level 0

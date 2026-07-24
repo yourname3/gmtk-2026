@@ -33,6 +33,5 @@ position = Vector2(256, 512)
 type = 1
 
 [node name="Piece4" parent="." index="9" unique_id=1635803077 instance=ExtResource("2_71ssf")]
-position = Vector2(512, 0)
-type = 1
+type = 3
 is_black = false

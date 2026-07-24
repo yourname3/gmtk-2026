@@ -20,6 +20,7 @@ enum SpecialAbility {
 	KNIGHT_ON_CAPTURE,
 	REPEAT_X,
 	REPEAT_TWO,
+	MOVE_TWICE_KILLER,
 }
 
 @export var activation: Activate = Activate.PieceMove
@@ -71,5 +72,10 @@ func perform_additional_steps(selected_piece: Piece) -> void:
 			var additional_moves: int = Clock.instance.count - 1
 			for i in range(0, additional_moves):
 				await Piece.last_move_piece.move_this(true)
+		SpecialAbility.MOVE_TWICE_KILLER:
+			if Piece.last_move_piece.has_captured:
+				var additional_moves: int = 1
+				for i in range(0, additional_moves):
+					await Piece.last_move_piece.move_this(true)
 				
 				

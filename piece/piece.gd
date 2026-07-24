@@ -24,12 +24,14 @@ enum Type {
 
 @export var type: Type = Type.PAWN
 @export var is_black: bool = true
+var has_captured: bool = false
 
 class UndoState:
 	var tile_pos: Vector2i
 	var type: Type
 	var alive: bool
 	var is_black: bool
+	var has_captured: bool
 	
 var undo_states: Array[UndoState] = []
 	
@@ -39,6 +41,7 @@ func push_undo_state() -> void:
 	state.type = type
 	state.alive = alive
 	state.is_black = is_black
+	state.has_captured = has_captured
 	
 	undo_states.push_back(state)
 
@@ -69,6 +72,7 @@ func pop_undo_state() -> void:
 		type = state.type
 		alive = state.alive
 		is_black = state.is_black
+		has_captured = state.has_captured
 		
 		if alive: show()
 		else: hide()
@@ -245,6 +249,8 @@ func move(target: Vector2i, capture: Piece) -> void:
 	z_index = 0
 	
 	position = target * 256 # lock position down
+	if capture != null:
+		has_captured = true
 	SignalBus.piece_moved.emit()
 	
 func tile_pos() -> Vector2i:
