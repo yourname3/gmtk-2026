@@ -2,6 +2,158 @@
 
 [ext_resource type="Script" uid="uid://ddulvhcfbgc8t" path="res://clock/clock.gd" id="1_vx6em"]
 [ext_resource type="Texture2D" uid="uid://clew4a50g3cog" path="res://desk/clock.png" id="2_ru58x"]
+[ext_resource type="Texture2D" uid="uid://bo2bcy833fesu" path="res://desk/split-flap-anim.png" id="3_fk4wj"]
+[ext_resource type="Script" uid="uid://6gakbo6vtoct" path="res://clock/fixed_remote_transform.gd" id="4_xrin6"]
+[ext_resource type="Texture2D" uid="uid://b4ysgeavrkavv" path="res://desk/split-flap.png" id="5_mwaaj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwaaj"]
+
+[sub_resource type="Animation" id="Animation_mwaaj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClockClip:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.3744917, 1.3744917)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Clock2/SplitFlapAnim:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(318.06116, -71.80815)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Clock2/SplitFlapAnim:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ClockClip2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.3744917, 1.3744917)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ClockClip2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wcf73"]
+resource_name = "flip"
+length = 0.22
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClockClip:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.22),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.3744917, 1.3744917), Vector2(1.374, 1e-05), Vector2(1.3744917, 1.3744917)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Clock2/SplitFlapAnim:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(318.06116, -71.80815), Vector2(318.06116, 117.0072)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Clock2/SplitFlapAnim:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.22),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ClockClip2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.374, 1e-05), Vector2(1.3744917, 1.3744917)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ClockClip2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.22),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_anim_update_clock"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_48hhf"]
+_data = {
+&"RESET": SubResource("Animation_mwaaj"),
+&"flip": SubResource("Animation_wcf73")
+}
 
 [node name="Clock" type="Node2D" unique_id=444931598]
 script = ExtResource("1_vx6em")
@@ -11,14 +163,65 @@ position = Vector2(-256.28784, -41.5)
 scale = Vector2(1.3717105, 1.3717105)
 texture = ExtResource("2_ru58x")
 
-[node name="Clock" type="Label" parent="." unique_id=410796401]
+[node name="SplitFlapAnim" type="Sprite2D" parent="Clock2" unique_id=1525279428]
+visible = false
+z_index = 2
+position = Vector2(318.06116, -71.80815)
+texture = ExtResource("3_fk4wj")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1236380683]
+position = Vector2(72, -142)
+remote_path = NodePath("../ClockClip/RemoteTarget")
+script = ExtResource("4_xrin6")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="." unique_id=431184430]
+position = Vector2(72, -142)
+remote_path = NodePath("../ClockClip2/RemoteTarget")
+script = ExtResource("4_xrin6")
+
+[node name="ClockClip" type="Sprite2D" parent="." unique_id=1493169293]
+clip_children = 1
+position = Vector2(100, 123)
+scale = Vector2(1.3744917, 1.3744917)
+texture = ExtResource("5_mwaaj")
+centered = false
+offset = Vector2(0, -196)
+region_enabled = true
+region_rect = Rect2(0, 0, 117, 196)
+
+[node name="RemoteTarget" type="Node2D" parent="ClockClip" unique_id=1858744894]
+position = Vector2(-20.371162, -192.79855)
+scale = Vector2(0.7275417, 0.7275417)
+
+[node name="Clock" type="Label" parent="ClockClip/RemoteTarget" unique_id=410796401]
 unique_name_in_owner = true
-offset_left = 72.0
-offset_top = -142.0
-offset_right = 288.0
-offset_bottom = 117.0
+material = SubResource("ShaderMaterial_mwaaj")
+offset_right = 216.0
+offset_bottom = 259.0
 theme_override_font_sizes/font_size = 189
 text = "6"
+horizontal_alignment = 1
+
+[node name="ClockClip2" type="Sprite2D" parent="." unique_id=1205510082]
+clip_children = 1
+position = Vector2(100, -144)
+scale = Vector2(1.3744917, 1.3744917)
+texture = ExtResource("5_mwaaj")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 117, 196)
+
+[node name="RemoteTarget" type="Node2D" parent="ClockClip2" unique_id=969781386]
+position = Vector2(-20.371162, 1.4550858)
+scale = Vector2(0.7275417, 0.7275417)
+
+[node name="ClockFuture" type="Label" parent="ClockClip2/RemoteTarget" unique_id=32660616]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_mwaaj")
+offset_right = 216.0
+offset_bottom = 259.0
+theme_override_font_sizes/font_size = 189
+text = "7"
 horizontal_alignment = 1
 
 [node name="Clock3" type="Label" parent="." unique_id=857517936]
@@ -30,3 +233,7 @@ offset_bottom = 117.0
 theme_override_font_sizes/font_size = 189
 text = "0"
 horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1000362909]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_48hhf")

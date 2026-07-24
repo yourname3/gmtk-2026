@@ -9,7 +9,13 @@ var count: int = 0
 
 func _ready() -> void:
 	instance = self
+
+func _anim_update_clock() -> void:
+	clock.text = str(count)
 	
 func update(cards: int) -> void:
+	if count != cards:
+		%ClockFuture.text = str(cards)
+		%AnimationPlayer.play(&"flip")
 	count = cards
-	clock.text = str(cards)
+	
