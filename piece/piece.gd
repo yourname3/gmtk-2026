@@ -9,6 +9,7 @@ static var last_move_start: Vector2i = Vector2i.ZERO
 static var last_move_end: Vector2i = Vector2i.ZERO
 static var last_move_piece: Piece = null
 static var last_move_capture: Piece = null
+static var last_move_had_captured: bool = false
 
 enum Type {
 	PAWN,
@@ -234,6 +235,7 @@ func move(target: Vector2i, capture: Piece) -> void:
 	last_move_start = tile_pos()
 	last_move_end = target
 	last_move_capture = capture
+	last_move_had_captured = has_captured # Whether we has_captured before the move.
 	var tween = create_tween()
 	
 	z_index = 4

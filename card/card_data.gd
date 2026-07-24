@@ -82,7 +82,7 @@ func perform_additional_steps(selected_piece: Piece, tree: SceneTree) -> void:
 			for i in range(0, additional_moves):
 				await Piece.last_move_piece.move_this(true)
 		SpecialAbility.MOVE_TWICE_KILLER:
-			if Piece.last_move_piece.has_captured:
+			if Piece.last_move_had_captured: # Only activate if PREVIOUSLY captured.
 				var additional_moves: int = 1
 				for i in range(0, additional_moves):
 					await Piece.last_move_piece.move_this(true)

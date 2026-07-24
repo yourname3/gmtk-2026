@@ -5,13 +5,41 @@
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="3_dwgh0"]
 [ext_resource type="Resource" uid="uid://dvpmajg00ftlg" path="res://cards/sacrifice_into_pawns_queens.tres" id="4_8qtyv"]
 [ext_resource type="Resource" uid="uid://caqlqi7aenrmf" path="res://cards/move.tres" id="5_5nga8"]
-[ext_resource type="Resource" uid="uid://bpt24de36uqyt" path="res://cards/transform_any_rook.tres" id="6_8qtyv"]
+[ext_resource type="Resource" uid="uid://cecxt4qg5sf8j" path="res://cards/move_any_twice_killer.tres" id="6_8qtyv"]
 
 [node name="Level" unique_id=1114344541 instance=ExtResource("1_g6gwb")]
 
 [node name="Piece2" parent="." index="2" unique_id=89405100 instance=ExtResource("2_iqc87")]
-position = Vector2(256, 0)
+position = Vector2(512, 512)
 type = 1
 
+[node name="Piece5" parent="." index="3" unique_id=1638246795 instance=ExtResource("2_iqc87")]
+position = Vector2(512, 1024)
+type = 3
+is_black = false
+
+[node name="Piece3" parent="." index="4" unique_id=921842247 instance=ExtResource("2_iqc87")]
+position = Vector2(1024, 768)
+
+[node name="Piece7" parent="." index="5" unique_id=1155187953 instance=ExtResource("2_iqc87")]
+position = Vector2(512, 0)
+type = 3
+
+[node name="Piece8" parent="." index="6" unique_id=1476937591 instance=ExtResource("2_iqc87")]
+position = Vector2(768, 256)
+type = 3
+
+[node name="Piece9" parent="." index="7" unique_id=634956159 instance=ExtResource("2_iqc87")]
+position = Vector2(256, 256)
+type = 3
+
+[node name="Piece4" parent="." index="8" unique_id=959647358 instance=ExtResource("2_iqc87")]
+position = Vector2(256, 0)
+is_black = false
+
+[node name="Piece6" parent="." index="9" unique_id=641282243 instance=ExtResource("2_iqc87")]
+position = Vector2(1024, 256)
+is_black = false
+
 [node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
-cards = Array[ExtResource("3_dwgh0")]([ExtResource("4_8qtyv"), ExtResource("5_5nga8"), ExtResource("6_8qtyv")])
+cards = Array[ExtResource("3_dwgh0")]([ExtResource("4_8qtyv"), ExtResource("5_5nga8"), ExtResource("6_8qtyv"), ExtResource("5_5nga8")])

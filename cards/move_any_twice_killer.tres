@@ -7,6 +7,6 @@ script = ExtResource("1_csr05")
 piece_filter = 1
 ability = 8
 name = "Double Jeapardy"
-description = "Move ANY piece. Move it again if it has ever made a capture."
+description = "Move ANY piece. Move it again if it had made a capture beforehand."
 cares_about_killers = true
 metadata/_custom_type_script = "uid://dfant1e3uq18d"
