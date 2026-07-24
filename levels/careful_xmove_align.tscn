@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dlt0r0kt3cwwn"]
+
+[ext_resource type="PackedScene" uid="uid://1bape5xetsht" path="res://level_base.tscn" id="1_bx63k"]
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="2_32k74"]
+[ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_71ssf"]
+[ext_resource type="Resource" uid="uid://2j0d8g238d0v" path="res://cards/move_any_then_sacrifice_on_capture.tres" id="3_xe30c"]
+[ext_resource type="Resource" uid="uid://d0deoaiqlkevd" path="res://cards/move_any_x_times.tres" id="4_lt1th"]
+[ext_resource type="Resource" uid="uid://blm2qo2rq08c6" path="res://cards/repeat_move_once.tres" id="5_i3puf"]
+
+[node name="Level" unique_id=1114344541 instance=ExtResource("1_bx63k")]
+
+[node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
+cards = Array[ExtResource("2_32k74")]([ExtResource("3_xe30c"), ExtResource("4_lt1th"), ExtResource("5_i3puf")])
+
+[node name="Piece" parent="." index="4" unique_id=1638246795 instance=ExtResource("2_71ssf")]
+position = Vector2(0, 512)
+type = 2
+
+[node name="Piece2" parent="." index="5" unique_id=1574800585 instance=ExtResource("2_71ssf")]
+position = Vector2(256, 1024)
+is_black = false
+
+[node name="Piece5" parent="." index="6" unique_id=495427368 instance=ExtResource("2_71ssf")]
+position = Vector2(768, 512)
+is_black = false
+
+[node name="Piece6" parent="." index="7" unique_id=792062356 instance=ExtResource("2_71ssf")]
+position = Vector2(1024, 512)
+is_black = false
+
+[node name="Piece3" parent="." index="8" unique_id=434569565 instance=ExtResource("2_71ssf")]
+position = Vector2(256, 512)
+type = 1
+
+[node name="Piece4" parent="." index="9" unique_id=1635803077 instance=ExtResource("2_71ssf")]
+position = Vector2(512, 0)
+type = 1
+is_black = false
