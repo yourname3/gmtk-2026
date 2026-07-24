@@ -75,7 +75,8 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if select_state == SelectState.LOCATION:
 		var id = select_id
-		await get_tree().process_frame # Let the Area2D's have a turn
+		await get_tree().physics_frame # Let the Area2D's have a turn
+		await get_tree().process_frame
 		if select_state == SelectState.LOCATION and id == select_id: # Make sure a new selection didn't start inbetween
 			if event is InputEventMouseButton:
 				if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.is_pressed():
