@@ -28,6 +28,7 @@ enum SpecialAbility {
 	REPEAT_TWO,
 	MOVE_TWICE_KILLER,
 	PAWNS_INTO_QUEENS,
+	ADVANCE_THEN_MOVE,
 }
 
 @export var activation: Activate = Activate.PieceMove
@@ -97,5 +98,8 @@ func perform_additional_steps(selected_piece: Piece, tree: SceneTree) -> void:
 					await todo[i].transform_into(Piece.Type.QUEEN)
 				else:
 					todo[i].transform_into(Piece.Type.QUEEN)
+		SpecialAbility.ADVANCE_THEN_MOVE:
+			await Board.move(selected_piece, selected_piece.tile_pos() + Vector2i(0, -1))
+			await Piece.last_move_piece.move_this(true)
 				
 				
