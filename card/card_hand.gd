@@ -135,7 +135,11 @@ func _ready() -> void:
 					success = false
 			print("success: ", success)
 			if success:
-				%Success.show()
+				if not %Success.visible:
+					%AnimationPlayer.play(&"show_success")
+			else:
+				if %Success.visible:
+					%AnimationPlayer.play(&"hide_success")
 		
 		await get_tree().process_frame
 		if Card.selected_card == null:
@@ -143,6 +147,12 @@ func _ready() -> void:
 				if not child.is_queued_for_deletion():
 					select_card(child)
 					break
+	)
+	
+	SignalBus.undo.connect(func():
+		# On undo, there is no way we can have success.
+		if %Success.visible:
+			%AnimationPlayer.play(&"hide_success")
 	)
 	
 	%Success.hide()
