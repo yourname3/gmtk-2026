@@ -1,10 +1,12 @@
 extends Node2D
 class_name LevelSelect
 
+var buttons: Array[LevelSelectButton] = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var dictionary: Dictionary[Vector2i, LevelSelectButton] = {}
-	var buttons: Array[LevelSelectButton] = []
+	
 	
 	for child in get_children():
 		if child is LevelSelectButton:
@@ -30,3 +32,7 @@ func _ready() -> void:
 		enabled = enabled or check_neighbor.call( 0,  1)
 		
 		button.visible = enabled
+
+func disable_all_buttons() -> void:
+	for button in buttons:
+		button.disabled = true

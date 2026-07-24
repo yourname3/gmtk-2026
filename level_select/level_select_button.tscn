@@ -11,16 +11,20 @@ bg_color = Color(0.23753902, 0.23753917, 0.23753908, 0.10980392)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqw5f"]
 bg_color = Color(1, 1, 1, 0.18431373)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1sqxu"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mgq0h"]
 
 [node name="Button" type="Button" unique_id=324410128]
 offset_right = 256.0
 offset_bottom = 255.0
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 theme_override_fonts/font = ExtResource("1_1sqxu")
 theme_override_font_sizes/font_size = 125
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kp0lh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mtmfa")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lqw5f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1sqxu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mgq0h")
 text = "26"
 script = ExtResource("2_1sqxu")
