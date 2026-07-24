@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bfrx0758g7rxe"]
+
+[ext_resource type="PackedScene" uid="uid://1bape5xetsht" path="res://level_base.tscn" id="1_o4a2x"]
+[ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="2_64kiw"]
+[ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_xd2cu"]
+[ext_resource type="Resource" uid="uid://b3gif8w5gjjkt" path="res://cards/move_any_then_knight_on_capture.tres" id="4_64kiw"]
+[ext_resource type="Resource" uid="uid://blm2qo2rq08c6" path="res://cards/repeat_move_once.tres" id="5_u2b7b"]
+[ext_resource type="Resource" uid="uid://d0deoaiqlkevd" path="res://cards/move_any_x_times.tres" id="6_64kiw"]
+
+[node name="Level" unique_id=1114344541 instance=ExtResource("1_o4a2x")]
+
+[node name="ChessBoard" parent="." index="1" unique_id=854148038]
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65537, 0, 0, 131074, 0, 0, 1, 65536, 0, 65538, 65536, 0, 131075, 65536, 0, 65536, 65536, 0, 131073, 65536, 0, 2, 0, 0, 65539, 0, 0, 131076, 0, 0, 131072, 0, 0, 3, 65536, 0, 65540, 65536, 0, 4, 0, 0)
+
+[node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
+cards = Array[ExtResource("2_64kiw")]([ExtResource("4_64kiw"), ExtResource("6_64kiw"), ExtResource("5_u2b7b")])
+metadata/_edit_lock_ = true
+
+[node name="CardAnchor" parent="CanvasLayer/Control/CardHand" index="1" unique_id=625709137]
+metadata/_edit_lock_ = true
+
+[node name="UndoButton" parent="CanvasLayer/Control/CardHand" index="2" unique_id=1976124487]
+metadata/_edit_lock_ = true
+
+[node name="Clock" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="1" unique_id=444931598]
+metadata/_edit_lock_ = true
+
+[node name="Piece6" parent="." index="4" unique_id=2012110905 instance=ExtResource("2_xd2cu")]
+position = Vector2(768, 256)
+
+[node name="Piece2" parent="." index="5" unique_id=62110319 instance=ExtResource("2_xd2cu")]
+position = Vector2(1024, 0)
+type = 5
+is_black = false
+
+[node name="Piece3" parent="." index="6" unique_id=404862011 instance=ExtResource("2_xd2cu")]
+position = Vector2(1024, 512)
+type = 2
+is_black = false
+
+[node name="Piece4" parent="." index="7" unique_id=753216030 instance=ExtResource("2_xd2cu")]
+position = Vector2(0, 512)
+is_black = false
