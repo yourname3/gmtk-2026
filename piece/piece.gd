@@ -232,6 +232,8 @@ func move(target: Vector2i, capture: Piece) -> void:
 			anim = &"slide_right"
 		elif target.x < tile_pos().x:
 			anim = &"slide_left"
+	if abs_dist == 0:
+		anim = &"invalid"
 
 	var time := 0.2 + 0.1 * abs_dist
 	

@@ -132,6 +132,22 @@ tracks/1/keys = {
 "values": [Vector2(128, 256), Vector2(128, 184), Vector2(128, 256)]
 }
 
+[sub_resource type="Animation" id="Animation_apu2m"]
+resource_name = "invalid"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.10000001, 0.16666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(128, 256), Vector2(108, 256), Vector2(151, 256), Vector2(113, 256), Vector2(128, 256)]
+}
+
 [sub_resource type="Animation" id="Animation_avj1a"]
 resource_name = "reanimate"
 length = 0.3
@@ -291,6 +307,7 @@ _data = {
 &"RESET": SubResource("Animation_2eswf"),
 &"captured": SubResource("Animation_r30h7"),
 &"hop": SubResource("Animation_6byuq"),
+&"invalid": SubResource("Animation_apu2m"),
 &"reanimate": SubResource("Animation_avj1a"),
 &"slide_left": SubResource("Animation_4wn1d"),
 &"slide_right": SubResource("Animation_ibp41"),

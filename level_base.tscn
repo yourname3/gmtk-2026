@@ -46,6 +46,8 @@ offset_right = 3459.0
 offset_bottom = 1924.0
 scale = Vector2(0.33275524, 0.33275524)
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="CardHand" parent="CanvasLayer/Control" unique_id=850826435 instance=ExtResource("5_a5rkb")]
 unique_name_in_owner = true
@@ -66,6 +68,7 @@ theme_override_fonts/font = ExtResource("8_agx4c")
 theme_override_font_sizes/font_size = 100
 text = "Undo"
 script = ExtResource("9_x6ek4")
+metadata/_edit_use_anchors_ = true
 
 [node name="Clock" parent="CanvasLayer/Control" unique_id=444931598 instance=ExtResource("7_ucx4l")]
 position = Vector2(2900, 423)
