@@ -20,6 +20,10 @@ var level_names: Array[StringName] = [
 	&"res://levels/transform_rook_variation.tscn", # medium.. harder than other one?
 	&"res://levels/random2.tscn", # medium + slight trick (parity)
 	&"res://levels/turn_enemy_into_horse_for_movement.tscn", # hard due to pawn charge
+	&"res://levels/level_pawnqueen1.tscn", # {medium}
+	&"res://levels/pawnqueen2.tscn", # {medium}
+	&"res://levels/card_time_management.tscn", # ?
+	&"res://levels/card_time_management_variation.tscn", # prolly harder than card_time_management
 ]
 
 func load_level(index: int) -> void:
