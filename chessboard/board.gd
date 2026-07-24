@@ -144,6 +144,18 @@ func _ready() -> void:
 		piece_map[node.tile_pos()] = node
 		
 	build_rectangle_border()
+	
+	var iter = 0
+	
+	for tile in get_used_cells(0):
+		var coord = get_cell_atlas_coords(0, tile)
+		var variation: int = (iter / 2) % 16
+		var alt_id: int = 0
+		if coord.x == 0: alt_id |= TileSetAtlasSource.TRANSFORM_TRANSPOSE
+		coord.x += (variation / 4) * 2
+		coord.y = variation % 4
+		set_cell(0, tile, 0, coord, alt_id)
+		iter += 1
 		
 	SignalBus.card_played.connect(func(card: Card):
 		undo_stacks += 1
