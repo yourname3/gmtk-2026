@@ -7,6 +7,8 @@ var minutes: int = 48
 @onready var minute_hand = %Minute
 @onready var second_hand = %Second
 
+@export var always_update: bool = false
+
 func update_face(init: bool = false) -> void:
 	var next_sec := TAU * seconds / 60.0
 	var next_min := TAU * minutes / 60.0
@@ -24,7 +26,7 @@ func update_face(init: bool = false) -> void:
 func _ready() -> void:
 	update_face(true)
 	while true:
-		await get_tree().create_timer(1.0, false).timeout
+		await get_tree().create_timer(1.0, always_update).timeout
 		seconds += 1
 		if seconds >= 60:
 			seconds -= 60

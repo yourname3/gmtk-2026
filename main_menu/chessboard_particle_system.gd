@@ -7,6 +7,8 @@ var tile_b := 0
 @export var decay_time := 2.0
 @export var extra_time := 0.3
 
+@export var do_preprocess: bool = true
+
 func incr_tile(t: int) -> int:
 	return (t + 1) % 16
 func get_tile(t: int, color: bool) -> Vector2:
@@ -52,6 +54,9 @@ func spawn_column(color: bool, advance: float = 0.0) -> void:
 		
 		add_child(particle)
 		
+func clear_particles() -> void:
+	for child in get_children():
+		child.queue_free()
 
 func preprocess() -> bool:
 	var color := false
@@ -64,8 +69,8 @@ func preprocess() -> bool:
 	return color
 
 func _ready() -> void:
-	var color := preprocess()
+	var color := preprocess() if do_preprocess else false
 	while true:
 		spawn_column(color)
-		await get_tree().create_timer(0.5, false).timeout
+		await get_tree().create_timer(0.5, true).timeout
 		color = not color
