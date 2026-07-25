@@ -388,6 +388,7 @@ bus = &"SFX"
 [node name="Captured" type="AudioStreamPlayer" parent="." unique_id=1622818497]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_5wxjf")
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="Select" type="AudioStreamPlayer" parent="." unique_id=273703026]

@@ -12,26 +12,31 @@ var level_names: Array[StringName] = [
 	&"res://levels/transform_rook.tscn", # not so hard
 	&"res://levels/sacrifice_bishop_staredown.tscn", # tricky
 	&"res://levels/careful_xmove_align.tscn", # medium
+	
 	&"res://levels/charge_lineup_variation2.tscn", # < medium ?
 	&"res://levels/forced_own_kill.tscn", # trickier
 	&"res://levels/level_random1.tscn", # trickier (esp. as compared to careful_xmove_align)
 	&"res://levels/pawn_charge1.tscn", # tricky! hard! (first pawn up charge... need to pay attention to these.)
 	&"res://levels/rook_laser.tscn", # hard
+	
 	&"res://levels/transform_rook_variation.tscn", # medium.. harder than other one?
 	&"res://levels/random2.tscn", # medium + slight trick (parity)
 	&"res://levels/turn_enemy_into_horse_for_movement.tscn", # hard due to pawn charge
 	&"res://levels/level_pawnqueen1.tscn", # {medium}
 	&"res://levels/pawnqueen2.tscn", # {{new: easy?/}medium}
+	
 	&"res://levels/card_time_management.tscn", # ?
 	&"res://levels/card_time_management_variation.tscn", # prolly harder than card_time_management
 	&"res://levels/level_holes.tscn", # technically easier than variation in there are more solutions?
 	&"res://levels/level_holes_variation.tscn", # both {medium} for now
 	&"res://levels/bishops_advance.tscn", # {medium}
+	
 	&"res://levels/mad_tangle.tscn", # {easy}
 	&"res://levels/northward1.tscn", # {easier side of medium}
 	&"res://levels/random3.tscn", # {easier}
 	&"res://levels/random4.tscn", # {hard}
-	&"res://levels/random5.tscn", # {prolly hard}
+	&"res://levels/random5.tscn", # {prolly hard - looks very hard on second play}
+	
 	&"res://levels/random6.tscn", # {medium/hard}
 	&"res://levels/xtransform1.tscn", # {medium}
 	&"res://levels/big_x.tscn", # {hard? hardest?}

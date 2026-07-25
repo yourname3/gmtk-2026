@@ -281,6 +281,6 @@ libraries/ = SubResource("AnimationLibrary_48hhf")
 [node name="SplitFlapSFX" type="AudioStreamPlayer" parent="." unique_id=649206333]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_vdlta")
-volume_db = -12.0
+volume_db = -18.0
 max_polyphony = 2
 bus = &"SFX"
