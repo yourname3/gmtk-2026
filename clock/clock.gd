@@ -9,6 +9,13 @@ var count: int = 0
 
 func _ready() -> void:
 	instance = self
+	
+	%PauseButton.pressed.connect(func():
+		PauseMenu.instance.pause()
+	)
+	%RetryButton.pressed.connect(func():
+		SceneTransition.change_scene_to_path(get_tree().current_scene.scene_file_path)
+	)
 
 func _anim_update_clock() -> void:
 	clock.text = str(count)

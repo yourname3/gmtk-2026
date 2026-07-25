@@ -1,8 +1,12 @@
 extends Control
 class_name PauseMenu
 
+static var instance: PauseMenu = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	instance = self
+	
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 	
