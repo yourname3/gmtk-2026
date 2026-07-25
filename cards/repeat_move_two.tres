@@ -6,5 +6,5 @@
 script = ExtResource("1_elhr5")
 ability = 7
 name = "Dash"
-description = "Move a piece. The move is repeated twice."
+description = "Move a piece. The move is repeated twice. Then, sacrifice all your major pieces."
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

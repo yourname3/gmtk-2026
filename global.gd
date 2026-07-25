@@ -27,6 +27,11 @@ var level_names: Array[StringName] = [
 	&"res://levels/level_holes.tscn", # technically easier than variation in there are more solutions?
 	&"res://levels/level_holes_variation.tscn", # both {medium} for now
 	&"res://levels/bishops_advance.tscn", # {medium}
+	&"res://levels/mad_tangle.tscn", # {easy}
+	&"res://levels/northward1.tscn", # {easier side of medium}
+	&"res://levels/random3.tscn", # {easier}
+	&"res://levels/random4.tscn", # {hard}
+	&"res://levels/random5.tscn", # {prolly hard}
 ]
 
 func load_level(index: int) -> void:

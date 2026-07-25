@@ -29,6 +29,7 @@ enum SpecialAbility {
 	MOVE_TWICE_KILLER,
 	PAWNS_INTO_QUEENS,
 	ADVANCE_THEN_MOVE,
+	ADVANCE_X_HOP,
 }
 
 @export var activation: Activate = Activate.PieceMove
@@ -61,6 +62,9 @@ func perform_additional_steps(selected_piece: Piece, tree: SceneTree) -> void:
 				pos += diff
 				Board.move(piece, pos)
 				await SignalBus.piece_moved
+			for piece2: Piece in tree.get_nodes_in_group(&"Piece"):
+				if piece2.is_major() and piece2.is_black:
+					Board.instance.kill_piece(piece2)
 		SpecialAbility.REPEAT_X:
 			var piece = Piece.last_move_piece
 			var pos := Piece.last_move_end
@@ -101,5 +105,7 @@ func perform_additional_steps(selected_piece: Piece, tree: SceneTree) -> void:
 		SpecialAbility.ADVANCE_THEN_MOVE:
 			await Board.move(selected_piece, selected_piece.tile_pos() + Vector2i(0, -1))
 			await Piece.last_move_piece.move_this(true)
+		SpecialAbility.ADVANCE_X_HOP:
+			await Board.move(selected_piece, selected_piece.tile_pos() + Vector2i(0, -Clock.instance.count), Board.Continuous.HOP)
 				
 				

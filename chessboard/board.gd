@@ -5,9 +5,15 @@ static var instance: Board = null
 
 var piece_map: Dictionary[Vector2i, Piece] = {}
 
-static func move(piece: Piece, position: Vector2i) -> void:
+enum Continuous {
+	AUTO,
+	CONTINUOUS,
+	HOP,
+}
+
+static func move(piece: Piece, position: Vector2i, continuous: Continuous = Continuous.AUTO) -> void:
 	if instance != null:
-		await instance._move(piece, position)
+		await instance._move(piece, position, continuous)
 	
 # TODO: Also handle other kinds of borders...?
 func build_rectangle_border() -> void:
@@ -36,12 +42,16 @@ func build_rectangle_border() -> void:
 # We could store some state to also allow beam moves to be hops, which might be necessary
 # at some point, but for now, the directionality of a move determines whether it is
 # 'continuous' or a 'hop'.
-func _clamp_move(from: Vector2i, to: Vector2i) -> Vector2i:
+func _clamp_move(from: Vector2i, to: Vector2i, cont_param: Continuous) -> Vector2i:
 	var direction := to - from
 	var continuous: bool = true
-	if direction.x != 0 and direction.y != 0:
-		if absi(direction.x) != absi(direction.y): # knight move
-			continuous = false
+	match cont_param:
+		Continuous.AUTO:
+			if direction.x != 0 and direction.y != 0:
+				if absi(direction.x) != absi(direction.y): # knight move
+					continuous = false
+		Continuous.CONTINUOUS: continuous = true
+		Continuous.HOP: continuous = false
 	
 	if continuous:
 		# normalize these. WILL NEED TO CHANGE IF WE ADD WEIRD MOVES!!!!!
@@ -69,11 +79,11 @@ func _clamp_move(from: Vector2i, to: Vector2i) -> Vector2i:
 				
 	return pos
 
-func _move(piece: Piece, position: Vector2i) -> void:
+func _move(piece: Piece, position: Vector2i, continuous: Continuous) -> void:
 	SignalBus.piece_started_moving.emit()
 	#if not Card.card_playing:
 		#await Card.
-	position = _clamp_move(piece.tile_pos(), position)
+	position = _clamp_move(piece.tile_pos(), position, continuous)
 	piece_map.erase(piece.tile_pos())
 	var existing = piece_map.get(position)
 	piece_map[position] = piece

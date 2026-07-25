@@ -298,12 +298,14 @@ func is_selectable_side() -> bool:
 		CardData.PieceFilter.ANY:
 			return true
 	return false
+func is_major() -> bool:
+	return (type == Type.ROOK) or (type == Type.QUEEN)
 func is_selectable_rank() -> bool:
 	match BoardHighlighter.instance.select_rank_filter:
 		CardData.RankFilter.MINOR:
 			return (type == Type.BISHOP) or (type == Type.KNIGHT)
 		CardData.RankFilter.MAJOR:
-			return (type == Type.ROOK) or (type == Type.QUEEN)
+			return is_major()
 		CardData.RankFilter.NONE:
 			return true
 	return false
