@@ -3,6 +3,8 @@ class_name Board
 
 static var instance: Board = null
 
+@export var manual_trim: bool = false
+
 var piece_map: Dictionary[Vector2i, Piece] = {}
 
 enum Continuous {
@@ -153,7 +155,8 @@ func _ready() -> void:
 	for node: Piece in get_tree().get_nodes_in_group(&"Piece"):
 		piece_map[node.tile_pos()] = node
 		
-	build_rectangle_border()
+	if not manual_trim:
+		build_rectangle_border()
 	
 	var iter0 = 0
 	var iter1 = 0

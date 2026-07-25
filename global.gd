@@ -71,3 +71,16 @@ func save_save_data() -> void:
 func _ready() -> void:
 	print("avail level count = ", level_names.size())
 	load_save_data()
+	
+	# Initialize music. We will load it when possible.
+	ResourceLoader.load_threaded_request("res://music.tscn")
+	
+func _process(delta: float) -> void:
+	if Music.instance == null:
+		var status = ResourceLoader.load_threaded_get_status("res://music.tscn")
+		if status == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
+			# instantiate music
+			var scene: PackedScene = ResourceLoader.load_threaded_get("res://music.tscn")
+			var node = scene.instantiate()
+			Music.instance = node
+			get_tree().root.add_child(node)

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cabliga55t54f"]
+
+[ext_resource type="Script" uid="uid://cskpwv7yfsvn2" path="res://music.gd" id="1_3h6ak"]
+[ext_resource type="AudioStream" uid="uid://cqc0pmqatbuit" path="res://music/music.ogg" id="1_5vxup"]
+
+[node name="Music" type="AudioStreamPlayer" unique_id=543696675]
+process_mode = 3
+stream = ExtResource("1_5vxup")
+autoplay = true
+bus = &"Music"
+script = ExtResource("1_3h6ak")

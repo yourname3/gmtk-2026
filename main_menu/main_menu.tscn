@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://jywnr08cibyr" path="res://main_menu/main_menu.gd" id="1_d3a7t"]
 [ext_resource type="FontFile" uid="uid://clh665yxwwet" path="res://font/Kelvinch-Bold.otf" id="1_oa53l"]
-[ext_resource type="AudioStream" uid="uid://bma72t5jhb02v" path="res://music/experimental-gmtk 2026-07-25 0103.ogg" id="3_3shxk"]
 
 [node name="Control" type="Control" unique_id=1799267483]
 layout_mode = 3
@@ -47,7 +46,3 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_oa53l")
 text = "Play"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1055852916]
-stream = ExtResource("3_3shxk")
-autoplay = true
