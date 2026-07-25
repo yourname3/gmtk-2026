@@ -4,7 +4,6 @@
 [ext_resource type="Theme" uid="uid://dyhudw6pqmags" path="res://abstract_theme.tres" id="1_s1glv"]
 [ext_resource type="Script" uid="uid://d1vebeskhojli" path="res://pause_menu/pause_menu.gd" id="2_rd7dy"]
 [ext_resource type="Texture2D" uid="uid://bay3xvjiy655h" path="res://desk/desktop.png" id="3_p6csp"]
-[ext_resource type="Script" uid="uid://crom2286m5k8t" path="res://main_menu/chessboard_particle_system.gd" id="3_wn31l"]
 [ext_resource type="Texture2D" uid="uid://cyx6oc1h1yio7" path="res://main_menu/clock_face.png" id="4_teyq6"]
 [ext_resource type="PackedScene" uid="uid://cqdxb81kbw3iv" path="res://options/options_base.tscn" id="5_b0obc"]
 [ext_resource type="Script" uid="uid://078drs0f3puu" path="res://main_menu/clock_face.gd" id="5_p6csp"]
@@ -52,6 +51,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/ClockFace:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(311.00003, 323)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel/ClockFace:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_b4s0c"]
 resource_name = "close"
@@ -66,7 +89,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.10000001, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1), Vector2(0, 1)]
+"values": [Vector2(1, 1), Vector2(1, 1.2), Vector2(1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -92,10 +115,34 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.5211406, 0.5211406, 0.5211405, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/ClockFace:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(311.00003, 323), Vector2(-334.99997, 323)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel/ClockFace:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.877966]
+}
 
 [sub_resource type="Animation" id="Animation_rd7dy"]
 resource_name = "open"
-length = 0.3
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -131,6 +178,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.5211406, 0.5211406, 0.5211405, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/ClockFace:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0.13333333, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-369.99997, 323), Vector2(311.00003, 323)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel/ClockFace:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0.13333334, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.362582, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uwtdo"]
@@ -174,21 +245,27 @@ grow_vertical = 2
 texture = ExtResource("3_p6csp")
 expand_mode = 1
 
-[node name="Particles" type="Node2D" parent="Control/Panel" unique_id=522614857]
-unique_name_in_owner = true
-process_mode = 2
-position = Vector2(-153, 0)
-script = ExtResource("3_wn31l")
-decay_time = 4.0
-extra_time = 0.5
-do_preprocess = false
-
 [node name="ClockFace" type="Sprite2D" parent="Control/Panel" unique_id=496509822]
-position = Vector2(311.00003, 331)
+position = Vector2(311.00003, 323)
 scale = Vector2(0.39197534, 0.39197534)
 texture = ExtResource("4_teyq6")
 script = ExtResource("5_p6csp")
 always_update = true
+
+[node name="Label2" type="Label" parent="Control/Panel/ClockFace" unique_id=1756257620]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1025.5748
+offset_top = 7.6535425
+offset_right = -726.5748
+offset_bottom = 104.65354
+grow_horizontal = 2
+scale = Vector2(2.530252, 2.530252)
+theme_override_colors/font_color = Color(0.21960784, 0.14117648, 0.10980392, 1)
+theme_override_fonts/font = ExtResource("1_5hbt6")
+theme_override_font_sizes/font_size = 72
+text = "PAUSED"
 
 [node name="Minute" type="Sprite2D" parent="Control/Panel/ClockFace" unique_id=258878392]
 unique_name_in_owner = true
@@ -649,28 +726,13 @@ rotation = 0.41887903
 scale = Vector2(0.18667622, 0.15071774)
 texture = ExtResource("7_qi88y")
 
-[node name="Label" type="Label" parent="Control/Panel" unique_id=1804845143]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -414.0
-offset_top = 333.0
-offset_right = -115.0
-offset_bottom = 430.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.21960784, 0.14117648, 0.10980392, 1)
-theme_override_fonts/font = ExtResource("1_5hbt6")
-theme_override_font_sizes/font_size = 72
-text = "PAUSED"
-
 [node name="Resume" type="Button" parent="Control/Panel" unique_id=1620684311]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 588.0
-offset_top = 259.0
+offset_top = 254.0
 offset_right = 788.0
-offset_bottom = 320.0
+offset_bottom = 315.0
 theme_override_font_sizes/font_size = 20
 text = "Resume"
 
@@ -678,9 +740,9 @@ text = "Resume"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 588.0
-offset_top = 334.0
+offset_top = 329.0
 offset_right = 788.0
-offset_bottom = 395.0
+offset_bottom = 390.0
 theme_override_font_sizes/font_size = 20
 text = "Level Select"
 

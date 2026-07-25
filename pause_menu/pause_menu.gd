@@ -28,7 +28,7 @@ func _ready() -> void:
 func pause() -> void:
 	%AnimationPlayer.play(&"open")
 	get_tree().paused = true
-	%Particles.clear_particles()
+
 func unpause() -> void:
 	%AnimationPlayer.play(&"close")
 	get_tree().paused = false
