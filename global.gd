@@ -32,6 +32,9 @@ var level_names: Array[StringName] = [
 	&"res://levels/random3.tscn", # {easier}
 	&"res://levels/random4.tscn", # {hard}
 	&"res://levels/random5.tscn", # {prolly hard}
+	&"res://levels/random6.tscn", # {medium/hard}
+	&"res://levels/xtransform1.tscn", # {medium}
+	&"res://levels/big_x.tscn", # {hard? hardest?}
 ]
 
 func load_level(index: int) -> void:
@@ -61,4 +64,5 @@ func save_save_data() -> void:
 		print("Error saving save data: ", err)
 	
 func _ready() -> void:
+	print("avail level count = ", level_names.size())
 	load_save_data()

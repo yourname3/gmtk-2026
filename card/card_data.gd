@@ -30,6 +30,7 @@ enum SpecialAbility {
 	PAWNS_INTO_QUEENS,
 	ADVANCE_THEN_MOVE,
 	ADVANCE_X_HOP,
+	TRANSFORM_X,
 }
 
 @export var activation: Activate = Activate.PieceMove
@@ -107,5 +108,9 @@ func perform_additional_steps(selected_piece: Piece, tree: SceneTree) -> void:
 			await Piece.last_move_piece.move_this(true)
 		SpecialAbility.ADVANCE_X_HOP:
 			await Board.move(selected_piece, selected_piece.tile_pos() + Vector2i(0, -Clock.instance.count), Board.Continuous.HOP)
-				
-				
+		SpecialAbility.TRANSFORM_X:
+			var idx = Clock.instance.count - 1
+			idx = clampi(idx, 0, 5)
+			var types: Array[Piece.Type] = [Piece.Type.PAWN, Piece.Type.KNIGHT, Piece.Type.BISHOP, Piece.Type.ROOK, Piece.Type.QUEEN, Piece.Type.KING]
+			var type: Piece.Type = types[idx]
+			await selected_piece.transform_into(type)

@@ -239,8 +239,11 @@ func select_this() -> void:
 	BoardHighlighter.select_state = BoardHighlighter.SelectState.NONE
 	
 func transform_into(type: Type) -> void:
+	var anim := &"transform"
+	if type == self.type:
+		anim = &"invalid"
 	self.type = type
-	%AnimationPlayer.play(&"transform")
+	%AnimationPlayer.play(anim)
 	await %AnimationPlayer.animation_finished
 	
 # Actually moves a piece.
