@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dsrudwa0om41f" path="res://main_menu/tick_mark.png" id="4_6tl50"]
 [ext_resource type="Script" uid="uid://078drs0f3puu" path="res://main_menu/clock_face.gd" id="4_ia84y"]
 [ext_resource type="Texture2D" uid="uid://pymwiw61f5al" path="res://main_menu/minute_hand.png" id="4_t6bnd"]
+[ext_resource type="Theme" uid="uid://dyhudw6pqmags" path="res://abstract_theme.tres" id="8_ia84y"]
+[ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="9_6at21"]
 
 [node name="Control" type="Control" unique_id=1799267483]
 layout_mode = 3
@@ -520,7 +522,13 @@ theme_override_font_sizes/font_size = 78
 text = "CHESS"
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="." unique_id=1444626413]
+[node name="UI" type="Control" parent="." unique_id=645298230]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("8_ia84y")
+
+[node name="PlayButton" type="Button" parent="UI" unique_id=1444626413]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -528,11 +536,59 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 330.0
-offset_top = -68.0
-offset_right = 480.0
-offset_bottom = -10.0
+offset_left = 780.0
+offset_top = 267.0
+offset_right = 1064.0
+offset_bottom = 335.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_oa53l")
+theme_override_fonts/font = ExtResource("9_6at21")
+theme_override_font_sizes/font_size = 31
 text = "Play"
+
+[node name="Label" type="Label" parent="UI" unique_id=528784699]
+layout_mode = 0
+offset_left = 891.0
+offset_top = 395.0
+offset_right = 1002.0
+offset_bottom = 438.0
+theme_override_font_sizes/font_size = 24
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI" unique_id=381994846]
+layout_mode = 0
+offset_left = 733.0
+offset_top = 431.0
+offset_right = 844.0
+offset_bottom = 474.0
+theme_override_font_sizes/font_size = 24
+text = "Master"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="UI" unique_id=2077221299]
+layout_mode = 0
+offset_left = 733.0
+offset_top = 471.0
+offset_right = 844.0
+offset_bottom = 514.0
+theme_override_font_sizes/font_size = 24
+text = "Music"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="UI" unique_id=109004592]
+layout_mode = 0
+offset_left = 733.0
+offset_top = 513.0
+offset_right = 844.0
+offset_bottom = 556.0
+theme_override_font_sizes/font_size = 24
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="UI" unique_id=1604483189]
+layout_mode = 0
+offset_left = 839.0
+offset_top = 440.0
+offset_right = 1061.0
+offset_bottom = 456.0

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://l6xuhtv6r8lr"]
+
+[ext_resource type="Texture2D" uid="uid://bay3xvjiy655h" path="res://desk/desktop.png" id="1_t4gw0"]
+
+[node name="BG" type="CanvasLayer" unique_id=928835754]
+layer = -1
+
+[node name="Control" type="Control" parent="." unique_id=1623423269]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control" unique_id=1787728194]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_t4gw0")
+centered = false

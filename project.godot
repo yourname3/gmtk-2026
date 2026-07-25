@@ -24,6 +24,7 @@ buses/default_bus_layout="uid://bcwnquerwf4bq"
 SignalBus="*uid://dwgar66fbo30"
 Global="*uid://dchfhr1jy61vy"
 SceneTransition="*uid://ccbmp2rmp8rwi"
+Bg="*uid://l6xuhtv6r8lr"
 
 [display]
 
@@ -57,3 +58,4 @@ pause={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.67, 0.46285835, 0.4355, 1)

@@ -31,7 +31,6 @@ zoom = Vector2(0.315, 0.315)
 [node name="Button" parent="." unique_id=324410128 instance=ExtResource("3_kxnyd")]
 offset_top = 512.0
 offset_bottom = 767.0
-text = "1"
 
 [node name="Button2" parent="." unique_id=878363925 instance=ExtResource("3_kxnyd")]
 offset_left = 256.0

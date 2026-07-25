@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://1bape5xetsht"]
 
 [ext_resource type="Script" uid="uid://cplkyd3ikt0ds" path="res://level_camera.gd" id="1_8rhms"]
-[ext_resource type="Texture2D" uid="uid://bay3xvjiy655h" path="res://desk/desktop.png" id="1_fdc3t"]
 [ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="2_ucx4l"]
 [ext_resource type="Script" uid="uid://dlpshbooq0wub" path="res://chessboard/board.gd" id="3_agx4c"]
 [ext_resource type="Texture2D" uid="uid://dklp2e8crecys" path="res://chessboard/board_trim.png" id="4_e6jnn"]
@@ -10,6 +9,7 @@
 [ext_resource type="Script" uid="uid://b06p13p7337hc" path="res://card/card_anchor.gd" id="6_e6jnn"]
 [ext_resource type="PackedScene" uid="uid://dkp8oou7e0gjs" path="res://clock/clock.tscn" id="7_ucx4l"]
 [ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="8_agx4c"]
+[ext_resource type="Theme" uid="uid://dyhudw6pqmags" path="res://abstract_theme.tres" id="9_fbe54"]
 [ext_resource type="Script" uid="uid://boelojhpopqmn" path="res://level/undo_button.gd" id="9_x6ek4"]
 [ext_resource type="PackedScene" uid="uid://bi3lyalojid0q" path="res://pause_menu/pause_menu.tscn" id="10_a5rkb"]
 
@@ -72,23 +72,6 @@ sources/0 = SubResource("TileSetAtlasSource_fdc3t")
 
 [node name="Level" type="Node2D" unique_id=1114344541]
 
-[node name="BG" type="CanvasLayer" parent="." unique_id=1601963410]
-layer = -1
-
-[node name="Control" type="Control" parent="BG" unique_id=729087268]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="BG/Control" unique_id=1371710495]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_fdc3t")
-centered = false
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1583186163]
 position = Vector2(640, 896)
 zoom = Vector2(0.335, 0.335)
@@ -136,6 +119,7 @@ offset_top = -485.0
 offset_right = -1012.0
 offset_bottom = -342.0
 rotation = -0.08234839
+theme = ExtResource("9_fbe54")
 theme_override_fonts/font = ExtResource("8_agx4c")
 theme_override_font_sizes/font_size = 100
 text = "Undo"
