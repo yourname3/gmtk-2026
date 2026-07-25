@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://bqxht82exd4ue" path="res://sfx/piece_capture1.wav" id="12_6yh7r"]
 [ext_resource type="AudioStream" uid="uid://bmrn53fxtkgc3" path="res://sfx/piece_capture2.wav" id="13_tvx31"]
 [ext_resource type="AudioStream" uid="uid://b38e486jgs86p" path="res://sfx/piece_capture3.wav" id="14_bvxhs"]
+[ext_resource type="AudioStream" uid="uid://ba1un0d6rel27" path="res://sfx/piece_select.wav" id="15_tvx31"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wn1d"]
 shader = ExtResource("2_4wn1d")
@@ -343,6 +344,12 @@ stream_0/stream = ExtResource("12_6yh7r")
 stream_1/stream = ExtResource("13_tvx31")
 stream_2/stream = ExtResource("14_bvxhs")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bvxhs"]
+random_pitch = 1.0174797
+random_volume_offset_db = 0.3
+streams_count = 1
+stream_0/stream = ExtResource("15_tvx31")
+
 [node name="Piece" type="Area2D" unique_id=1638246795 groups=["Piece"]]
 script = ExtResource("1_6byuq")
 
@@ -381,4 +388,11 @@ bus = &"SFX"
 [node name="Captured" type="AudioStreamPlayer" parent="." unique_id=1622818497]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_5wxjf")
+bus = &"SFX"
+
+[node name="Select" type="AudioStreamPlayer" parent="." unique_id=273703026]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_bvxhs")
+volume_db = -12.0
+pitch_scale = 0.9
 bus = &"SFX"

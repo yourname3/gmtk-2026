@@ -228,6 +228,8 @@ var _is_move_selector: bool = false
 
 # Performs the UI for moving the piece.
 func move_this(location_only: bool = false) -> void:
+	if not Card.card_playing:
+		%Select.play()
 	_is_move_selector = true
 	var target = await BoardHighlighter.select_move(self, location_only)
 	_is_move_selector = false
