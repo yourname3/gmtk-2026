@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhcwosb87ke46" path="res://card/card_hand.gd" id="1_6uf4r"]
 [ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="2_3q5ml"]
+[ext_resource type="AudioStream" uid="uid://chxj1kydn8387" path="res://sfx/win.mp3" id="3_idjld"]
 
 [sub_resource type="Animation" id="Animation_3q5ml"]
 length = 0.001
@@ -227,3 +228,9 @@ text = "Next"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RefRect" unique_id=1355818230]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_ossux")
+
+[node name="Win" type="AudioStreamPlayer" parent="." unique_id=1896074856]
+unique_name_in_owner = true
+stream = ExtResource("3_idjld")
+volume_db = -6.0
+bus = &"SFX"

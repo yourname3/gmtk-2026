@@ -2,6 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://b0cmpo6ruibd6" path="res://font/cinzel.bold.ttf" id="1_1sqxu"]
 [ext_resource type="Script" uid="uid://b42x6sq4wusul" path="res://level_select/level_select_button.gd" id="2_1sqxu"]
+[ext_resource type="AudioStream" uid="uid://bxa8kebsfqgui" path="res://sfx/level_selected.wav" id="3_pqcmb"]
+[ext_resource type="Script" uid="uid://bt2fksyv4g614" path="res://level_select/floating_sfx.gd" id="4_hri88"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kp0lh"]
 
@@ -26,5 +28,12 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_mtmfa")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lqw5f")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_1sqxu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mgq0h")
-text = "26"
+text = "1"
 script = ExtResource("2_1sqxu")
+
+[node name="Selected" type="AudioStreamPlayer" parent="." unique_id=213807474]
+unique_name_in_owner = true
+stream = ExtResource("3_pqcmb")
+volume_db = -4.0
+bus = &"SFX"
+script = ExtResource("4_hri88")

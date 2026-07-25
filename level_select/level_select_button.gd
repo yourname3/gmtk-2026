@@ -12,6 +12,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	
 	pressed.connect(func():
+		%Selected.play_floating()
 		get_parent().disable_all_buttons()
 		Global.load_level(number)
 	)

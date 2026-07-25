@@ -4,6 +4,8 @@ class_name CardHand
 var active_cards: Array[Card] = []
 var card_undo_stack: Array[Card] = []
 
+var has_won: bool = false # whether we've ever hit the win state this level
+
 @export var cards: Array[CardData] = []
 
 # Applies any relevant state updates when a new card becomes "selected" for real.
@@ -137,6 +139,9 @@ func _ready() -> void:
 			if success:
 				if not %Success.visible:
 					%AnimationPlayer.play(&"show_success")
+				if not has_won:
+					has_won = true
+					%Win.play()
 			else:
 				if %Success.visible:
 					%AnimationPlayer.play(&"hide_success")
