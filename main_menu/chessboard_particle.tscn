@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://5ita16itpe7f"]
+
+[ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="1_yvlqp"]
+[ext_resource type="Script" uid="uid://c0gcvascdrha2" path="res://main_menu/chessboard_particle.gd" id="2_utu2l"]
+
+[node name="Sprite2D" type="Sprite2D" unique_id=458874175]
+texture = ExtResource("1_yvlqp")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)
+script = ExtResource("2_utu2l")

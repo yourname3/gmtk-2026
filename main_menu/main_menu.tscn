@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://jywnr08cibyr" path="res://main_menu/main_menu.gd" id="1_d3a7t"]
 [ext_resource type="FontFile" uid="uid://clh665yxwwet" path="res://font/Kelvinch-Bold.otf" id="1_oa53l"]
+[ext_resource type="Texture2D" uid="uid://cyx6oc1h1yio7" path="res://main_menu/clock_face.png" id="2_bws42"]
+[ext_resource type="Script" uid="uid://crom2286m5k8t" path="res://main_menu/chessboard_particle_system.gd" id="3_3f7m4"]
+[ext_resource type="Texture2D" uid="uid://dsrudwa0om41f" path="res://main_menu/tick_mark.png" id="4_6tl50"]
+[ext_resource type="Script" uid="uid://078drs0f3puu" path="res://main_menu/clock_face.gd" id="4_ia84y"]
+[ext_resource type="Texture2D" uid="uid://pymwiw61f5al" path="res://main_menu/minute_hand.png" id="4_t6bnd"]
 
 [node name="Control" type="Control" unique_id=1799267483]
 layout_mode = 3
@@ -12,22 +17,507 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d3a7t")
 
+[node name="Particles" type="Node2D" parent="." unique_id=393399309]
+position = Vector2(-153, 0)
+script = ExtResource("3_3f7m4")
+decay_time = 4.0
+extra_time = 0.5
+
+[node name="ClockFace" type="Sprite2D" parent="." unique_id=1118921677]
+position = Vector2(418, 324)
+scale = Vector2(0.46296299, 0.46296299)
+texture = ExtResource("2_bws42")
+script = ExtResource("4_ia84y")
+
+[node name="Minute" type="Sprite2D" parent="ClockFace" unique_id=970242792]
+unique_name_in_owner = true
+z_index = 5
+rotation = -4.712389
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_t6bnd")
+offset = Vector2(1.4439697, -288.25473)
+
+[node name="Second" type="Sprite2D" parent="ClockFace" unique_id=1727692385]
+unique_name_in_owner = true
+z_index = 5
+rotation = -1.3089969
+scale = Vector2(0.8, 1)
+texture = ExtResource("4_t6bnd")
+offset = Vector2(1.4439697, -288.25473)
+
+[node name="Ticks" type="Node2D" parent="ClockFace" unique_id=1943498342]
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks" unique_id=1829528390]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks" unique_id=1212520414]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks" unique_id=1980691213]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks" unique_id=351487872]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks" unique_id=947078625]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Ticks2" type="Node2D" parent="ClockFace" unique_id=1396448378]
+rotation = 0.5235988
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks2" unique_id=1964282501]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks2" unique_id=1815364652]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks2" unique_id=683512338]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks2" unique_id=1032464666]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks2" unique_id=220558377]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Ticks7" type="Node2D" parent="ClockFace" unique_id=874266180]
+rotation = 1.0471976
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks7" unique_id=1245274]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks7" unique_id=1910177483]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks7" unique_id=773467781]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks7" unique_id=1569238232]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks7" unique_id=1681820442]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Ticks8" type="Node2D" parent="ClockFace" unique_id=1016015023]
+rotation = 1.5707964
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks8" unique_id=1860059731]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks8" unique_id=1139152896]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks8" unique_id=724396351]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks8" unique_id=1999693468]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks8" unique_id=1212719952]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Ticks9" type="Node2D" parent="ClockFace" unique_id=1669979241]
+rotation = 2.0943952
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks9" unique_id=610700991]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks9" unique_id=169754645]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks9" unique_id=1140931797]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks9" unique_id=1024630237]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks9" unique_id=480858131]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Ticks10" type="Node2D" parent="ClockFace" unique_id=714744763]
+rotation = 2.6179938
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks10" unique_id=1438262450]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks10" unique_id=624528659]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks10" unique_id=2082867905]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks10" unique_id=401765155]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks10" unique_id=947479692]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Ticks11" type="Node2D" parent="ClockFace" unique_id=1216675110]
+rotation = 3.1415927
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks11" unique_id=1025034541]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks11" unique_id=582204100]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks11" unique_id=1821791166]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks11" unique_id=2040129550]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks11" unique_id=726313135]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Ticks12" type="Node2D" parent="ClockFace" unique_id=1746105846]
+rotation = 3.6651917
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks12" unique_id=508806746]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks12" unique_id=1529413736]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks12" unique_id=516854688]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks12" unique_id=2050637820]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks12" unique_id=1463355553]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Ticks13" type="Node2D" parent="ClockFace" unique_id=297644059]
+rotation = 4.1887903
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks13" unique_id=1141356408]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks13" unique_id=1330045624]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks13" unique_id=2042029360]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks13" unique_id=1218030433]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks13" unique_id=1411679310]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Ticks14" type="Node2D" parent="ClockFace" unique_id=953427479]
+rotation = 4.712389
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks14" unique_id=864889206]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks14" unique_id=955105253]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks14" unique_id=498143535]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks14" unique_id=1851472952]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks14" unique_id=287999737]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Ticks15" type="Node2D" parent="ClockFace" unique_id=49331633]
+rotation = 5.2359877
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks15" unique_id=1893084311]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks15" unique_id=1105849700]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks15" unique_id=1690183442]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks15" unique_id=129588077]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks15" unique_id=2103585685]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Ticks16" type="Node2D" parent="ClockFace" unique_id=1910798131]
+rotation = 5.759587
+
+[node name="Sprite2D" type="Sprite2D" parent="ClockFace/Ticks16" unique_id=551159170]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(0, -557.27997)
+scale = Vector2(0.23998542, 0.23998545)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ClockFace/Ticks16" unique_id=1411933681]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(58.251648, -554.2271)
+rotation = 0.10471976
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ClockFace/Ticks16" unique_id=105417472]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(115.86505, -545.10205)
+rotation = 0.20943952
+scale = Vector2(0.18667623, 0.15071774)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ClockFace/Ticks16" unique_id=428013352]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(172.20892, -530.00476)
+rotation = 0.31415924
+scale = Vector2(0.18667625, 0.15071775)
+texture = ExtResource("4_6tl50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ClockFace/Ticks16" unique_id=465813930]
+modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+position = Vector2(226.6662, -509.1006)
+rotation = 0.41887903
+scale = Vector2(0.18667622, 0.15071774)
+texture = ExtResource("4_6tl50")
+
 [node name="Label" type="Label" parent="." unique_id=147026228]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -477.0
-offset_top = -70.0
-offset_right = 477.0
-offset_bottom = 70.0
+offset_left = -640.0
+offset_top = 170.0
+offset_right = 314.0
+offset_bottom = 310.0
 grow_horizontal = 2
-grow_vertical = 2
+theme_override_colors/font_color = Color(0.22, 0.14299999, 0.11, 1)
 theme_override_fonts/font = ExtResource("1_oa53l")
-theme_override_font_sizes/font_size = 104
-text = "Clock Chess"
+theme_override_font_sizes/font_size = 78
+text = "CLOCK"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=276230760]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -640.0
+offset_top = 352.0
+offset_right = 314.0
+offset_bottom = 492.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.22, 0.14299999, 0.11, 1)
+theme_override_fonts/font = ExtResource("1_oa53l")
+theme_override_font_sizes/font_size = 78
+text = "CHESS"
 horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="." unique_id=1444626413]
@@ -38,10 +528,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = 78.0
-offset_right = 75.0
-offset_bottom = 128.0
+offset_left = 330.0
+offset_top = -68.0
+offset_right = 480.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_oa53l")
