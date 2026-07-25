@@ -20,9 +20,11 @@ func _ready() -> void:
 func _anim_update_clock() -> void:
 	clock.text = str(count)
 	
-func update(cards: int) -> void:
+func update(cards: int, initial: bool = false) -> void:
 	if count != cards:
 		%ClockFuture.text = str(cards)
 		%AnimationPlayer.play(&"flip")
+		if not initial:
+			%SplitFlapSFX.play()
 	count = cards
 	

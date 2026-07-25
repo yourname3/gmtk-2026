@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://cdy2qipgtima0" path="res://desk/retry-normal.png" id="6_5wp43"]
 [ext_resource type="Texture2D" uid="uid://c0mm6133emja3" path="res://desk/retry-pressed.png" id="7_48xpt"]
 [ext_resource type="Texture2D" uid="uid://dqkh8oereaw5e" path="res://desk/retry-highlight.png" id="8_d1nar"]
+[ext_resource type="AudioStream" uid="uid://cwyexsd5wvuqk" path="res://sfx/split_flap1.wav" id="12_ow0ax"]
+[ext_resource type="AudioStream" uid="uid://pd0na80yjpcf" path="res://sfx/split_flap2.wav" id="13_kmkbd"]
+[ext_resource type="AudioStream" uid="uid://chskkxlbkwd14" path="res://sfx/split_flap3.wav" id="14_rt33x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwaaj"]
 
@@ -161,6 +164,14 @@ _data = {
 &"flip": SubResource("Animation_wcf73")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vdlta"]
+random_pitch = 1.0011559
+random_volume_offset_db = 0.3
+streams_count = 3
+stream_0/stream = ExtResource("12_ow0ax")
+stream_1/stream = ExtResource("13_kmkbd")
+stream_2/stream = ExtResource("14_rt33x")
+
 [node name="Clock" type="Node2D" unique_id=444931598]
 script = ExtResource("1_vx6em")
 
@@ -266,3 +277,10 @@ horizontal_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1000362909]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_48hhf")
+
+[node name="SplitFlapSFX" type="AudioStreamPlayer" parent="." unique_id=649206333]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_vdlta")
+volume_db = -8.0
+max_polyphony = 2
+bus = &"SFX"

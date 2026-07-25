@@ -165,7 +165,7 @@ func _ready() -> void:
 	
 	await get_tree().process_frame
 	await get_tree().process_frame
-	Clock.instance.update(active_cards.size())
+	Clock.instance.update(active_cards.size(), true)
 	
 func get_height() -> float:
 	return %RefRect.get_rect().size.y * global_scale.y
