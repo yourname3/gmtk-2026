@@ -90,6 +90,7 @@ func pop_undo_state() -> void:
 			var abs_dist: int = maxi(absi(target.x - tile_pos().x), absi(target.y - tile_pos().y))
 			var time := 0.2 + 0.1 * abs_dist
 			
+			%PlacePiece.play()
 			%AnimationPlayer.play(anim, -1, 0.2 / time)
 			var tween = create_tween()
 			tween.tween_property(self, ^"position", target * 256.0, time)
@@ -266,6 +267,8 @@ func move(target: Vector2i, capture: Piece) -> void:
 			anim = &"slide_left"
 	if abs_dist == 0:
 		anim = &"invalid"
+	else:
+		%PlacePiece.play()
 
 	var time := 0.2 + 0.1 * abs_dist
 	

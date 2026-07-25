@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bv041j16pukgw" path="res://chessboard/pieces.png" id="1_l0ktr"]
 [ext_resource type="Shader" uid="uid://dloq50xgl0gqr" path="res://piece/piece_v2.gdshader" id="2_4wn1d"]
 [ext_resource type="Texture2D" uid="uid://b8ybcygilqf3g" path="res://chessboard/piece_felt.png" id="4_4wn1d"]
+[ext_resource type="AudioStream" uid="uid://g7aewyutuxwa" path="res://sfx/piece_place1.wav" id="5_kstg8"]
+[ext_resource type="AudioStream" uid="uid://jw8x22xqofdr" path="res://sfx/piece_place2.wav" id="6_avj1a"]
+[ext_resource type="AudioStream" uid="uid://c3spcqt1fhsm" path="res://sfx/piece_place3.wav" id="7_apu2m"]
+[ext_resource type="AudioStream" uid="uid://dkinfcl177xlu" path="res://sfx/piece_place4.wav" id="8_uqnlt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wn1d"]
 shader = ExtResource("2_4wn1d")
@@ -313,6 +317,15 @@ _data = {
 &"undo": SubResource("Animation_kstg8")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cn83i"]
+random_pitch = 1.0174797
+random_volume_offset_db = 0.3
+streams_count = 4
+stream_0/stream = ExtResource("5_kstg8")
+stream_1/stream = ExtResource("6_avj1a")
+stream_2/stream = ExtResource("7_apu2m")
+stream_3/stream = ExtResource("8_uqnlt")
+
 [node name="Piece" type="Area2D" unique_id=1638246795 groups=["Piece"]]
 script = ExtResource("1_6byuq")
 
@@ -342,3 +355,9 @@ shape = SubResource("RectangleShape2D_6byuq")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1902240585]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_2eswf")
+
+[node name="PlacePiece" type="AudioStreamPlayer" parent="." unique_id=58127064]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_cn83i")
+max_polyphony = 4
+bus = &"SFX"
