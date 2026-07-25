@@ -292,6 +292,7 @@ func will_be_captured() -> void:
 	z_index = -1
 var alive: bool = true
 func kill() -> void:
+	%Captured.play()
 	%AnimationPlayer.play(&"captured")
 	await %AnimationPlayer.animation_finished
 	hide()
