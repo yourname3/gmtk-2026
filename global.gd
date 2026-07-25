@@ -75,6 +75,14 @@ func _ready() -> void:
 	# Initialize music. We will load it when possible.
 	ResourceLoader.load_threaded_request("res://music.tscn")
 	
+var _last_window_mode: Window.Mode = Window.MODE_MAXIMIZED
+func toggle_fullscreen() -> void:
+	if get_window().mode != Window.MODE_FULLSCREEN:
+		_last_window_mode = get_window().mode
+		get_window().mode = Window.MODE_FULLSCREEN
+	else:
+		get_window().mode = _last_window_mode
+	
 func _process(delta: float) -> void:
 	if Music.instance == null:
 		var status = ResourceLoader.load_threaded_get_status("res://music.tscn")
@@ -84,3 +92,6 @@ func _process(delta: float) -> void:
 			var node = scene.instantiate()
 			Music.instance = node
 			get_tree().root.add_child(node)
+	
+	if Input.is_action_just_pressed(&"fullscreen"):
+		toggle_fullscreen()

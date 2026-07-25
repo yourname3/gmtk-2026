@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://cqdxb81kbw3iv"]
+
+[ext_resource type="Theme" uid="uid://dyhudw6pqmags" path="res://abstract_theme.tres" id="1_11mhl"]
+[ext_resource type="Script" uid="uid://esu8xj3rh44s" path="res://main_menu/volume_slider.gd" id="1_hy7lw"]
+[ext_resource type="Script" uid="uid://deqs54e3odn4d" path="res://options/options_base.gd" id="2_a03j4"]
+
+[node name="Options" type="Control" unique_id=125116326]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 204.0
+offset_bottom = 273.0
+theme = ExtResource("1_11mhl")
+script = ExtResource("2_a03j4")
+
+[node name="Label" type="Label" parent="." unique_id=1850455929]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.5
+offset_right = 55.5
+offset_bottom = 43.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="SliderMaster" type="HSlider" parent="." unique_id=1873743152]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -85.5
+offset_right = 111.0
+offset_bottom = -69.5
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("1_hy7lw")
+
+[node name="Label2" type="Label" parent="SliderMaster" unique_id=1386514464]
+layout_mode = 0
+offset_left = -120.0
+offset_top = -10.0
+offset_right = -9.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 24
+text = "Master"
+horizontal_alignment = 2
+
+[node name="SliderMaster2" type="HSlider" parent="." unique_id=1598728921]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -52.5
+offset_right = 111.0
+offset_bottom = -36.5
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("1_hy7lw")
+bus_name = &"Music"
+
+[node name="Label2" type="Label" parent="SliderMaster2" unique_id=2026216271]
+layout_mode = 0
+offset_left = -120.0
+offset_top = -10.0
+offset_right = -9.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 24
+text = "Music"
+horizontal_alignment = 2
+
+[node name="SliderMaster3" type="HSlider" parent="." unique_id=616528358]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -19.5
+offset_right = 111.0
+offset_bottom = -3.5
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("1_hy7lw")
+bus_name = &"SFX"
+
+[node name="Label2" type="Label" parent="SliderMaster3" unique_id=594532165]
+layout_mode = 0
+offset_left = -120.0
+offset_top = -10.0
+offset_right = -9.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 24
+text = "SFX"
+horizontal_alignment = 2
+
+[node name="FullscreenButton" type="Button" parent="." unique_id=160608975]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = -110.0
+offset_right = 98.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Toggle Fullscreen"

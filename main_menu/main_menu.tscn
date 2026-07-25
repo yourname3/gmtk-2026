@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://pymwiw61f5al" path="res://main_menu/minute_hand.png" id="4_t6bnd"]
 [ext_resource type="Theme" uid="uid://dyhudw6pqmags" path="res://abstract_theme.tres" id="8_ia84y"]
 [ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="9_6at21"]
+[ext_resource type="PackedScene" uid="uid://cqdxb81kbw3iv" path="res://options/options_base.tscn" id="10_og6xe"]
 
 [node name="Control" type="Control" unique_id=1799267483]
 layout_mode = 3
@@ -546,49 +547,9 @@ theme_override_fonts/font = ExtResource("9_6at21")
 theme_override_font_sizes/font_size = 31
 text = "Play"
 
-[node name="Label" type="Label" parent="UI" unique_id=528784699]
+[node name="Options" parent="UI" unique_id=125116326 instance=ExtResource("10_og6xe")]
 layout_mode = 0
-offset_left = 891.0
-offset_top = 395.0
-offset_right = 1002.0
-offset_bottom = 438.0
-theme_override_font_sizes/font_size = 24
-text = "Volume"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="UI" unique_id=381994846]
-layout_mode = 0
-offset_left = 733.0
-offset_top = 431.0
-offset_right = 844.0
-offset_bottom = 474.0
-theme_override_font_sizes/font_size = 24
-text = "Master"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="UI" unique_id=2077221299]
-layout_mode = 0
-offset_left = 733.0
-offset_top = 471.0
-offset_right = 844.0
-offset_bottom = 514.0
-theme_override_font_sizes/font_size = 24
-text = "Music"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="UI" unique_id=109004592]
-layout_mode = 0
-offset_left = 733.0
-offset_top = 513.0
-offset_right = 844.0
-offset_bottom = 556.0
-theme_override_font_sizes/font_size = 24
-text = "SFX"
-horizontal_alignment = 1
-
-[node name="HSlider" type="HSlider" parent="UI" unique_id=1604483189]
-layout_mode = 0
-offset_left = 839.0
-offset_top = 440.0
-offset_right = 1061.0
-offset_bottom = 456.0
+offset_left = 844.0
+offset_top = 388.0
+offset_right = 1048.0
+offset_bottom = 661.0
