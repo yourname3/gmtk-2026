@@ -12,6 +12,7 @@ var has_won: bool = false # whether we've ever hit the win state this level
 func select_card(card: Card) -> void:
 	if card != Card.selected_card: # Reset board selection for now..
 		%Handle.play()
+		if Card.selected_hard: %Select.play()
 		if BoardHighlighter.select_state == BoardHighlighter.SelectState.LOCATION:
 			SignalBus.move_selected.emit(null)
 	Card.selected_card = card
