@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://dyhudw6pqmags" path="res://abstract_theme.tres" id="1_11mhl"]
 [ext_resource type="Script" uid="uid://esu8xj3rh44s" path="res://main_menu/volume_slider.gd" id="1_hy7lw"]
 [ext_resource type="Script" uid="uid://deqs54e3odn4d" path="res://options/options_base.gd" id="2_a03j4"]
+[ext_resource type="Script" uid="uid://cp13ib8hdd13o" path="res://button_with_sfx.gd" id="4_6p5pq"]
 
 [node name="Options" type="Control" unique_id=125116326]
 layout_mode = 3
@@ -127,3 +128,4 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "Toggle Fullscreen"
+script = ExtResource("4_6p5pq")

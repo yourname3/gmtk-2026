@@ -20,6 +20,9 @@ const WON_LINE: Color = Color("43a000")
 const WON_FILL: Color = Color("3b5d25")
 
 func _ready() -> void:
+	#super._ready()
+	mouse_entered.connect(func(): ButtonSFX.hover.play())
+	
 	%Label.text = str(number + 1)
 	text = ""
 	if Engine.is_editor_hint(): return

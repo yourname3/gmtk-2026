@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="2_3q5ml"]
 [ext_resource type="AudioStream" uid="uid://chxj1kydn8387" path="res://sfx/win.mp3" id="3_idjld"]
 [ext_resource type="Theme" uid="uid://c57qi4kamue8a" path="res://abstract_theme_bigger.tres" id="3_ossux"]
+[ext_resource type="Script" uid="uid://cp13ib8hdd13o" path="res://button_with_sfx.gd" id="4_584ha"]
 
 [sub_resource type="Animation" id="Animation_3q5ml"]
 length = 0.001
@@ -226,6 +227,7 @@ theme_override_fonts/font = ExtResource("2_3q5ml")
 theme_override_font_sizes/font_size = 133
 disabled = true
 text = "Next"
+script = ExtResource("4_584ha")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RefRect" unique_id=1355818230]
 unique_name_in_owner = true

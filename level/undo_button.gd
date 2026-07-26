@@ -1,8 +1,9 @@
-extends Button
+extends ButtonWithSFX
 class_name UndoButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super._ready()
 	pressed.connect(func():
 		if not Card.card_playing:
 			Card.card_playing = true # To keep things from doing stuff

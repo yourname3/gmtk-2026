@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://078drs0f3puu" path="res://main_menu/clock_face.gd" id="5_p6csp"]
 [ext_resource type="Texture2D" uid="uid://pymwiw61f5al" path="res://main_menu/minute_hand.png" id="6_1nv8k"]
 [ext_resource type="Texture2D" uid="uid://dsrudwa0om41f" path="res://main_menu/tick_mark.png" id="7_qi88y"]
+[ext_resource type="Script" uid="uid://cp13ib8hdd13o" path="res://button_with_sfx.gd" id="9_p6csp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hbt6"]
 bg_color = Color(0.64, 0.55296, 0.42239997, 1)
@@ -735,6 +736,7 @@ offset_right = 788.0
 offset_bottom = 315.0
 theme_override_font_sizes/font_size = 20
 text = "Resume"
+script = ExtResource("9_p6csp")
 
 [node name="LevelSelect" type="Button" parent="Control/Panel" unique_id=1324414092]
 unique_name_in_owner = true
@@ -745,6 +747,7 @@ offset_right = 788.0
 offset_bottom = 390.0
 theme_override_font_sizes/font_size = 20
 text = "Level Select"
+script = ExtResource("9_p6csp")
 
 [node name="MainMenu" type="Button" parent="Control/Panel" unique_id=623167055]
 unique_name_in_owner = true
@@ -762,6 +765,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "Main Menu"
+script = ExtResource("9_p6csp")
 
 [node name="Quit" type="Button" parent="Control/Panel" unique_id=706336993]
 unique_name_in_owner = true
@@ -779,6 +783,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "Quit "
+script = ExtResource("9_p6csp")
 
 [node name="Options" parent="Control/Panel" unique_id=125116326 instance=ExtResource("5_b0obc")]
 layout_mode = 0
