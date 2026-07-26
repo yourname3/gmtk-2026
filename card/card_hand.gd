@@ -109,6 +109,26 @@ func arrange_cards() -> void:
 	if not mouse_valid:
 		Card.highlighted_card = null
 		
+func find_selected_card() -> int:
+	if Card.selected_card != null:
+		return active_cards.find(Card.selected_card)
+	return -1
+		
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if not event.pressed: return
+		
+		var mouse_valid: bool = %RefRect.get_rect().has_point(get_local_mouse_position())
+		if mouse_valid: return # don't select if mouse in hover area
+		
+		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_UP:
+			var idx = find_selected_card()
+			if idx > 0:
+				select_card(active_cards[idx - 1])
+		elif event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_DOWN:
+			var idx = find_selected_card()
+			if idx >= 0 and idx < active_cards.size() - 1:
+				select_card(active_cards[idx + 1])
 		
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
