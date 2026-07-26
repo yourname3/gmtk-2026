@@ -54,8 +54,14 @@ func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 	moves.capture_white = piece.is_black
 	piece.calculate_moves(moves)
 	
+	moves.moves.shuffle() # shuffle for ring appearance
+	
+	var timer = 0.1 / moves.moves.size()
+	timer = min(timer, 0.02)
+	
 	for move in moves.moves:
 		_add_highlight(move.x, move.y)
+		await get_tree().create_timer(timer, true).timeout
 			
 	var bh: BoardHighlight = null
 			
