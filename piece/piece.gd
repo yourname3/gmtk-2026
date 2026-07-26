@@ -118,6 +118,8 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		# sprite.set_instance_shader_parameter(&"line_thickness", 0.0)
 		sprite.material.set_shader_parameter(&"line_colour", COLOR_BLACK_LINE if is_black else COLOR_WHITE_LINE)
+		
+		SignalBus.preview_cleared.connect(func(): _has_preview_move = false)
 
 var _highlight_tween: Tween = null
 var _highlight_state: bool = false
@@ -321,6 +323,21 @@ func is_selectable_rank() -> bool:
 	return false
 func is_selectable() -> bool:
 	return is_selectable_side() and is_selectable_rank()
+	
+var _has_preview_move := false
+func _mouse_enter() -> void:
+	if Card.selected_card != null:
+		var data := Card.selected_card.data
+		match data.ability:
+			CardData.SpecialAbility.ADVANCE_THEN_MOVE:
+				BoardHighlighter.instance.preview_move(Board.instance._clamp_move(tile_pos(), tile_pos() + Vector2i(0, -1), Board.Continuous.HOP))
+				_has_preview_move = true
+			CardData.SpecialAbility.ADVANCE_X_HOP:
+				BoardHighlighter.instance.preview_move(Board.instance._clamp_move(tile_pos(), tile_pos() + Vector2i(0, -Clock.instance.count), Board.Continuous.HOP))
+				_has_preview_move = true
+func _mouse_exit() -> void:
+	if _has_preview_move:
+		BoardHighlighter.instance.clear_preview()
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if Engine.is_editor_hint(): return

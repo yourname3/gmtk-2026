@@ -11,6 +11,8 @@ enum SelectState {
 	LOCATION_ONLY,
 }
 
+var preview_nodes: Array[BoardHighlight] = []
+
 @onready var tink := %Tink
 
 static var select_state := SelectState.NONE
@@ -47,6 +49,20 @@ func _clear_highlights(fun: bool) -> void:
 		if child is BoardHighlight:
 			child.die(fun)
 	highlight_map.clear()
+	
+func clear_preview() -> void:
+	for node in preview_nodes:
+		node.queue_free()
+	preview_nodes.clear()
+	SignalBus.preview_cleared.emit()
+	
+func preview_move(location: Vector2i) -> void:
+	clear_preview()
+	
+	tink.pitch_scale = 1.0
+	tink.play()
+	
+	preview_nodes.append(_add_highlight(location.x, location.y))
 
 func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 	select_state = SelectState.LOCATION_ONLY if location_only else SelectState.LOCATION

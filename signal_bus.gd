@@ -12,3 +12,5 @@ signal card_played(card: Card)
 signal card_finished_playing()
 
 signal undo() # Emitted to resolve undos not handled by Board
+
+signal preview_cleared() # Board highlight previews cleared
