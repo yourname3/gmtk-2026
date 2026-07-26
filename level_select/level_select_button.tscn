@@ -141,12 +141,14 @@ offset_bottom = 255.0
 pivot_offset = Vector2(128, 128)
 theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 theme_override_fonts/font = ExtResource("1_1sqxu")
-theme_override_font_sizes/font_size = 125
+theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kp0lh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mtmfa")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lqw5f")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_1sqxu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mgq0h")
+text = "1"
+alignment = 0
 script = ExtResource("2_1sqxu")
 
 [node name="Selected" type="AudioStreamPlayer" parent="." unique_id=213807474]

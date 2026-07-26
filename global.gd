@@ -14,10 +14,10 @@ var level_names: Array[StringName] = [
 	&"res://levels/level_intro_variation.tscn", # easy enough
 	&"res://levels/transform_rook.tscn", # not so hard
 	&"res://levels/sacrifice_bishop_staredown.tscn", # tricky / harder side
-	&"res://levels/careful_xmove_align.tscn", # medium
+	&"res://levels/careful_xmove_align.tscn", # medium [not ver yhard]
 	
-	&"res://levels/charge_lineup_variation2.tscn", # < medium ?
-	&"res://levels/forced_own_kill.tscn", # trickier
+	&"res://levels/charge_lineup_variation2.tscn", # < medium ? [still seems easier side]
+	&"res://levels/forced_own_kill.tscn", # trickier / harder side of easy/medium
 	&"res://levels/level_random1.tscn", # trickier (esp. as compared to careful_xmove_align)
 	&"res://levels/pawn_charge1.tscn", # tricky! hard! (first pawn up charge... need to pay attention to these.)
 	&"res://levels/rook_laser.tscn", # hard
@@ -79,7 +79,7 @@ func _ready() -> void:
 	print("avail level count = ", level_names.size())
 	load_save_data()
 	# debug mode: clear save
-	# save_data.completed_levels = {}
+	save_data.completed_levels = {}
 	already_completed_levels = save_data.completed_levels.duplicate()
 	
 	# Initialize music. We will load it when possible.

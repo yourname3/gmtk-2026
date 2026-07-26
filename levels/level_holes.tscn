@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://1bape5xetsht" path="res://level_base.tscn" id="1_6qo5s"]
 [ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_6kkwe"]
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="3_wvro2"]
-[ext_resource type="Resource" uid="uid://2j0d8g238d0v" path="res://cards/move_any_then_sacrifice_on_capture.tres" id="4_6kkwe"]
 [ext_resource type="Resource" uid="uid://blm2qo2rq08c6" path="res://cards/repeat_move_once.tres" id="5_0f600"]
 [ext_resource type="Resource" uid="uid://cecxt4qg5sf8j" path="res://cards/move_any_twice_killer.tres" id="7_6kkwe"]
 [ext_resource type="Resource" uid="uid://b3gif8w5gjjkt" path="res://cards/move_any_then_knight_on_capture.tres" id="7_wvro2"]
@@ -46,7 +45,7 @@ type = 3
 is_black = false
 
 [node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
-cards = Array[ExtResource("3_wvro2")]([ExtResource("4_6kkwe"), ExtResource("5_0f600"), ExtResource("7_6kkwe"), ExtResource("7_wvro2"), ExtResource("8_wvro2")])
+cards = Array[ExtResource("3_wvro2")]([ExtResource("5_0f600"), ExtResource("7_6kkwe"), ExtResource("7_wvro2"), ExtResource("8_wvro2")])
 metadata/_edit_lock_ = true
 
 [node name="CardAnchor" parent="CanvasLayer/Control/CardHand" index="4" unique_id=625709137]

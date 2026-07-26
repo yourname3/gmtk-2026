@@ -2,7 +2,12 @@
 extends Button
 class_name LevelSelectButton
 
-@export var number: int = 0
+## Now no longer used as index, but as the "name" of the level (from previous versions)
+@export var level_number: int = 1
+## Display number
+@export var display_number: int = 1
+
+@onready var number = level_number - 1
 
 var newly_unlocked: bool = false
 var board_offset: int = 0 # offset used for computing region, 0-15
@@ -23,7 +28,7 @@ func _ready() -> void:
 	#super._ready()
 	mouse_entered.connect(func(): ButtonSFX.hover.play())
 	
-	%Label.text = str(number + 1)
+	%Label.text = str(display_number)
 	text = ""
 	if Engine.is_editor_hint(): return
 	
@@ -35,7 +40,7 @@ func _ready() -> void:
 	)
 	
 	var t := tile()
-	var tile_column = (t.x + t.y) % 2
+	var tile_column = ((t.x + t.y) % 2 + 2) % 2
 	
 	var tile_row: int = (board_offset / 4)
 	tile_column += (board_offset % 4) * 2
@@ -54,5 +59,5 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
-		%Label.text = str(number + 1)
-		text = ""
+		%Label.text = str(display_number)
+		text = str(" ", level_number)

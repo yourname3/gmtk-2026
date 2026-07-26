@@ -22,8 +22,8 @@ position = Vector2(512, 512)
 type = 4
 
 [node name="Piece2" parent="." index="6" unique_id=981933192 instance=ExtResource("2_6aysu")]
-position = Vector2(1280, 1280)
-type = 3
+position = Vector2(768, 0)
+type = 2
 
 [node name="Piece3" parent="." index="7" unique_id=939880365 instance=ExtResource("2_6aysu")]
 position = Vector2(768, 768)
@@ -39,17 +39,22 @@ position = Vector2(256, 768)
 type = 4
 is_black = false
 
-[node name="Piece6" parent="." index="10" unique_id=1245917758 instance=ExtResource("2_6aysu")]
+[node name="Piece10" parent="." index="10" unique_id=1364723293 instance=ExtResource("2_6aysu")]
+position = Vector2(512, 1024)
+type = 3
+is_black = false
+
+[node name="Piece6" parent="." index="11" unique_id=1245917758 instance=ExtResource("2_6aysu")]
 position = Vector2(1536, 768)
 is_black = false
 
-[node name="Piece8" parent="." index="11" unique_id=1261074087 instance=ExtResource("2_6aysu")]
+[node name="Piece8" parent="." index="12" unique_id=1261074087 instance=ExtResource("2_6aysu")]
 position = Vector2(1280, 768)
 is_black = false
 
-[node name="Piece9" parent="." index="12" unique_id=1607199685 instance=ExtResource("2_6aysu")]
+[node name="Piece9" parent="." index="13" unique_id=1607199685 instance=ExtResource("2_6aysu")]
 position = Vector2(1024, 768)
 is_black = false
 
-[node name="Piece7" parent="." index="13" unique_id=34970473 instance=ExtResource("2_6aysu")]
+[node name="Piece7" parent="." index="14" unique_id=34970473 instance=ExtResource("2_6aysu")]
 position = Vector2(768, 1536)
