@@ -6,11 +6,14 @@ const SINGLE_SAVE_PATH: String = "user://single_save_slot.tres"
 var save_data: SaveData = SaveData.new()
 var current_level: int = -1
 
+# Used for tracking unlocks this session
+var already_completed_levels: Dictionary[int, bool] = {}
+
 var level_names: Array[StringName] = [
 	&"res://levels/level_intro.tscn",# easy enough
 	&"res://levels/level_intro_variation.tscn", # easy enough
 	&"res://levels/transform_rook.tscn", # not so hard
-	&"res://levels/sacrifice_bishop_staredown.tscn", # tricky
+	&"res://levels/sacrifice_bishop_staredown.tscn", # tricky / harder side
 	&"res://levels/careful_xmove_align.tscn", # medium
 	
 	&"res://levels/charge_lineup_variation2.tscn", # < medium ?
@@ -71,6 +74,9 @@ func save_save_data() -> void:
 func _ready() -> void:
 	print("avail level count = ", level_names.size())
 	load_save_data()
+	# debug mode: clear save
+	# save_data.completed_levels = {}
+	already_completed_levels = save_data.completed_levels.duplicate()
 	
 	# Initialize music. We will load it when possible.
 	ResourceLoader.load_threaded_request("res://music.tscn")

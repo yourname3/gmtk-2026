@@ -41,5 +41,5 @@ position = Vector2(512, 768)
 type = 2
 is_black = false
 
-[node name="CardHand" parent="." index="11" unique_id=850826435]
+[node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
 cards = Array[ExtResource("3_xt6tk")]([ExtResource("4_g6dh6"), ExtResource("4_g6dh6"), ExtResource("5_yskim")])

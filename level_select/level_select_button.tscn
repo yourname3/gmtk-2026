@@ -4,6 +4,10 @@
 [ext_resource type="Script" uid="uid://b42x6sq4wusul" path="res://level_select/level_select_button.gd" id="2_1sqxu"]
 [ext_resource type="AudioStream" uid="uid://bxa8kebsfqgui" path="res://sfx/level_selected.wav" id="3_pqcmb"]
 [ext_resource type="Script" uid="uid://bt2fksyv4g614" path="res://level_select/floating_sfx.gd" id="4_hri88"]
+[ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="5_1pek1"]
+[ext_resource type="AudioStream" uid="uid://dxeevn6hbtihs" path="res://sfx/unlock_shimmer.wav" id="5_1xa2k"]
+[ext_resource type="Shader" uid="uid://dloq50xgl0gqr" path="res://piece/piece_v2.gdshader" id="7_ey8h1"]
+[ext_resource type="Texture2D" uid="uid://bv041j16pukgw" path="res://chessboard/pieces.png" id="8_aewuc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kp0lh"]
 
@@ -17,9 +21,122 @@ bg_color = Color(1, 1, 1, 0.18431373)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mgq0h"]
 
+[sub_resource type="Animation" id="Animation_1xa2k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8tjbv"]
+resource_name = "reveal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.38857287, 0.38857287, 0.38857287, 1), Color(2.2794397, 2.2794397, 2.2794397, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.292802, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ey8h1"]
+_data = {
+&"RESET": SubResource("Animation_1xa2k"),
+&"reveal": SubResource("Animation_8tjbv")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wn1d"]
+shader = ExtResource("7_ey8h1")
+
 [node name="Button" type="Button" unique_id=324410128]
 offset_right = 256.0
 offset_bottom = 255.0
+pivot_offset = Vector2(128, 128)
 theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 theme_override_fonts/font = ExtResource("1_1sqxu")
 theme_override_font_sizes/font_size = 125
@@ -28,7 +145,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_mtmfa")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lqw5f")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_1sqxu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mgq0h")
-text = "1"
 script = ExtResource("2_1sqxu")
 
 [node name="Selected" type="AudioStreamPlayer" parent="." unique_id=213807474]
@@ -37,3 +153,46 @@ stream = ExtResource("3_pqcmb")
 volume_db = -4.0
 bus = &"SFX"
 script = ExtResource("4_hri88")
+
+[node name="UnlockShimmer" type="AudioStreamPlayer" parent="." unique_id=2082847243]
+unique_name_in_owner = true
+stream = ExtResource("5_1xa2k")
+volume_db = -4.0
+bus = &"SFX"
+script = ExtResource("4_hri88")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1063075161]
+show_behind_parent = true
+texture = ExtResource("5_1pek1")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2124132047]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_ey8h1")
+
+[node name="Piece" type="Sprite2D" parent="." unique_id=1279465721]
+unique_name_in_owner = true
+self_modulate = Color(0.23168069, 0.36520612, 0.14589173, 1)
+material = SubResource("ShaderMaterial_4wn1d")
+instance_shader_parameters/line_colour = Color(0.26458463, 0.62555677, 5.7756904e-07, 1)
+instance_shader_parameters/line_thickness = 0.00800000038
+position = Vector2(196.81563, 253.63126)
+scale = Vector2(0.9438721, 0.9438721)
+texture = ExtResource("8_aewuc")
+offset = Vector2(0, -128)
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)
+
+[node name="Label" type="Label" parent="." unique_id=624528742]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 254.0
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_fonts/font = ExtResource("1_1sqxu")
+theme_override_font_sizes/font_size = 125
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
