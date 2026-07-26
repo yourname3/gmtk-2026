@@ -402,6 +402,12 @@ tile_map_data = PackedByteArray("AAAHAAIAAAACAAEAAAAGAP//AAACAAEAAAAGAAAAAAACAAE
 tile_set = SubResource("TileSet_16arb")
 script = ExtResource("10_ad3wc")
 
+[node name="Trim2" type="TileMapLayer" parent="." unique_id=903754602]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAABAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_16arb")
+script = ExtResource("10_ad3wc")
+
 [node name="UnlockShimmer" type="AudioStreamPlayer" parent="." unique_id=1514669316]
 unique_name_in_owner = true
 stream = ExtResource("11_4a7ur")
