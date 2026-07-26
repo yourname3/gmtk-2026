@@ -79,7 +79,7 @@ func _ready() -> void:
 	print("avail level count = ", level_names.size())
 	load_save_data()
 	# debug mode: clear save
-	save_data.completed_levels = {}
+	# save_data.completed_levels = {}
 	already_completed_levels = save_data.completed_levels.duplicate()
 	
 	# Initialize music. We will load it when possible.

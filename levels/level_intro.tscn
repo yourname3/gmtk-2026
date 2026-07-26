@@ -33,10 +33,13 @@ offset_bottom = 70.00432
 theme_override_colors/font_color = Color(0.021314872, 0.010474262, 0.216275, 1)
 theme_override_fonts/font = ExtResource("5_ora6d")
 theme_override_font_sizes/font_size = 42
-text = "- Choose cards by hovering or clicking them
-- Click on pieces to move them
-- Your goal: Use every card, and capture every white piece
-- You're playing the black pieces"
+text = "Choose cards by hovering or clicking them
+
+Click on pieces to move them
+
+Your goal: Use every card, and capture every white piece
+
+You're playing the black pieces"
 autowrap_mode = 3
 
 [node name="Piece" parent="." index="4" unique_id=1638246795 instance=ExtResource("2_3mg6b")]

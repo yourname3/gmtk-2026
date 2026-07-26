@@ -7,6 +7,6 @@
 script = ExtResource("1_e6f6m")
 ability = 1
 name = "Charge"
-description = "Move a piece. The move is Repeated once."
+description = "Move a piece. The move is repeated once."
 art = ExtResource("1_jqlm3")
 metadata/_custom_type_script = "uid://dfant1e3uq18d"
