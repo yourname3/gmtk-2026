@@ -1,5 +1,8 @@
-extends Label
+extends RichTextLabel
 class_name LevelSelectSticky
+
+const F = "[font=res://level_select/todo_font.tres][font_size=42]"
+const C = "[/font_size][/font]"
 
 var animals := ["dog", "cat", "owl", "pig", "horse", "goat", "llama", "donkey", "rat"]
 
@@ -33,13 +36,14 @@ func _ready() -> void:
 	
 	var levels_remaining = 28 - Global.save_data.completed_levels.size()
 	
-	text = str(["Todo list", "To do", "Todo", "To do list"].pick_random(), "\n\n")
+	text = str(F, ["Todo list", "To do", "Todo", "To do list"].pick_random(), "\n\n")
 	if levels_remaining > 0:
-		text += str(levels_remaining, " puzzles\n\n")
+		text += str(C, levels_remaining, F, " puzzles\n\n")
 	
 	for c in chosen:
 		text += c + "\n\n"
 
+	text += C
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

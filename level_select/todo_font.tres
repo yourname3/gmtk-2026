@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" format=3 uid="uid://c2ap608se2a3"]
+
+[ext_resource type="FontFile" uid="uid://hbposp2sb3s0" path="res://font/Handwriting-Regular.otf" id="1_rewvq"]
+
+[resource]
+base_font = ExtResource("1_rewvq")
+baseline_offset = 0.13

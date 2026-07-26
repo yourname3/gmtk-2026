@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="1_sv8in"]
 [ext_resource type="PackedScene" uid="uid://se1uxpdyqo3b" path="res://level_select/level_select_button.tscn" id="3_kxnyd"]
 [ext_resource type="Texture2D" uid="uid://dg8d0j5sl61gd" path="res://chessboard/sticky_note.png" id="4_mtmfa"]
-[ext_resource type="FontFile" uid="uid://hbposp2sb3s0" path="res://font/Handwriting-Regular.otf" id="5_lqw5f"]
 [ext_resource type="Script" uid="uid://cfovaralyn3cm" path="res://level_select/level_select_label.gd" id="6_lqw5f"]
 [ext_resource type="Texture2D" uid="uid://b2l3pls2cqf3p" path="res://desk/line_paper.png" id="7_mgq0h"]
 [ext_resource type="Texture2D" uid="uid://bgq2q5tf5la8j" path="res://pencil.png" id="8_fxfc6"]
@@ -306,14 +305,14 @@ rotation = 0.14668658
 scale = Vector2(1.6390822, 1.6390822)
 texture = ExtResource("4_mtmfa")
 
-[node name="Label" type="Label" parent="Sprite2D" unique_id=880846009]
+[node name="Label" type="RichTextLabel" parent="Sprite2D" unique_id=1749582909]
 offset_left = -234.40652
 offset_top = -186.32314
 offset_right = 232.7037
-offset_bottom = 70.00432
-theme_override_colors/font_color = Color(0.22745098, 0.21568628, 0.19607843, 1)
-theme_override_fonts/font = ExtResource("5_lqw5f")
-theme_override_font_sizes/font_size = 42
+offset_bottom = 481.67688
+theme_override_colors/default_color = Color(0.22745098, 0.21568628, 0.19607843, 1)
+theme_override_font_sizes/normal_font_size = 29
+bbcode_enabled = true
 text = "Todo list
 
 28 puzzles
@@ -325,7 +324,6 @@ Throw party
 Paint the garage
 
 Pick up couch"
-autowrap_mode = 3
 script = ExtResource("6_lqw5f")
 metadata/_edit_use_anchors_ = true
 
