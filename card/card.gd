@@ -110,8 +110,6 @@ func play(selected_piece: Piece = null) -> void:
 	_state = State.PLAYING
 	SignalBus.card_played.emit(self)
 	
-	Piece.last_select_piece = null
-	
 	# Remove selection
 	selected_card = null
 	highlighted_card = null
@@ -123,6 +121,9 @@ func play(selected_piece: Piece = null) -> void:
 	
 	_state = State.DYING
 	card_playing = false
+	
+	Piece.last_select_piece = null
+	
 	SignalBus.card_finished_playing.emit()
 	
 	#die_anim()
