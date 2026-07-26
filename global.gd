@@ -34,6 +34,7 @@ var level_names: Array[StringName] = [
 	 # {medium/hard:there is cheese to fix -- do not need gambit card}
 	 # do it without vantage as well... if i can remember how to do it without gambit, that is cooler,
 	 # although it seems quite hard.
+	# solution with no gambit : first charge, then adrenaline to get left guy. then clean up rest with charge + vantage
 	&"res://levels/level_holes_variation.tscn", # both {medium} for now # rather hard i think
 	&"res://levels/bishops_advance.tscn", # {medium/hard}
 	
