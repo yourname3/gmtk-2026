@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://dwkpyk486w1so"]
 
 [ext_resource type="Script" uid="uid://d3lbmbsmsiu2m" path="res://board_highlighter/board_highlighter.gd" id="1_sf6hr"]
+[ext_resource type="AudioStream" uid="uid://kv7laod33cl1" path="res://sfx/tink.wav" id="2_sf6hr"]
 
 [node name="BoardHighlighter" type="Node2D" unique_id=1546895326]
 script = ExtResource("1_sf6hr")
+
+[node name="Tink" type="AudioStreamPlayer" parent="." unique_id=1207476546]
+unique_name_in_owner = true
+stream = ExtResource("2_sf6hr")
+volume_db = -4.0
+max_polyphony = 32
+bus = &"SFX"

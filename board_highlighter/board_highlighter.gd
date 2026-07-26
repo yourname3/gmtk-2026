@@ -11,6 +11,8 @@ enum SelectState {
 	LOCATION_ONLY,
 }
 
+@onready var tink := %Tink
+
 static var select_state := SelectState.NONE
 static var select_filter: CardData.PieceFilter = CardData.PieceFilter.SAME_SIDE
 static var select_rank_filter: CardData.RankFilter = CardData.RankFilter.NONE
@@ -32,16 +34,18 @@ static func is_tile_highlighted(tile: Vector2i) -> bool:
 		return instance.highlight_map.has(tile)
 	return false
 
-func _add_highlight(x: int, y: int) -> void:
+func _add_highlight(x: int, y: int) -> BoardHighlight:
 	var highlight := preload("res://board_highlighter/board_highlight.tscn").instantiate()
 	highlight.position = Vector2(x, y) * 256
 	add_child(highlight)
 	
 	highlight_map[Vector2i(x, y)] = highlight
+	return highlight
 	
-func _clear_highlights() -> void:
+func _clear_highlights(fun: bool) -> void:
 	for child in get_children():
-		child.queue_free()
+		if child is BoardHighlight:
+			child.die(fun)
 	highlight_map.clear()
 
 func _select_move(piece: Piece, location_only: bool) -> Vector2i:
@@ -59,9 +63,22 @@ func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 	var timer = 0.1 / moves.moves.size()
 	timer = min(timer, 0.02)
 	
+	var time := Time.get_ticks_msec()
+	
+	var _prev_db = tink.volume_db
+	tink.pitch_scale = 1.0
 	for move in moves.moves:
-		_add_highlight(move.x, move.y)
+		tink.play()
+		
+		var h := _add_highlight(move.x, move.y)
+		h.die_pitch = tink.pitch_scale
+		h.die_time = (Time.get_ticks_msec() - time) / 1000.0
+		
+		tink.pitch_scale *= 1.04
+		tink.volume_db -= 0.2
 		await get_tree().create_timer(timer, true).timeout
+		#total_time += timer
+	tink.volume_db = _prev_db
 			
 	var bh: BoardHighlight = null
 			
@@ -71,7 +88,7 @@ func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 	if bh != null:
 		pos = Vector2i(bh.position / 256)
 	
-	_clear_highlights()
+	_clear_highlights(bh != null)
 		
 	select_state = SelectState.NONE if select_state == SelectState.LOCATION_ONLY else SelectState.PIECE
 	return pos

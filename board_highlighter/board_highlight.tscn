@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bbs658hgk4e7e" path="res://board_highlighter/board_highlight.gd" id="1_0i2fc"]
 [ext_resource type="Texture2D" uid="uid://cvgds577pury" path="res://chessboard/highlight.png" id="2_0i2fc"]
+[ext_resource type="AudioStream" uid="uid://kv7laod33cl1" path="res://sfx/tink.wav" id="3_4bhk2"]
+[ext_resource type="Script" uid="uid://bt2fksyv4g614" path="res://level_select/floating_sfx.gd" id="4_x3je2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4bhk2"]
 size = Vector2(240, 240)
@@ -83,3 +85,10 @@ shape = SubResource("RectangleShape2D_4bhk2")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=68366556]
 libraries/ = SubResource("AnimationLibrary_x3je2")
 autoplay = &"appear"
+
+[node name="Tink" type="AudioStreamPlayer" parent="." unique_id=2026354137]
+unique_name_in_owner = true
+stream = ExtResource("3_4bhk2")
+volume_db = -8.0
+bus = &"SFX"
+script = ExtResource("4_x3je2")

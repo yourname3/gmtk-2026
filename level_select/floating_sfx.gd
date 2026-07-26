@@ -7,8 +7,11 @@ class_name FloatingSfx
 func _ready() -> void:
 	if play_when_paused: process_mode = Node.PROCESS_MODE_ALWAYS
 
-func play_floating() -> void:
+func play_floating(delay: float = 0.0) -> void:
 	reparent(get_tree().root)
+	if delay > 0:
+		# always process because sounds fire fast i guess
+		await get_tree().create_timer(delay, true).timeout
 	play()
 	await finished
 	queue_free()
