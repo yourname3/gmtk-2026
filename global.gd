@@ -6,6 +6,8 @@ const SINGLE_SAVE_PATH: String = "user://single_save_slot.tres"
 var save_data: SaveData = SaveData.new()
 var current_level: int = -1
 
+var current_level_label: int = 0
+
 # Used for tracking unlocks this session
 var already_completed_levels: Dictionary[int, bool] = {}
 

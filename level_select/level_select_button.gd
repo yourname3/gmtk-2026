@@ -38,6 +38,7 @@ func _ready() -> void:
 		%Selected.play_floating()
 		ButtonSFX.click.play()
 		get_parent().disable_all_buttons()
+		Global.current_level_label = display_number
 		Global.load_level(number)
 	)
 	

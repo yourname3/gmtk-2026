@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://chskkxlbkwd14" path="res://sfx/split_flap3.wav" id="14_rt33x"]
 [ext_resource type="AudioStream" uid="uid://tqkygdlyriik" path="res://sfx/plastic_button_hover.wav" id="15_rt33x"]
 [ext_resource type="AudioStream" uid="uid://bdyvjfs5j1in4" path="res://sfx/plastic_button.wav" id="16_vdlta"]
+[ext_resource type="Script" uid="uid://do40c6li8yef4" path="res://clock/level_indicator.gd" id="17_vdlta"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwaaj"]
 
@@ -301,3 +302,14 @@ stream = ExtResource("16_vdlta")
 volume_db = -12.0
 max_polyphony = 3
 bus = &"SFX"
+
+[node name="Label" type="Label" parent="." unique_id=801786632]
+offset_left = -353.0
+offset_top = 63.999996
+offset_right = -193.0
+offset_bottom = 136.0
+rotation = 0.0006001219
+theme_override_colors/font_color = Color(0.69803923, 0.6901961, 0.6862745, 1)
+theme_override_font_sizes/font_size = 52
+text = "level 1"
+script = ExtResource("17_vdlta")
