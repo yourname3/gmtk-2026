@@ -2,6 +2,7 @@ extends Node2D
 class_name LevelSelect
 
 var buttons: Array[LevelSelectButton] = []
+var button_map: Dictionary[Vector2i, LevelSelectButton] = {}
 
 # on first load, we don't show the unlock animation.
 static var first_load: bool = true
@@ -15,6 +16,8 @@ func _ready() -> void:
 		if child is LevelSelectButton:
 			buttons.append(child)
 			dictionary[child.tile()] = child
+			
+	button_map = dictionary
 			
 	var board_offset: int = 0
 	for button in buttons: # assign board texture offsets
@@ -45,6 +48,7 @@ func _ready() -> void:
 			newly_unlocked = not Global.already_completed_levels.has(button.number)
 		
 		button.visible = enabled and (not newly_unlocked or first_load)
+		button.unlocked = enabled
 		if newly_unlocked:
 			newly_unlocked_arr.append(button)
 			Global.already_completed_levels[button.number] = true

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://31dtge7qj30u"]
+[gd_scene format=4 uid="uid://31dtge7qj30u"]
 
 [ext_resource type="Script" uid="uid://olmykxerofge" path="res://level_select/level_select.gd" id="1_kp0lh"]
 [ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="1_sv8in"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://cfovaralyn3cm" path="res://level_select/level_select_label.gd" id="6_lqw5f"]
 [ext_resource type="Texture2D" uid="uid://b2l3pls2cqf3p" path="res://desk/line_paper.png" id="7_mgq0h"]
 [ext_resource type="Texture2D" uid="uid://bgq2q5tf5la8j" path="res://pencil.png" id="8_fxfc6"]
+[ext_resource type="Texture2D" uid="uid://dklp2e8crecys" path="res://chessboard/board_trim.png" id="9_d5drp"]
+[ext_resource type="Script" uid="uid://c34yw3fwmim10" path="res://level_select/level_select_trim.gd" id="10_ad3wc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kp0lh"]
 texture = ExtResource("1_sv8in")
@@ -18,6 +20,29 @@ texture_region_size = Vector2i(256, 256)
 [sub_resource type="TileSet" id="TileSet_mtmfa"]
 tile_size = Vector2i(256, 256)
 sources/0 = SubResource("TileSetAtlasSource_kp0lh")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ad3wc"]
+texture = ExtResource("9_d5drp")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+1:1/0 = 0
+3:0/0 = 0
+3:2/0 = 0
+5:0/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_16arb"]
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetAtlasSource_ad3wc")
 
 [node name="LevelSelect" type="Node2D" unique_id=1519824190]
 script = ExtResource("1_kp0lh")
@@ -39,7 +64,6 @@ offset_left = -256.0
 offset_top = -256.0
 offset_right = 0.0
 offset_bottom = -1.0
-text = " 1"
 
 [node name="Button2" parent="." unique_id=569657612 instance=ExtResource("3_kxnyd")]
 offset_top = -256.0
@@ -322,3 +346,9 @@ texture = ExtResource("7_mgq0h")
 position = Vector2(2944, 767.9999)
 rotation = 4.1821966
 texture = ExtResource("8_fxfc6")
+
+[node name="Trim" type="TileMapLayer" parent="." unique_id=907859893]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAAHAAIAAAACAAEAAAAGAP//AAACAAEAAAAGAAAAAAACAAEAAAAGAAEAAAADAAIAAAAFAAMAAAADAAAAAAADAP//AAADAAIAAAACAP7/AAABAAAAAAABAP7/AAABAAAAAAAAAP7/AAABAAAAAAD///7/AAABAAAAAAADAAYAAAABAAIAAAAEAAYAAAABAAIAAAAFAAQAAAACAAEAAAAFAAUAAAACAAEAAAAGAAMAAAABAAIAAAAFAP7/AAABAAAAAAABAAMAAAABAAIAAAABAAQAAAAAAAEAAAABAAAAAAABAAEAAAAEAAEAAAABAAEAAAADAP7/AAACAAAAAAAGAP7/AAACAAAAAAAHAAEAAAACAAAAAAAFAAYAAAACAAIAAAAHAAMAAAACAAIAAAD+/wAAAAAAAAIAAAD//wIAAAAAAAIAAAAAAAMAAAAAAAIAAAABAAUAAAAAAAIAAAACAAYAAAAAAAIAAAD+//7/AAAAAAAAAAAEAP//AAAFAAIAAAAEAP7/AAAAAAAAAAD//wEAAAAAAAEAAAD+////AAAAAAEAAAACAAUAAAAFAAAAAAACAAMAAAAEAAEAAAAAAAIAAAAFAAAAAAD//wAAAAAFAAAAAAA=")
+tile_set = SubResource("TileSet_16arb")
+script = ExtResource("10_ad3wc")

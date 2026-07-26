@@ -9,6 +9,8 @@ class_name LevelSelectButton
 
 @onready var number = level_number - 1
 
+var unlocked: bool = false
+
 var newly_unlocked: bool = false
 var board_offset: int = 0 # offset used for computing region, 0-15
 
