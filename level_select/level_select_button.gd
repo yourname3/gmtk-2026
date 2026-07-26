@@ -46,11 +46,11 @@ func _ready() -> void:
 	#print("me: ", number, " completed: ", Global.save_data.level_completed(number))
 	if Global.save_data.level_completed(number):
 		%Piece.self_modulate = WON_FILL
-		%Piece.set_instance_shader_parameter(&"line_colour", WON_LINE)
+		%Piece.material.set_shader_parameter(&"line_colour", WON_LINE)
 		#%Label.add_theme_color_override(&"font_color", WON_LINE)
 	else:
 		%Piece.self_modulate = Color.TRANSPARENT
-		%Piece.set_instance_shader_parameter(&"line_colour", NOT_WON_COLOR)
+		%Piece.material.set_shader_parameter(&"line_colour", NOT_WON_COLOR)
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():

@@ -13,6 +13,7 @@ config_version=5
 config/name="gmtk2026"
 run/main_scene="uid://dxvfnkso5o1tc"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/image="uid://b27ekqeafe40r"
 config/icon="res://icon.svg"
 
 [audio]
@@ -65,4 +66,5 @@ fullscreen={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+limits/global_shader_variables/buffer_size=1024
 environment/defaults/default_clear_color=Color(0.67, 0.46285835, 0.4355, 1)

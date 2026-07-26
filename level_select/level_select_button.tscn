@@ -131,7 +131,9 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wn1d"]
+resource_local_to_scene = true
 shader = ExtResource("7_ey8h1")
+shader_parameter/line_colour = Color(1, 1, 1, 1)
 
 [node name="Button" type="Button" unique_id=324410128]
 offset_right = 256.0
@@ -177,8 +179,6 @@ libraries/ = SubResource("AnimationLibrary_ey8h1")
 unique_name_in_owner = true
 self_modulate = Color(0.23168069, 0.36520612, 0.14589173, 1)
 material = SubResource("ShaderMaterial_4wn1d")
-instance_shader_parameters/line_colour = Color(0.26458463, 0.62555677, 5.7756904e-07, 1)
-instance_shader_parameters/line_thickness = 0.00800000038
 position = Vector2(196.81563, 253.63126)
 scale = Vector2(0.9438721, 0.9438721)
 texture = ExtResource("8_aewuc")

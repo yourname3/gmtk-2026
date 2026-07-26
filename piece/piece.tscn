@@ -17,7 +17,9 @@
 [ext_resource type="AudioStream" uid="uid://ba1un0d6rel27" path="res://sfx/piece_select.wav" id="15_tvx31"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wn1d"]
+resource_local_to_scene = true
 shader = ExtResource("2_4wn1d")
+shader_parameter/line_colour = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6byuq"]
 size = Vector2(240, 240)
@@ -357,8 +359,6 @@ script = ExtResource("1_6byuq")
 unique_name_in_owner = true
 self_modulate = Color(0.11764706, 0.07450981, 0.05882353, 1)
 material = SubResource("ShaderMaterial_4wn1d")
-instance_shader_parameters/line_colour = Color(0.67125565, 0.4961869, 0.2601706, 1)
-instance_shader_parameters/line_thickness = 0.00800000038
 position = Vector2(128, 256)
 texture = ExtResource("1_l0ktr")
 offset = Vector2(0, -128)

@@ -116,8 +116,8 @@ func _ready() -> void:
 	update_appearance()
 	
 	if not Engine.is_editor_hint():
-		sprite.set_instance_shader_parameter(&"line_thickness", 0.0)
-		sprite.set_instance_shader_parameter(&"line_colour", COLOR_BLACK_LINE if is_black else COLOR_WHITE_LINE)
+		# sprite.set_instance_shader_parameter(&"line_thickness", 0.0)
+		sprite.material.set_shader_parameter(&"line_colour", COLOR_BLACK_LINE if is_black else COLOR_WHITE_LINE)
 
 var _highlight_tween: Tween = null
 var _highlight_state: bool = false
@@ -136,9 +136,9 @@ func _set_highlight(hl: bool, hard: bool = false) -> void:
 		_highlight_tween = null
 		
 	_highlight_tween = create_tween()
-	if hl != _highlight_state:
-		_highlight_tween.tween_property(sprite, ^"instance_shader_parameters/line_thickness",
-			0.008 if hl else 0.0, 0.1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	#if hl != _highlight_state:
+		#_highlight_tween.tween_property(sprite, ^"instance_shader_parameters/line_thickness",
+			#0.008 if hl else 0.0, 0.1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	if true: #hard != _highlight_hard or special != _highlight_special:
 		var color: Color = COLOR_BLACK_LINE if is_black else COLOR_WHITE_LINE
 		var color2 = color
@@ -147,7 +147,7 @@ func _set_highlight(hl: bool, hard: bool = false) -> void:
 			if special:
 				color2 = Card.HIGHLIGHT_SPECIAL_HARD if hard else Card.HIGHLIGHT_SPECIAL_SOFT
 		color = color2.lerp(color, 0.2)
-		_highlight_tween.parallel().tween_property(sprite, ^"instance_shader_parameters/line_colour",
+		_highlight_tween.parallel().tween_property(sprite.material, ^"shader_parameter/line_colour",
 			color, 0.1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		
 	_highlight_state = hl
