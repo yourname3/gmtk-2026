@@ -51,7 +51,12 @@ func _clear_highlights(fun: bool) -> void:
 	clear_preview()
 	for child in get_children():
 		if child is BoardHighlight:
-			child.die(fun)
+			if child.is_queued_for_deletion():
+				pass
+			elif child.is_preview_move:
+				child.queue_free()
+			else:
+				child.die(fun)
 	highlight_map.clear()
 	
 func clear_preview() -> void:
@@ -146,10 +151,22 @@ func _compute_special(location: Vector2i) -> bool:
 			return Board.instance.piece_map.get(location) != null
 	
 	return false
+	
+func _sfx(timer: float) -> void:
+	tink.pitch_scale = 1.0
+	tink.volume_db = tink_reset_volume
+	
+	for child in get_children():
+		if is_instance_valid(child) and child is BoardHighlight:
+			tink.pitch_scale *= 1.04
+			tink.volume_db -= 0.2
+			tink.play()
+			await get_tree().create_timer(timer, true).timeout
 
 func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 	select_state = SelectState.LOCATION_ONLY if location_only else SelectState.LOCATION
 	select_id += 1
+	var own_id = select_id
 	
 	var moves = MoveCalculator.new()
 	# By default, set the capture rules normally...
@@ -161,28 +178,24 @@ func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 	
 	var timer = 0.1 / moves.moves.size()
 	timer = min(timer, 0.02)
+	var total_time: float = 0.0
 	
-	var time := Time.get_ticks_msec()
-	
-	tink.pitch_scale = 1.0
-	tink.volume_db = tink_reset_volume
 	for move in moves.moves:
-		tink.play()
+		if own_id != select_id: break
 		
 		var h := _add_highlight(move.x, move.y)
 		h.die_pitch = tink.pitch_scale
-		h.die_time = (Time.get_ticks_msec() - time) / 1000.0
+		h.die_time = (total_time - timer)
 		h.move_rel = move - piece.tile_pos()
+		h.delay = total_time
 		
 		var special = _compute_special(move)
 		if special:
 			h.specialify()
 		
-		tink.pitch_scale *= 1.04
-		tink.volume_db -= 0.2
-		await get_tree().create_timer(timer, true).timeout
-		#total_time += timer
+		total_time += timer
 			
+	_sfx(timer) # IMPORTANT! DON'T AWAIT THIS!
 	var bh: BoardHighlight = null
 			
 	if not (location_only and moves.moves.is_empty()):
@@ -190,6 +203,9 @@ func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 	var pos := MOVE_NULL
 	if bh != null:
 		pos = Vector2i(bh.position / 256)
+	#else:
+		# Clear saved piece so we don't try to select it.
+		#Piece.last_select_piece = null
 	
 	_clear_highlights(bh != null)
 		
@@ -213,5 +229,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event is InputEventMouseButton:
 				if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.is_pressed():
 					SignalBus.move_selected.emit(null) # Deselect
+					# Clear saved piece so we don't try to select it.
+					Piece.last_select_piece = null
 		
 					

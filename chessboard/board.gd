@@ -134,6 +134,8 @@ var outstanding_undos: int = 0
 func undo() -> void:
 	if undo_stacks == 0: return
 	
+	Piece.last_move_piece = null # reset this to null...
+	
 	undo_stacks -= 1
 	SignalBus.undo.emit()
 	

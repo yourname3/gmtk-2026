@@ -8,12 +8,22 @@ var has_won: bool = false # whether we've ever hit the win state this level
 
 @export var cards: Array[CardData] = []
 
+var _pending_reselect: Piece = null
+
+func try_to_reselect_piece(piece: Piece) -> void:
+	if Card.selected_card != null: # If we selected a card, try to select the last-used piece
+		if Card.selected_card.data.activation == CardData.Activate.PieceMove:
+			if piece != null and piece.alive and piece.is_selectable():
+				piece.move_this()
+
 # Applies any relevant state updates when a new card becomes "selected" for real.
 func select_card(card: Card) -> void:
 	if Card.selected_hard: %Select.play() # always play this on click
+	var changed := false
 	
 	if card != Card.selected_card: # Reset board selection for now..
 		%Handle.play()
+		changed = true
 		if BoardHighlighter.select_state == BoardHighlighter.SelectState.LOCATION:
 			SignalBus.move_selected.emit(null)
 	Card.selected_card = card
@@ -21,6 +31,7 @@ func select_card(card: Card) -> void:
 	var set_select_state := false
 	
 	if Card.is_activated_on_piece_move():
+		#SignalBus.move_selected.emit(null)
 		if BoardHighlighter.select_state != BoardHighlighter.SelectState.LOCATION: # Todo...
 			BoardHighlighter.select_state = BoardHighlighter.SelectState.PIECE
 		set_select_state = true
@@ -36,6 +47,15 @@ func select_card(card: Card) -> void:
 		
 	BoardHighlighter.select_filter = card.data.piece_filter
 	BoardHighlighter.select_rank_filter = card.data.rank_filter
+	
+	if _pending_reselect != null:
+		try_to_reselect_piece(_pending_reselect)
+		_pending_reselect = null
+	elif changed:
+		if is_instance_valid(Piece.last_select_piece):
+			try_to_reselect_piece(Piece.last_select_piece)
+		else:
+			Piece.last_select_piece = null
 
 func arrange_cards() -> void:
 	const w: float = 384
@@ -151,11 +171,21 @@ func _ready() -> void:
 					%AnimationPlayer.play(&"hide_success")
 		
 		await get_tree().process_frame
+		if is_instance_valid(Piece.last_move_piece):	
+			_pending_reselect = Piece.last_move_piece
+		else:
+			Piece.last_move_piece = null
 		if Card.selected_card == null:
 			for child in active_cards:
 				if not child.is_queued_for_deletion():
 					select_card(child)
 					break
+					
+					
+		#if Card.selected_card != null: # If we selected a card, try to select the last-used piece
+			#if Card.selected_card.data.activation == CardData.Activate.PieceMove:
+				#if Piece.last_move_piece != null and Piece.last_move_piece.alive and Piece.last_move_piece.is_selectable():
+					#Piece.last_move_piece.move_this()
 	)
 	
 	SignalBus.undo.connect(func():
@@ -185,4 +215,5 @@ func move_to_align_bottom_y_with(desired_bottom_y: float) -> void:
 func _process(delta: float) -> void:
 	#if Engine.is_editor_hint():
 	arrange_cards()
+	_pending_reselect = null
 		#return

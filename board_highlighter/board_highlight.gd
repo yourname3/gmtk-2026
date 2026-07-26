@@ -3,6 +3,7 @@ class_name BoardHighlight
 
 var die_pitch: float = 1.0
 var die_time: float = 0.0
+var delay: float = 0.0
 
 var move_rel: Vector2i = Vector2.ZERO
 var is_preview_move: bool = false
@@ -20,6 +21,12 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void
 			
 func _ready() -> void:
 	SignalBus.preview_cleared.connect(func(): _has_preview_move = false)
+	
+	%Sprite.scale = Vector2.ZERO
+	
+	await get_tree().process_frame # wait until we get our delay assignment
+	await get_tree().create_timer(delay, true).timeout
+	%AnimationPlayer.play(&"appear")
 			
 func tile_pos() -> Vector2i:
 	return Vector2i(position / 256)

@@ -16,6 +16,8 @@ static var last_move_piece: Piece = null
 static var last_move_capture: Piece = null
 static var last_move_had_captured: bool = false
 
+static var last_select_piece: Piece = null
+
 enum Type {
 	PAWN,
 	ROOK,
@@ -108,6 +110,8 @@ func update_appearance() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Piece.last_move_piece = null
+	Piece.last_select_piece = null
 	#if color_adjust:
 		#color_adjust = false
 	COLOR_BLACK_LINE = COLOR_BLACK_LINE.lerp(COLOR_BLACK, 0.7)
@@ -233,6 +237,7 @@ func move_this(location_only: bool = false) -> void:
 	if not Card.card_playing:
 		%Select.play()
 	_is_move_selector = true
+	last_select_piece = self
 	var target = await BoardHighlighter.select_move(self, location_only)
 	_is_move_selector = false
 	if target != BoardHighlighter.MOVE_NULL:
@@ -355,6 +360,9 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void
 					if not BoardHighlighter.is_tile_highlighted(tile_pos()):
 						# First, remove the existing highlights...
 						SignalBus.move_selected.emit(null)
+						# Clear saved piece so we don't try to select it.
+						Piece.last_select_piece = null
 						# Then invoke ourselves, unless we were already selected (in that case deselect)
 						if not is_selector: move_this()
+						
 	

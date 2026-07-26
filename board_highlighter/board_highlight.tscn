@@ -83,8 +83,8 @@ position = Vector2(128, 128)
 shape = SubResource("RectangleShape2D_4bhk2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=68366556]
+unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_x3je2")
-autoplay = &"appear"
 
 [node name="Tink" type="AudioStreamPlayer" parent="." unique_id=2026354137]
 unique_name_in_owner = true
