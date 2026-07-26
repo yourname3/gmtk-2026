@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="gmtk2026"
+config/name="Clock Chess"
 run/main_scene="uid://dxvfnkso5o1tc"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://b27ekqeafe40r"
-config/icon="res://icon.svg"
+config/icon="uid://c81wvby5767xr"
 
 [audio]
 

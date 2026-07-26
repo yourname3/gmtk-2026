@@ -12,6 +12,8 @@
 [ext_resource type="Theme" uid="uid://c57qi4kamue8a" path="res://abstract_theme_bigger.tres" id="8_fdc3t"]
 [ext_resource type="Script" uid="uid://boelojhpopqmn" path="res://level/undo_button.gd" id="9_x6ek4"]
 [ext_resource type="PackedScene" uid="uid://bi3lyalojid0q" path="res://pause_menu/pause_menu.tscn" id="10_a5rkb"]
+[ext_resource type="Texture2D" uid="uid://bgq2q5tf5la8j" path="res://pencil.png" id="11_pvn8g"]
+[ext_resource type="Texture2D" uid="uid://b2l3pls2cqf3p" path="res://desk/line_paper.png" id="12_t5hyg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x6ek4"]
 texture = ExtResource("2_ucx4l")
@@ -127,6 +129,22 @@ theme_override_font_sizes/font_size = 100
 text = "Undo"
 script = ExtResource("9_x6ek4")
 metadata/_edit_use_anchors_ = true
+
+[node name="Pencil" type="Sprite2D" parent="CanvasLayer/Control/CardHand" unique_id=2132846049]
+position = Vector2(-1753.9996, -503.89154)
+rotation = -3.433452
+texture = ExtResource("11_pvn8g")
+
+[node name="Pencil2" type="Sprite2D" parent="CanvasLayer/Control/CardHand" unique_id=369232620]
+position = Vector2(-1669.8536, -723.27203)
+rotation = -3.3584223
+texture = ExtResource("11_pvn8g")
+
+[node name="LinePaper" type="Sprite2D" parent="CanvasLayer/Control/CardHand" unique_id=250837407]
+position = Vector2(2561.4314, -2435.0056)
+rotation = 0.25613526
+scale = Vector2(2.6752198, 2.6752198)
+texture = ExtResource("12_t5hyg")
 
 [node name="Clock" parent="CanvasLayer/Control" unique_id=444931598 instance=ExtResource("7_ucx4l")]
 position = Vector2(3071.3267, 898.5584)
