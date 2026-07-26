@@ -15,9 +15,16 @@ func update_face(init: bool = false) -> void:
 	
 	if not init:
 		var tween = create_tween()
+		
+		if next_sec == 0: next_sec = TAU
+		if next_min == 0 and minute_hand.rotation != 0: next_min = TAU
+		
 		tween.tween_property(minute_hand, ^"rotation", next_min, 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 		tween.parallel().tween_property(second_hand, ^"rotation", next_sec, 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 		await tween.finished
+		
+	if next_sec == TAU: next_sec = 0
+	if next_min == TAU: next_min = 0
 	
 	second_hand.rotation = next_sec
 	minute_hand.rotation = next_min

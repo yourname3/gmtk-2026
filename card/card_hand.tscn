@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bhcwosb87ke46" path="res://card/card_hand.gd" id="1_6uf4r"]
 [ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="2_3q5ml"]
-[ext_resource type="AudioStream" uid="uid://chxj1kydn8387" path="res://sfx/win.mp3" id="3_idjld"]
 [ext_resource type="Theme" uid="uid://c57qi4kamue8a" path="res://abstract_theme_bigger.tres" id="3_ossux"]
 [ext_resource type="Script" uid="uid://cp13ib8hdd13o" path="res://button_with_sfx.gd" id="4_584ha"]
+[ext_resource type="AudioStream" uid="uid://334xgcqji4ge" path="res://sfx/win_v3.wav" id="5_5mnyu"]
 [ext_resource type="AudioStream" uid="uid://dcxioqaohp" path="res://sfx/card1.wav" id="6_ka2tl"]
 [ext_resource type="AudioStream" uid="uid://d27x6e03282qv" path="res://sfx/card2.wav" id="7_5mnyu"]
 [ext_resource type="AudioStream" uid="uid://c3lhob163e8wo" path="res://sfx/card3.wav" id="8_41sks"]
@@ -253,8 +253,8 @@ libraries/ = SubResource("AnimationLibrary_ossux")
 
 [node name="Win" type="AudioStreamPlayer" parent="." unique_id=1896074856]
 unique_name_in_owner = true
-stream = ExtResource("3_idjld")
-volume_db = -6.0
+stream = ExtResource("5_5mnyu")
+volume_db = -8.0
 bus = &"SFX"
 
 [node name="Handle" type="AudioStreamPlayer" parent="." unique_id=1990446955]
