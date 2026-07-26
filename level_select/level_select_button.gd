@@ -29,6 +29,7 @@ func _ready() -> void:
 	
 	pressed.connect(func():
 		%Selected.play_floating()
+		ButtonSFX.click.play()
 		get_parent().disable_all_buttons()
 		Global.load_level(number)
 	)

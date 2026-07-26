@@ -3,6 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://d3hmnieqmkk1t" path="res://sfx/button_click.wav" id="1_er4ts"]
 [ext_resource type="Script" uid="uid://c4qrg3xo3fyf2" path="res://button_sfx.gd" id="1_frmwc"]
 [ext_resource type="AudioStream" uid="uid://bodrp1p1k4g1r" path="res://sfx/button_hover.wav" id="2_frmwc"]
+[ext_resource type="AudioStream" uid="uid://bdyvjfs5j1in4" path="res://sfx/plastic_button.wav" id="4_m3bpw"]
 
 [node name="ButtonSFX" type="Node" unique_id=1040962271]
 process_mode = 3
@@ -19,5 +20,13 @@ bus = &"SFX"
 unique_name_in_owner = true
 stream = ExtResource("2_frmwc")
 volume_db = -20.0
+max_polyphony = 3
+bus = &"SFX"
+
+[node name="Click2" type="AudioStreamPlayer" parent="." unique_id=776662637]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("4_m3bpw")
+volume_db = -12.0
 max_polyphony = 3
 bus = &"SFX"
