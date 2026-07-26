@@ -171,10 +171,10 @@ func _ready() -> void:
 					%AnimationPlayer.play(&"hide_success")
 		
 		await get_tree().process_frame
-		if is_instance_valid(Piece.last_move_piece):	
-			_pending_reselect = Piece.last_move_piece
-		else:
-			Piece.last_move_piece = null
+		#if is_instance_valid(Piece.last_move_piece):	
+			#_pending_reselect = Piece.last_move_piece
+		#else:
+			#Piece.last_move_piece = null
 		if Card.selected_card == null:
 			for child in active_cards:
 				if not child.is_queued_for_deletion():

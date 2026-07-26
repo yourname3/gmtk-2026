@@ -12,7 +12,7 @@
 [node name="Level" unique_id=1114344541 instance=ExtResource("1_6qo5s")]
 
 [node name="ChessBoard" parent="." index="1" unique_id=854148038]
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 65538, 65536, 0, 131075, 65536, 0, 65536, 65536, 0, 131073, 65536, 0, 196610, 65536, 0, 2, 0, 0, 65539, 0, 0, 131072, 0, 0, 196609, 0, 0, 196608, 65536, 0, 3, 65536, 0, 131074, 0, 0, 4, 0, 0, 65540, 65536, 0, 131076, 0, 0, 196612, 65536, 0, 5, 65536, 0, 131077, 65536, 0, 196613, 0, 0, 6, 0, 0, 65542, 65536, 0, 131078, 0, 0, 196614, 65536, 0, 262144, 0, 0, 327680, 65536, 0, 393216, 0, 0, 262145, 65536, 0, 393217, 65536, 0, 262146, 0, 0, 327682, 65536, 0, 393218, 0, 0, 262147, 65536, 0, 327683, 0, 0, 393219, 65536, 0, 262148, 0, 0, 327684, 65536, 0, 393220, 0, 0, 262149, 65536, 0, 393221, 65536, 0, 262150, 0, 0, 327686, 65536, 0, 393222, 0, 0)
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 131074, 0, 0, 262148, 0, 0, 1, 65536, 0, 65538, 65536, 0, 131075, 65536, 0, 196612, 65536, 0, 65536, 65536, 0, 131073, 65536, 0, 196610, 65536, 0, 262147, 65536, 0, 2, 0, 0, 65539, 0, 0, 131076, 0, 0, 131072, 0, 0, 196609, 0, 0, 262146, 0, 0, 196608, 65536, 0, 262145, 65536, 0, 262144, 0, 0, 3, 65536, 0, 65540, 65536, 0, 4, 0, 0, 5, 65536, 0, 131077, 65536, 0, 196613, 0, 0, 6, 0, 0, 65542, 65536, 0, 131078, 0, 0, 196614, 65536, 0, 327680, 65536, 0, 393216, 0, 0, 393217, 65536, 0, 327682, 65536, 0, 393218, 0, 0, 327683, 0, 0, 393219, 65536, 0, 327684, 65536, 0, 393220, 0, 0, 262149, 65536, 0, 393221, 65536, 0, 262150, 0, 0, 327686, 65536, 0, 393222, 0, 0)
 
 [node name="Trim" parent="ChessBoard" index="1" unique_id=668759574]
 tile_map_data = PackedByteArray(0, 0, 1, 0, 5, 0, 0, 0, 1, 0, 1, 0, 0, 0, 3, 0, 3, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 5, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 5, 0, 5, 0, 0, 0, 1, 0, 1, 0, 0, 0)
@@ -49,10 +49,10 @@ is_black = false
 cards = Array[ExtResource("3_wvro2")]([ExtResource("4_6kkwe"), ExtResource("5_0f600"), ExtResource("7_6kkwe"), ExtResource("7_wvro2"), ExtResource("8_wvro2")])
 metadata/_edit_lock_ = true
 
-[node name="CardAnchor" parent="CanvasLayer/Control/CardHand" index="1" unique_id=625709137]
+[node name="CardAnchor" parent="CanvasLayer/Control/CardHand" index="4" unique_id=625709137]
 metadata/_edit_lock_ = true
 
-[node name="UndoButton" parent="CanvasLayer/Control/CardHand" index="2" unique_id=1976124487]
+[node name="UndoButton" parent="CanvasLayer/Control/CardHand" index="5" unique_id=1976124487]
 metadata/_edit_lock_ = true
 
 [node name="Clock" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="1" unique_id=444931598]

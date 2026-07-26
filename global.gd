@@ -31,7 +31,10 @@ var level_names: Array[StringName] = [
 	&"res://levels/card_time_management.tscn", # ?
 	&"res://levels/card_time_management_variation.tscn", # prolly harder than card_time_management
 	&"res://levels/level_holes.tscn", # technically easier than variation in there are more solutions?
-	&"res://levels/level_holes_variation.tscn", # both {medium} for now
+	 # {medium/hard:there is cheese to fix -- do not need gambit card}
+	 # do it without vantage as well... if i can remember how to do it without gambit, that is cooler,
+	 # although it seems quite hard.
+	&"res://levels/level_holes_variation.tscn", # both {medium} for now # rather hard i think
 	&"res://levels/bishops_advance.tscn", # {medium/hard}
 	
 	&"res://levels/mad_tangle.tscn", # {easy}
