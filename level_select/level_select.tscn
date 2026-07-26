@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://olmykxerofge" path="res://level_select/level_select.gd" id="1_kp0lh"]
 [ext_resource type="Texture2D" uid="uid://cnjdtf56fia74" path="res://chessboard/squares.png" id="1_sv8in"]
 [ext_resource type="PackedScene" uid="uid://se1uxpdyqo3b" path="res://level_select/level_select_button.tscn" id="3_kxnyd"]
+[ext_resource type="Texture2D" uid="uid://dg8d0j5sl61gd" path="res://chessboard/sticky_note.png" id="4_mtmfa"]
+[ext_resource type="FontFile" uid="uid://hbposp2sb3s0" path="res://font/Handwriting-Regular.otf" id="5_lqw5f"]
+[ext_resource type="Script" uid="uid://cfovaralyn3cm" path="res://level_select/level_select_label.gd" id="6_lqw5f"]
+[ext_resource type="Texture2D" uid="uid://b2l3pls2cqf3p" path="res://desk/line_paper.png" id="7_mgq0h"]
+[ext_resource type="Texture2D" uid="uid://bgq2q5tf5la8j" path="res://pencil.png" id="8_fxfc6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kp0lh"]
 texture = ExtResource("1_sv8in")
@@ -262,3 +267,58 @@ offset_bottom = 1535.0
 text = " 28"
 level_number = 28
 display_number = 28
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=23883965]
+self_modulate = Color(0.98039216, 0.45882353, 0.68235296, 1)
+position = Vector2(-1023.99976, 256.00003)
+rotation = 0.73148024
+scale = Vector2(1.6390821, 1.6390821)
+texture = ExtResource("4_mtmfa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=638926119]
+self_modulate = Color(0.509467, 0.74293983, 0.2642249, 1)
+position = Vector2(2304, 639.99994)
+rotation = 0.14668658
+scale = Vector2(1.6390822, 1.6390822)
+texture = ExtResource("4_mtmfa")
+
+[node name="Label" type="Label" parent="Sprite2D" unique_id=880846009]
+offset_left = -234.40652
+offset_top = -186.32314
+offset_right = 232.7037
+offset_bottom = 70.00432
+theme_override_colors/font_color = Color(0.22745098, 0.21568628, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("5_lqw5f")
+theme_override_font_sizes/font_size = 42
+text = "Todo list
+
+28 puzzles
+
+Pick up dog
+
+Throw party
+
+Paint the garage
+
+Pick up couch"
+autowrap_mode = 3
+script = ExtResource("6_lqw5f")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=154235166]
+self_modulate = Color(0.9999997, 0.4993016, 0.2780184, 1)
+position = Vector2(-895.99976, 895.99994)
+rotation = 0.14668658
+scale = Vector2(1.6390822, 1.6390822)
+texture = ExtResource("4_mtmfa")
+
+[node name="LinePaper" type="Sprite2D" parent="." unique_id=1828972424]
+position = Vector2(-896.00006, 1792)
+rotation = 2.7907426
+scale = Vector2(1.4858625, 1.4858625)
+texture = ExtResource("7_mgq0h")
+
+[node name="Pencil" type="Sprite2D" parent="." unique_id=1521432547]
+position = Vector2(2944, 767.9999)
+rotation = 4.1821966
+texture = ExtResource("8_fxfc6")

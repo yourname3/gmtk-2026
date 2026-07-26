@@ -147,7 +147,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_mtmfa")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lqw5f")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_1sqxu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mgq0h")
-text = "1"
+text = " 1"
 alignment = 0
 script = ExtResource("2_1sqxu")
 
@@ -168,8 +168,8 @@ script = ExtResource("4_hri88")
 [node name="BoardTile" type="Sprite2D" parent="." unique_id=1063075161]
 unique_name_in_owner = true
 show_behind_parent = true
+position = Vector2(128, 128)
 texture = ExtResource("5_1pek1")
-centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 256, 256)
 

@@ -42,6 +42,9 @@ func _ready() -> void:
 	var t := tile()
 	var tile_column = ((t.x + t.y) % 2 + 2) % 2
 	
+	if tile_column == 0:
+		%BoardTile.rotation = TAU / 4
+	
 	var tile_row: int = (board_offset / 4)
 	tile_column += (board_offset % 4) * 2
 	
