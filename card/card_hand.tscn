@@ -5,6 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://chxj1kydn8387" path="res://sfx/win.mp3" id="3_idjld"]
 [ext_resource type="Theme" uid="uid://c57qi4kamue8a" path="res://abstract_theme_bigger.tres" id="3_ossux"]
 [ext_resource type="Script" uid="uid://cp13ib8hdd13o" path="res://button_with_sfx.gd" id="4_584ha"]
+[ext_resource type="AudioStream" uid="uid://dcxioqaohp" path="res://sfx/card1.wav" id="6_ka2tl"]
+[ext_resource type="AudioStream" uid="uid://d27x6e03282qv" path="res://sfx/card2.wav" id="7_5mnyu"]
+[ext_resource type="AudioStream" uid="uid://c3lhob163e8wo" path="res://sfx/card3.wav" id="8_41sks"]
 
 [sub_resource type="Animation" id="Animation_3q5ml"]
 length = 0.001
@@ -168,6 +171,14 @@ _data = {
 &"show_success": SubResource("Animation_idjld")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vybfc"]
+random_pitch = 1.0594631
+random_volume_offset_db = 0.3
+streams_count = 3
+stream_0/stream = ExtResource("6_ka2tl")
+stream_1/stream = ExtResource("7_5mnyu")
+stream_2/stream = ExtResource("8_41sks")
+
 [node name="CardHand" type="Node2D" unique_id=850826435]
 script = ExtResource("1_6uf4r")
 
@@ -237,4 +248,11 @@ libraries/ = SubResource("AnimationLibrary_ossux")
 unique_name_in_owner = true
 stream = ExtResource("3_idjld")
 volume_db = -6.0
+bus = &"SFX"
+
+[node name="Handle" type="AudioStreamPlayer" parent="." unique_id=1990446955]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_vybfc")
+volume_db = -6.0
+max_polyphony = 8
 bus = &"SFX"

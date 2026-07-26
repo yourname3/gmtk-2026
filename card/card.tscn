@@ -4,9 +4,16 @@
 [ext_resource type="Script" uid="uid://ca7gsmmd2qmjj" path="res://card/card.gd" id="2_4k7q8"]
 [ext_resource type="Texture2D" uid="uid://cqtgcturyds76" path="res://card/card_highlight.png" id="2_f61jr"]
 [ext_resource type="FontFile" uid="uid://duavmdhnyehrq" path="res://font/Kelvinch-Roman.otf" id="2_nwofj"]
+[ext_resource type="AudioStream" uid="uid://bydqtb7j63ig" path="res://sfx/card_play.wav" id="5_346uv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k7q8"]
 size = Vector2(376, 572)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i6okx"]
+random_pitch = 1.0594631
+random_volume_offset_db = 0.3
+streams_count = 1
+stream_0/stream = ExtResource("5_346uv")
 
 [node name="Area2D" type="Area2D" unique_id=2102699138]
 script = ExtResource("2_4k7q8")
@@ -57,3 +64,9 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=16640784]
 visible = false
 shape = SubResource("RectangleShape2D_4k7q8")
+
+[node name="Play" type="AudioStreamPlayer" parent="." unique_id=1246584656]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_i6okx")
+volume_db = -12.0
+bus = &"SFX"

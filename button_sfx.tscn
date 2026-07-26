@@ -11,12 +11,13 @@ script = ExtResource("1_frmwc")
 [node name="Click" type="AudioStreamPlayer" parent="." unique_id=900294102]
 unique_name_in_owner = true
 stream = ExtResource("1_er4ts")
+volume_db = -5.0
 max_polyphony = 3
 bus = &"SFX"
 
 [node name="Hover" type="AudioStreamPlayer" parent="." unique_id=253552817]
 unique_name_in_owner = true
 stream = ExtResource("2_frmwc")
-volume_db = -16.0
+volume_db = -20.0
 max_polyphony = 3
 bus = &"SFX"

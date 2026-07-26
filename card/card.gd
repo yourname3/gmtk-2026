@@ -32,6 +32,9 @@ enum State {
 
 var _state: State = State.NORMAL
 
+func undo_self(): # undo for only this card
+	%Play.play()
+
 static func is_activated_on_piece_move() -> bool:
 	if selected_card != null:
 		return selected_card.data.activation == CardData.Activate.PieceMove
@@ -101,6 +104,8 @@ func _physics_process(delta: float) -> void:
 		highlight.visible = false
 		
 func play(selected_piece: Piece = null) -> void:
+	%Play.play()
+	
 	card_playing = true
 	_state = State.PLAYING
 	SignalBus.card_played.emit(self)

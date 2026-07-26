@@ -11,6 +11,7 @@ var has_won: bool = false # whether we've ever hit the win state this level
 # Applies any relevant state updates when a new card becomes "selected" for real.
 func select_card(card: Card) -> void:
 	if card != Card.selected_card: # Reset board selection for now..
+		%Handle.play()
 		if BoardHighlighter.select_state == BoardHighlighter.SelectState.LOCATION:
 			SignalBus.move_selected.emit(null)
 	Card.selected_card = card
@@ -106,6 +107,7 @@ func _ready() -> void:
 				pos = 0
 			active_cards.insert(pos, card)
 			card._state = Card.State.NORMAL
+			card.undo_self()
 			card.z_index = 0
 			
 			Clock.instance.update(active_cards.size())
