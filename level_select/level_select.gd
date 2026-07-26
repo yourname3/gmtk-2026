@@ -25,6 +25,10 @@ func _ready() -> void:
 		board_offset = (board_offset + 1) % 16
 			
 	var newly_unlocked_arr: Array[LevelSelectButton] = []
+	
+	var level_count := Global.level_names.size()
+	var all_levels_completed = Global.save_data.completed_levels.size() >= level_count
+	var all_levels_were_completed = Global.number_levels_previously_won >= level_count
 			
 	for button in buttons:
 		var enabled = false
@@ -58,6 +62,18 @@ func _ready() -> void:
 	else:
 		for button in newly_unlocked_arr:
 			await button.reveal()
+			
+	if all_levels_completed:
+		if not all_levels_were_completed:
+			%Medal.show()
+			%MedalAnim.play(&"reveal")
+			%UnlockShimmer.play()
+		else:
+			%Medal.show()
+	else:
+		%Medal.hide()
+		
+	Global.number_levels_previously_won = Global.save_data.completed_levels.size()
 
 func disable_all_buttons() -> void:
 	for button in buttons:

@@ -9,6 +9,8 @@ var current_level: int = -1
 # Used for tracking unlocks this session
 var already_completed_levels: Dictionary[int, bool] = {}
 
+var number_levels_previously_won: int = 0
+
 var level_names: Array[StringName] = [
 	&"res://levels/level_intro.tscn",# easy enough
 	&"res://levels/level_intro_variation.tscn", # easy enough
@@ -70,6 +72,9 @@ func load_save_data() -> void:
 		return
 	save_data = save
 	
+	number_levels_previously_won = save_data.completed_levels.size()
+	already_completed_levels = save_data.completed_levels.duplicate()
+	
 func save_save_data() -> void:
 	var err := ResourceSaver.save(save_data, SINGLE_SAVE_PATH)
 	if err != OK:
@@ -80,7 +85,7 @@ func _ready() -> void:
 	load_save_data()
 	# debug mode: clear save
 	# save_data.completed_levels = {}
-	already_completed_levels = save_data.completed_levels.duplicate()
+	
 	
 	# Initialize music. We will load it when possible.
 	ResourceLoader.load_threaded_request("res://music.tscn")
