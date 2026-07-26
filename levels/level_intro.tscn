@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="2_3mg6b"]
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="2_ao5os"]
 [ext_resource type="Resource" uid="uid://caqlqi7aenrmf" path="res://cards/move.tres" id="3_ahbye"]
+[ext_resource type="Texture2D" uid="uid://dg8d0j5sl61gd" path="res://chessboard/sticky_note.png" id="4_ahbye"]
+[ext_resource type="FontFile" uid="uid://hbposp2sb3s0" path="res://font/Handwriting-Regular.otf" id="5_ora6d"]
 
 [node name="Level" unique_id=1114344541 instance=ExtResource("1_8xd68")]
 
@@ -12,6 +14,30 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65537, 0, 0, 131074, 0, 0, 1, 6553
 
 [node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
 cards = Array[ExtResource("2_ao5os")]([ExtResource("3_ahbye"), ExtResource("3_ahbye"), ExtResource("3_ahbye"), ExtResource("3_ahbye")])
+
+[node name="Clock" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="1" unique_id=444931598]
+position = Vector2(3071.3267, 1030.7876)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="2" unique_id=953877991]
+self_modulate = Color(0.9806518, 0.45902765, 0.68041193, 1)
+position = Vector2(2963.1384, 354.61505)
+rotation = -0.0792838
+scale = Vector2(1.40738, 1.40738)
+texture = ExtResource("4_ahbye")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Sprite2D" index="0" unique_id=1643338722]
+offset_left = -234.40652
+offset_top = -186.32314
+offset_right = 232.7037
+offset_bottom = 70.00432
+theme_override_colors/font_color = Color(0.021314872, 0.010474262, 0.216275, 1)
+theme_override_fonts/font = ExtResource("5_ora6d")
+theme_override_font_sizes/font_size = 42
+text = "- Choose cards by hovering or clicking them
+- Click on pieces to move them
+- Your goal: Use every card, and capture every white piece
+- You're playing the black pieces"
+autowrap_mode = 3
 
 [node name="Piece" parent="." index="4" unique_id=1638246795 instance=ExtResource("2_3mg6b")]
 position = Vector2(0, 512)

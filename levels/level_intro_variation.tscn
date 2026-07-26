@@ -5,6 +5,8 @@
 [ext_resource type="Resource" uid="uid://caqlqi7aenrmf" path="res://cards/move.tres" id="3_46a0p"]
 [ext_resource type="Resource" uid="uid://d0deoaiqlkevd" path="res://cards/move_any_x_times.tres" id="4_2q8rn"]
 [ext_resource type="PackedScene" uid="uid://c2kifjh1wo0y5" path="res://piece/piece.tscn" id="4_07u7a"]
+[ext_resource type="Texture2D" uid="uid://dg8d0j5sl61gd" path="res://chessboard/sticky_note.png" id="5_07u7a"]
+[ext_resource type="FontFile" uid="uid://hbposp2sb3s0" path="res://font/Handwriting-Regular.otf" id="6_w4po1"]
 
 [node name="Level" unique_id=1114344541 instance=ExtResource("1_n4h68")]
 
@@ -13,6 +15,29 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65537, 0, 0, 131074, 0, 0, 1, 6553
 
 [node name="CardHand" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="0" unique_id=850826435]
 cards = Array[ExtResource("2_2q8rn")]([ExtResource("3_46a0p"), ExtResource("3_46a0p"), ExtResource("4_2q8rn")])
+
+[node name="Clock" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="1" unique_id=444931598]
+position = Vector2(3062.3108, 958.6625)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control" parent_id_path=PackedInt32Array(746026494) index="2" unique_id=64475411]
+self_modulate = Color(0.9999997, 0.4993016, 0.2780184, 1)
+position = Vector2(2903.0347, 363.63058)
+rotation = 0.11935188
+scale = Vector2(1.40738, 1.40738)
+texture = ExtResource("5_07u7a")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Sprite2D" index="0" unique_id=1621835090]
+offset_left = -234.40652
+offset_top = -186.32314
+offset_right = 232.7037
+offset_bottom = 70.00432
+theme_override_colors/font_color = Color(0.021314872, 0.010474262, 0.216275, 1)
+theme_override_fonts/font = ExtResource("6_w4po1")
+theme_override_font_sizes/font_size = 42
+text = "- Different cards have different effects
+- You'll have to think about both order and targets
+- Some cards care about X. X is the current counter below"
+autowrap_mode = 3
 
 [node name="Piece" parent="." index="4" unique_id=1638246795 instance=ExtResource("4_07u7a")]
 position = Vector2(0, 512)
