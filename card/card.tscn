@@ -68,5 +68,5 @@ shape = SubResource("RectangleShape2D_4k7q8")
 [node name="Play" type="AudioStreamPlayer" parent="." unique_id=1246584656]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_i6okx")
-volume_db = -12.0
+volume_db = -20.0
 bus = &"SFX"

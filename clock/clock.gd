@@ -30,8 +30,12 @@ func _anim_update_clock() -> void:
 func update(cards: int, initial: bool = false) -> void:
 	if count != cards:
 		%ClockFuture.text = str(cards)
+		count = cards
+		if not initial:
+			await get_tree().create_timer(0.1, false).timeout
 		%AnimationPlayer.play(&"flip")
 		if not initial:
 			%SplitFlapSFX.play()
-	count = cards
+	else:
+		count = cards
 	
