@@ -56,3 +56,5 @@ func redify() -> void:
 	
 	previewify()
 	
+func specialify() -> void:
+	%Sprite.texture = preload("res://chessboard/highlight_special.png")

@@ -136,6 +136,17 @@ func preview_moves_red(locations: Array[Vector2i]) -> void:
 		h.redify()
 		preview_nodes.append(h)
 
+func _compute_special(location: Vector2i) -> bool:
+	if Card.selected_card == null: return false
+	
+	match Card.selected_card.data.ability:
+		CardData.SpecialAbility.SACRIFICE_ON_CAPTURE:
+			return Board.instance.piece_map.get(location) != null
+		CardData.SpecialAbility.KNIGHT_ON_CAPTURE:
+			return Board.instance.piece_map.get(location) != null
+	
+	return false
+
 func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 	select_state = SelectState.LOCATION_ONLY if location_only else SelectState.LOCATION
 	select_id += 1
@@ -162,6 +173,10 @@ func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 		h.die_pitch = tink.pitch_scale
 		h.die_time = (Time.get_ticks_msec() - time) / 1000.0
 		h.move_rel = move - piece.tile_pos()
+		
+		var special = _compute_special(move)
+		if special:
+			h.specialify()
 		
 		tink.pitch_scale *= 1.04
 		tink.volume_db -= 0.2
