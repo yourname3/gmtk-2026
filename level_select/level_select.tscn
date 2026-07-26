@@ -19,6 +19,7 @@ script = ExtResource("1_kp0lh")
 
 [node name="ChessBoard" type="TileMap" parent="." unique_id=1297443004]
 unique_name_in_owner = true
+visible = false
 z_index = -10
 tile_set = SubResource("TileSet_mtmfa")
 format = 2
@@ -185,7 +186,28 @@ number = 23
 
 [node name="Button25" parent="." unique_id=1000407654 instance=ExtResource("3_kxnyd")]
 offset_left = 1280.0
+offset_top = 1024.0
+offset_right = 1536.0
+offset_bottom = 1279.0
+number = 24
+
+[node name="Button26" parent="." unique_id=295203948 instance=ExtResource("3_kxnyd")]
+offset_left = 1280.0
 offset_top = 1280.0
 offset_right = 1536.0
 offset_bottom = 1535.0
-number = 24
+number = 25
+
+[node name="Button27" parent="." unique_id=656104611 instance=ExtResource("3_kxnyd")]
+offset_left = 1536.0
+offset_top = 1024.0
+offset_right = 1792.0
+offset_bottom = 1279.0
+number = 26
+
+[node name="Button28" parent="." unique_id=139356389 instance=ExtResource("3_kxnyd")]
+offset_left = 1536.0
+offset_top = 1280.0
+offset_right = 1792.0
+offset_bottom = 1535.0
+number = 27
