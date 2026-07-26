@@ -110,7 +110,8 @@ func preview_post_move(piece: Piece, location: Vector2i) -> void:
 	var timer = 0.1 / moves.moves.size()
 	timer = min(timer, 0.02)
 	
-	var time := Time.get_ticks_msec()
+	#var time := Time.get_ticks_msec()
+	var total_time: float = 0.0
 	
 	for move in moves.moves:
 		if my_id != preview_id:
@@ -119,15 +120,17 @@ func preview_post_move(piece: Piece, location: Vector2i) -> void:
 		
 		h = _add_highlight(move.x, move.y, false)
 		h.die_pitch = tink.pitch_scale
-		h.die_time = (Time.get_ticks_msec() - time) / 1000.0
+		h.die_time = (total_time - timer)#(Time.get_ticks_msec() - time) / 1000.0
 		h.move_rel = move - piece.tile_pos()
+		h.delay = total_time
 		h.redify()
 		preview_nodes.append(h)
 		
 		tink.pitch_scale *= 1.04
 		tink.volume_db -= 0.2
-		await get_tree().create_timer(timer, true).timeout
-		#total_time += timer
+		#await get_tree().create_timer(timer, true).timeout
+		total_time += timer
+	_sfx(timer) # IMPORTANT! DON'T AWAIT THIS!
 	
 	
 func preview_moves_red(locations: Array[Vector2i]) -> void:
