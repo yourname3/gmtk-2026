@@ -161,7 +161,8 @@ volume_db = -4.0
 bus = &"SFX"
 script = ExtResource("4_hri88")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1063075161]
+[node name="BoardTile" type="Sprite2D" parent="." unique_id=1063075161]
+unique_name_in_owner = true
 show_behind_parent = true
 texture = ExtResource("5_1pek1")
 centered = false

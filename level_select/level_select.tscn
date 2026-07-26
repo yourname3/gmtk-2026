@@ -37,13 +37,11 @@ offset_left = 256.0
 offset_top = 512.0
 offset_right = 512.0
 offset_bottom = 767.0
-text = "2"
 number = 1
 
 [node name="Button3" parent="." unique_id=844356856 instance=ExtResource("3_kxnyd")]
 offset_top = 256.0
 offset_bottom = 511.0
-text = "3"
 number = 2
 
 [node name="Button4" parent="." unique_id=2048051211 instance=ExtResource("3_kxnyd")]
@@ -51,13 +49,11 @@ offset_left = 256.0
 offset_top = 256.0
 offset_right = 512.0
 offset_bottom = 511.0
-text = "4"
 number = 3
 
 [node name="Button5" parent="." unique_id=600536476 instance=ExtResource("3_kxnyd")]
 offset_left = 256.0
 offset_right = 512.0
-text = "5"
 number = 4
 
 [node name="Button6" parent="." unique_id=1584553499 instance=ExtResource("3_kxnyd")]
@@ -65,7 +61,6 @@ offset_left = 256.0
 offset_top = -256.0
 offset_right = 512.0
 offset_bottom = -1.0
-text = "6"
 number = 5
 
 [node name="Button7" parent="." unique_id=1746998881 instance=ExtResource("3_kxnyd")]
@@ -73,25 +68,21 @@ offset_left = 512.0
 offset_top = -256.0
 offset_right = 768.0
 offset_bottom = -1.0
-text = "7"
 number = 6
 
 [node name="Button8" parent="." unique_id=942043987 instance=ExtResource("3_kxnyd")]
 offset_left = 512.0
 offset_right = 768.0
-text = "8"
 number = 7
 
 [node name="Button9" parent="." unique_id=2119975314 instance=ExtResource("3_kxnyd")]
 offset_left = 768.0
 offset_right = 1024.0
-text = "9"
 number = 8
 
 [node name="Button10" parent="." unique_id=691804079 instance=ExtResource("3_kxnyd")]
 offset_left = 1024.0
 offset_right = 1280.0
-text = "10"
 number = 9
 
 [node name="Button11" parent="." unique_id=1105051445 instance=ExtResource("3_kxnyd")]
@@ -99,7 +90,6 @@ offset_left = 1024.0
 offset_top = 256.0
 offset_right = 1280.0
 offset_bottom = 511.0
-text = "11"
 number = 10
 
 [node name="Button12" parent="." unique_id=117081686 instance=ExtResource("3_kxnyd")]
@@ -107,7 +97,6 @@ offset_left = 768.0
 offset_top = 256.0
 offset_right = 1024.0
 offset_bottom = 511.0
-text = "12"
 number = 11
 
 [node name="Button13" parent="." unique_id=1781662565 instance=ExtResource("3_kxnyd")]
@@ -115,7 +104,6 @@ offset_left = 768.0
 offset_top = 512.0
 offset_right = 1024.0
 offset_bottom = 767.0
-text = "13"
 number = 12
 
 [node name="Button14" parent="." unique_id=1007305185 instance=ExtResource("3_kxnyd")]
@@ -123,7 +111,6 @@ offset_left = 1024.0
 offset_top = 512.0
 offset_right = 1280.0
 offset_bottom = 767.0
-text = "14"
 number = 13
 
 [node name="Button15" parent="." unique_id=1731613347 instance=ExtResource("3_kxnyd")]
@@ -131,7 +118,6 @@ offset_left = 1280.0
 offset_top = 512.0
 offset_right = 1536.0
 offset_bottom = 767.0
-text = "15"
 number = 14
 
 [node name="Button16" parent="." unique_id=1468558147 instance=ExtResource("3_kxnyd")]
@@ -139,7 +125,6 @@ offset_left = 1024.0
 offset_top = 768.0
 offset_right = 1280.0
 offset_bottom = 1023.0
-text = "16"
 number = 15
 
 [node name="Button17" parent="." unique_id=2127793266 instance=ExtResource("3_kxnyd")]
@@ -147,7 +132,6 @@ offset_left = 768.0
 offset_top = 768.0
 offset_right = 1024.0
 offset_bottom = 1023.0
-text = "17"
 number = 16
 
 [node name="Button18" parent="." unique_id=404317645 instance=ExtResource("3_kxnyd")]
@@ -155,7 +139,6 @@ offset_left = 1024.0
 offset_top = 1024.0
 offset_right = 1280.0
 offset_bottom = 1279.0
-text = "18"
 number = 17
 
 [node name="Button19" parent="." unique_id=54575893 instance=ExtResource("3_kxnyd")]
@@ -163,7 +146,6 @@ offset_left = 768.0
 offset_top = 1024.0
 offset_right = 1024.0
 offset_bottom = 1279.0
-text = "19"
 number = 18
 
 [node name="Button20" parent="." unique_id=618172446 instance=ExtResource("3_kxnyd")]
@@ -171,7 +153,6 @@ offset_left = 512.0
 offset_top = 1024.0
 offset_right = 768.0
 offset_bottom = 1279.0
-text = "20"
 number = 19
 
 [node name="Button21" parent="." unique_id=727779849 instance=ExtResource("3_kxnyd")]
@@ -179,7 +160,6 @@ offset_left = 256.0
 offset_top = 1024.0
 offset_right = 512.0
 offset_bottom = 1279.0
-text = "21"
 number = 20
 
 [node name="Button22" parent="." unique_id=198209036 instance=ExtResource("3_kxnyd")]
@@ -187,7 +167,6 @@ offset_left = 512.0
 offset_top = 1280.0
 offset_right = 768.0
 offset_bottom = 1535.0
-text = "22"
 number = 21
 
 [node name="Button23" parent="." unique_id=858262032 instance=ExtResource("3_kxnyd")]
@@ -195,7 +174,6 @@ offset_left = 768.0
 offset_top = 1280.0
 offset_right = 1024.0
 offset_bottom = 1535.0
-text = "23"
 number = 22
 
 [node name="Button24" parent="." unique_id=590187296 instance=ExtResource("3_kxnyd")]
@@ -203,7 +181,6 @@ offset_left = 1024.0
 offset_top = 1280.0
 offset_right = 1280.0
 offset_bottom = 1535.0
-text = "24"
 number = 23
 
 [node name="Button25" parent="." unique_id=1000407654 instance=ExtResource("3_kxnyd")]
@@ -211,5 +188,4 @@ offset_left = 1280.0
 offset_top = 1280.0
 offset_right = 1536.0
 offset_bottom = 1535.0
-text = "25"
 number = 24

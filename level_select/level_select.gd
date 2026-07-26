@@ -16,6 +16,11 @@ func _ready() -> void:
 			buttons.append(child)
 			dictionary[child.tile()] = child
 			
+	var board_offset: int = 0
+	for button in buttons: # assign board texture offsets
+		button.board_offset = board_offset
+		board_offset = (board_offset + 1) % 16
+			
 	var newly_unlocked_arr: Array[LevelSelectButton] = []
 			
 	for button in buttons:
