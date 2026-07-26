@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://bmrn53fxtkgc3" path="res://sfx/piece_capture2.wav" id="13_tvx31"]
 [ext_resource type="AudioStream" uid="uid://b38e486jgs86p" path="res://sfx/piece_capture3.wav" id="14_bvxhs"]
 [ext_resource type="AudioStream" uid="uid://ba1un0d6rel27" path="res://sfx/piece_select.wav" id="15_tvx31"]
+[ext_resource type="AudioStream" uid="uid://ddpsgbl65alkm" path="res://sfx/transform.wav" id="16_bvxhs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wn1d"]
 resource_local_to_scene = true
@@ -352,6 +353,12 @@ random_volume_offset_db = 0.3
 streams_count = 1
 stream_0/stream = ExtResource("15_tvx31")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gxi3o"]
+random_pitch = 1.0174797
+random_volume_offset_db = 0.3
+streams_count = 1
+stream_0/stream = ExtResource("16_bvxhs")
+
 [node name="Piece" type="Area2D" unique_id=1638246795 groups=["Piece"]]
 script = ExtResource("1_6byuq")
 
@@ -396,4 +403,10 @@ unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_bvxhs")
 volume_db = -12.0
 pitch_scale = 0.9
+bus = &"SFX"
+
+[node name="Transform" type="AudioStreamPlayer" parent="." unique_id=676693055]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_gxi3o")
+volume_db = -7.0
 bus = &"SFX"

@@ -246,6 +246,7 @@ func transform_into(type: Type) -> void:
 	if type == self.type:
 		anim = &"invalid"
 	self.type = type
+	%Transform.play()
 	%AnimationPlayer.play(anim)
 	await %AnimationPlayer.animation_finished
 	
