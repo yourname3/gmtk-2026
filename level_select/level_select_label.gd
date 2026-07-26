@@ -38,7 +38,10 @@ func _ready() -> void:
 	
 	text = str(F, ["Todo list", "To do", "Todo", "To do list"].pick_random(), "\n\n")
 	if levels_remaining > 0:
-		text += str(C, levels_remaining, F, " puzzles\n\n")
+		var s = "s"
+		if levels_remaining == 1:
+			s = ""
+		text += str(C, levels_remaining, F, " puzzle", s, "\n\n")
 	
 	for c in chosen:
 		text += c + "\n\n"
