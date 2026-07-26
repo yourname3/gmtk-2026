@@ -32,7 +32,7 @@ var level_names: Array[StringName] = [
 	&"res://levels/card_time_management_variation.tscn", # prolly harder than card_time_management
 	&"res://levels/level_holes.tscn", # technically easier than variation in there are more solutions?
 	&"res://levels/level_holes_variation.tscn", # both {medium} for now
-	&"res://levels/bishops_advance.tscn", # {medium}
+	&"res://levels/bishops_advance.tscn", # {medium/hard}
 	
 	&"res://levels/mad_tangle.tscn", # {easy}
 	&"res://levels/northward1.tscn", # {easier side of medium}
