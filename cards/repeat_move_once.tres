@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://blm2qo2rq08c6"]
 
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_e6f6m"]
+[ext_resource type="Texture2D" uid="uid://dnrasnb0pmkfr" path="res://cards/art_charge.png" id="1_jqlm3"]
 
 [resource]
 script = ExtResource("1_e6f6m")
 ability = 1
 name = "Charge"
 description = "Move a piece. The move is Repeated once."
+art = ExtResource("1_jqlm3")
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

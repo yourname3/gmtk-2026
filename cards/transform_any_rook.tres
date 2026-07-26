@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://bpt24de36uqyt"]
 
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_65fmm"]
+[ext_resource type="Texture2D" uid="uid://y88f3vt37nkr" path="res://cards/art_fortify.png" id="1_sg13j"]
 
 [resource]
 script = ExtResource("1_65fmm")
@@ -9,4 +10,5 @@ piece_filter = 1
 ability = 2
 name = "Fortify"
 description = "Transform ANY piece into a Rook."
+art = ExtResource("1_sg13j")
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

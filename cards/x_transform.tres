@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://547pvb18cpvi"]
 
+[ext_resource type="Texture2D" uid="uid://bybnleobgsgsd" path="res://cards/art_armory.png" id="1_dsi2v"]
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_vj258"]
 
 [resource]
@@ -9,4 +10,5 @@ piece_filter = 1
 ability = 12
 name = "Armory"
 description = "Transform ANY piece into the Xth item: Pawn, Knight, Bishop, Rook, Queen, King."
+art = ExtResource("1_dsi2v")
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://cecxt4qg5sf8j"]
 
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_csr05"]
+[ext_resource type="Texture2D" uid="uid://dpnctx0um6c61" path="res://cards/art_adrenaline.png" id="1_vnxou"]
 
 [resource]
 script = ExtResource("1_csr05")
@@ -9,4 +10,5 @@ ability = 8
 name = "Adrenaline"
 description = "Move ANY piece. Move it again if it had made a capture beforehand."
 cares_about_killers = true
+art = ExtResource("1_vnxou")
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

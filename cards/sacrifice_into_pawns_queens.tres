@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dvpmajg00ftlg"]
 
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_aeqfn"]
+[ext_resource type="Texture2D" uid="uid://sdrcmsd0c6db" path="res://cards/art_revolution.png" id="1_btl2h"]
 
 [resource]
 script = ExtResource("1_aeqfn")
@@ -9,4 +10,5 @@ rank_filter = 2
 ability = 9
 name = "Revolution"
 description = "Sacrifice a major piece. Transform ALL Pawns into Queens."
+art = ExtResource("1_btl2h")
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

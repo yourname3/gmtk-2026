@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://2j0d8g238d0v"]
 
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_2bxtk"]
+[ext_resource type="Texture2D" uid="uid://u54a7xvqgkoo" path="res://cards/art_gambit.png" id="1_qquew"]
 
 [resource]
 script = ExtResource("1_2bxtk")
@@ -8,4 +9,5 @@ piece_filter = 1
 ability = 4
 name = "Gambit"
 description = "Move ANY piece. If it captures, sacrifice it."
+art = ExtResource("1_qquew")
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

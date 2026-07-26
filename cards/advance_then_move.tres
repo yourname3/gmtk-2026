@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://c7ri2hhmd4t53"]
 
+[ext_resource type="Texture2D" uid="uid://o0epugdnubah" path="res://cards/art_vantage.png" id="1_e8u5y"]
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_ye8o3"]
 
 [resource]
@@ -8,4 +9,5 @@ activation = 1
 ability = 10
 name = "Vantage"
 description = "Advance then move a piece."
+art = ExtResource("1_e8u5y")
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

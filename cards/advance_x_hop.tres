@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://p0c0n1lr04m7"]
 
+[ext_resource type="Texture2D" uid="uid://c2o8dw3drf6xl" path="res://cards/art_teleport.png" id="1_5roro"]
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_x120y"]
 
 [resource]
@@ -8,4 +9,5 @@ activation = 1
 ability = 11
 name = "Teleport"
 description = "Jump a piece exactly X spaces north."
+art = ExtResource("1_5roro")
 metadata/_custom_type_script = "uid://dfant1e3uq18d"
