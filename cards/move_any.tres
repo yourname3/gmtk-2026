@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_d1g7e")
 piece_filter = 1
-name = "Recruit"
+name = "Compel"
 description = "Move ANY piece."
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

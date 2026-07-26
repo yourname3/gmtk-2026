@@ -21,6 +21,10 @@ texture = ExtResource("2_f61jr")
 [node name="Card" type="Sprite2D" parent="." unique_id=1845239000]
 texture = ExtResource("1_ivai2")
 
+[node name="Art" type="Sprite2D" parent="Card" unique_id=943626216]
+unique_name_in_owner = true
+position = Vector2(0, -142)
+
 [node name="Title" type="RichTextLabel" parent="Card" unique_id=1129753730]
 unique_name_in_owner = true
 offset_left = -191.0

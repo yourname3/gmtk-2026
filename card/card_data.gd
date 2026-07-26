@@ -40,6 +40,7 @@ enum SpecialAbility {
 @export var name: String = "Card Name"
 @export var description: String = "Card description"
 @export var cares_about_killers: bool = false
+@export var art: Texture2D = null
 
 func await_activation_full_resolve() -> void:
 	if activation == Activate.PieceMove:

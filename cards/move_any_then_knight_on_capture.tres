@@ -6,6 +6,6 @@
 script = ExtResource("1_v4gkf")
 piece_filter = 1
 ability = 5
-name = "Horsing Around"
+name = "Cavalry"
 description = "Move ANY piece. If it captures, it transforms into a Knight."
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

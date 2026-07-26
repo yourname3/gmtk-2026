@@ -6,6 +6,6 @@
 script = ExtResource("1_x120y")
 activation = 1
 ability = 11
-name = "Northward"
+name = "Teleport"
 description = "Jump a piece exactly X spaces north."
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

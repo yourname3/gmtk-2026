@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://d0deoaiqlkevd"]
 
 [ext_resource type="Script" uid="uid://dfant1e3uq18d" path="res://card/card_data.gd" id="1_drwby"]
+[ext_resource type="Texture2D" uid="uid://ckfnmwmec7f4u" path="res://cards/art_cascade.png" id="1_sdlmu"]
 
 [resource]
 script = ExtResource("1_drwby")
 piece_filter = 1
 ability = 3
-name = "World Tour"
+name = "Cascade"
 description = "Move ANY piece X times."
+art = ExtResource("1_sdlmu")
 metadata/_custom_type_script = "uid://dfant1e3uq18d"

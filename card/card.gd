@@ -58,6 +58,7 @@ func is_selected() -> bool:
 func _update_text() -> void:
 	%Title.text = data.name
 	%Description.text = data.description
+	%Art.texture = data.art
 
 func _update_pos() -> void:
 	#if _state == State.DYING: return # no updates here
