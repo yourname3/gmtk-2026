@@ -277,6 +277,7 @@ func move(target: Vector2i, capture: Piece) -> void:
 			anim = &"slide_left"
 	if abs_dist == 0:
 		anim = &"invalid"
+		%Error.play()
 	else:
 		%PlacePiece.play()
 
