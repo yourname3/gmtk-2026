@@ -36,15 +36,17 @@ static func is_tile_highlighted(tile: Vector2i) -> bool:
 		return instance.highlight_map.has(tile)
 	return false
 
-func _add_highlight(x: int, y: int) -> BoardHighlight:
+func _add_highlight(x: int, y: int, in_map: bool = true) -> BoardHighlight:
 	var highlight := preload("res://board_highlighter/board_highlight.tscn").instantiate()
 	highlight.position = Vector2(x, y) * 256
 	add_child(highlight)
 	
-	highlight_map[Vector2i(x, y)] = highlight
+	if in_map:
+		highlight_map[Vector2i(x, y)] = highlight
 	return highlight
 	
 func _clear_highlights(fun: bool) -> void:
+	clear_preview()
 	for child in get_children():
 		if child is BoardHighlight:
 			child.die(fun)
@@ -62,7 +64,17 @@ func preview_move(location: Vector2i) -> void:
 	tink.pitch_scale = 1.0
 	tink.play()
 	
-	preview_nodes.append(_add_highlight(location.x, location.y))
+	preview_nodes.append(_add_highlight(location.x, location.y, false))
+func preview_moves_red(locations: Array[Vector2i]) -> void:
+	clear_preview()
+	
+	tink.pitch_scale = 1.0
+	tink.play()
+	
+	for loc in locations:
+		var h := _add_highlight(loc.x, loc.y, false)
+		h.redify()
+		preview_nodes.append(h)
 
 func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 	select_state = SelectState.LOCATION_ONLY if location_only else SelectState.LOCATION
@@ -89,6 +101,7 @@ func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 		var h := _add_highlight(move.x, move.y)
 		h.die_pitch = tink.pitch_scale
 		h.die_time = (Time.get_ticks_msec() - time) / 1000.0
+		h.move_rel = move - piece.tile_pos()
 		
 		tink.pitch_scale *= 1.04
 		tink.volume_db -= 0.2
