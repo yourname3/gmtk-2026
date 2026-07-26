@@ -326,11 +326,11 @@ func is_selectable() -> bool:
 	
 var _has_preview_move := false
 func _mouse_enter() -> void:
-	if Card.selected_card != null:
+	if Card.selected_card != null and is_selectable():
 		var data := Card.selected_card.data
 		match data.ability:
 			CardData.SpecialAbility.ADVANCE_THEN_MOVE:
-				BoardHighlighter.instance.preview_move(Board.instance._clamp_move(tile_pos(), tile_pos() + Vector2i(0, -1), Board.Continuous.HOP))
+				BoardHighlighter.instance.preview_post_move(self, Board.instance._clamp_move(tile_pos(), tile_pos() + Vector2i(0, -1), Board.Continuous.HOP))
 				_has_preview_move = true
 			CardData.SpecialAbility.ADVANCE_X_HOP:
 				BoardHighlighter.instance.preview_move(Board.instance._clamp_move(tile_pos(), tile_pos() + Vector2i(0, -Clock.instance.count), Board.Continuous.HOP))

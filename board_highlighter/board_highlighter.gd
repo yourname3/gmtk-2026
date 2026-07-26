@@ -14,12 +14,14 @@ enum SelectState {
 var preview_nodes: Array[BoardHighlight] = []
 
 @onready var tink := %Tink
+@onready var tink_reset_volume: float = tink.volume_db
 
 static var select_state := SelectState.NONE
 static var select_filter: CardData.PieceFilter = CardData.PieceFilter.SAME_SIDE
 static var select_rank_filter: CardData.RankFilter = CardData.RankFilter.NONE
 # Integer id to determine if we're on the same select or not
 static var select_id := 0
+static var preview_id := 0
 
 const MOVE_NULL: Vector2i = Vector2i(-99999999,-99999999)
 
@@ -62,9 +64,67 @@ func preview_move(location: Vector2i) -> void:
 	clear_preview()
 	
 	tink.pitch_scale = 1.0
+	tink.volume_db = tink_reset_volume
 	tink.play()
 	
-	preview_nodes.append(_add_highlight(location.x, location.y, false))
+	var h := _add_highlight(location.x, location.y, false)
+	h.previewify()
+	preview_nodes.append(h)
+	
+func preview_post_move(piece: Piece, location: Vector2i) -> void:
+	clear_preview()
+	
+	tink.pitch_scale = 1.0
+	tink.volume_db = tink_reset_volume
+	tink.play()
+	
+	preview_id += 1
+	var my_id = preview_id
+	
+	var h := _add_highlight(location.x, location.y, false)
+	h.previewify()
+	preview_nodes.append(h)
+	
+	var tile_pos := piece.tile_pos()
+	var tmp = Board.instance.piece_map[tile_pos]
+	Board.instance.piece_map.erase(tile_pos) # temporarily remove from this position
+	
+	piece.position = location * 256
+	
+	var moves = MoveCalculator.new()
+	# By default, set the capture rules normally...
+	moves.capture_black = not piece.is_black
+	moves.capture_white = piece.is_black
+	piece.calculate_moves(moves)
+	
+	piece.position = tile_pos * 256
+	Board.instance.piece_map[tile_pos] = tmp
+	
+	moves.moves.shuffle() # shuffle for ring appearance
+	
+	var timer = 0.1 / moves.moves.size()
+	timer = min(timer, 0.02)
+	
+	var time := Time.get_ticks_msec()
+	
+	for move in moves.moves:
+		if my_id != preview_id:
+			break
+		tink.play()
+		
+		h = _add_highlight(move.x, move.y, false)
+		h.die_pitch = tink.pitch_scale
+		h.die_time = (Time.get_ticks_msec() - time) / 1000.0
+		h.move_rel = move - piece.tile_pos()
+		h.redify()
+		preview_nodes.append(h)
+		
+		tink.pitch_scale *= 1.04
+		tink.volume_db -= 0.2
+		await get_tree().create_timer(timer, true).timeout
+		#total_time += timer
+	
+	
 func preview_moves_red(locations: Array[Vector2i]) -> void:
 	clear_preview()
 	
@@ -93,8 +153,8 @@ func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 	
 	var time := Time.get_ticks_msec()
 	
-	var _prev_db = tink.volume_db
 	tink.pitch_scale = 1.0
+	tink.volume_db = tink_reset_volume
 	for move in moves.moves:
 		tink.play()
 		
@@ -107,7 +167,6 @@ func _select_move(piece: Piece, location_only: bool) -> Vector2i:
 		tink.volume_db -= 0.2
 		await get_tree().create_timer(timer, true).timeout
 		#total_time += timer
-	tink.volume_db = _prev_db
 			
 	var bh: BoardHighlight = null
 			

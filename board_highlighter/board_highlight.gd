@@ -5,7 +5,7 @@ var die_pitch: float = 1.0
 var die_time: float = 0.0
 
 var move_rel: Vector2i = Vector2.ZERO
-var red: bool = false
+var is_preview_move: bool = false
 
 func die(fun: bool) -> void:
 	if fun:
@@ -26,7 +26,7 @@ func tile_pos() -> Vector2i:
 			
 var _has_preview_move := false
 func _mouse_enter() -> void:
-	if red: return
+	if is_preview_move: return
 	
 	if Card.selected_card != null:
 		var data := Card.selected_card.data
@@ -46,8 +46,13 @@ func _mouse_exit() -> void:
 	if _has_preview_move:
 		BoardHighlighter.instance.clear_preview()
 		
+func previewify() -> void:
+	is_preview_move = true
+	input_pickable = false
+		
 func redify() -> void:
 	z_index += 1
 	%Sprite.texture = preload("res://chessboard/highlight_red.png")
 	
-	red = true
+	previewify()
+	
