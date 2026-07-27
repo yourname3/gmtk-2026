@@ -23,6 +23,11 @@ static var select_rank_filter: CardData.RankFilter = CardData.RankFilter.NONE
 static var select_id := 0
 static var preview_id := 0
 
+static func reset_statics() -> void:
+	select_state = SelectState.NONE
+	select_filter = CardData.PieceFilter.SAME_SIDE
+	select_rank_filter = CardData.RankFilter.NONE
+
 const MOVE_NULL: Vector2i = Vector2i(-99999999,-99999999)
 
 var highlight_map: Dictionary[Vector2i, BoardHighlight]

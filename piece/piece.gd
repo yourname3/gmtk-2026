@@ -18,6 +18,15 @@ static var last_move_had_captured: bool = false
 
 static var last_select_piece: Piece = null
 
+static func reset_statics() -> void:
+	last_move_start = Vector2i.ZERO
+	last_move_end = Vector2i.ZERO
+	last_move_piece = null
+	last_move_capture = null
+	last_move_had_captured = false
+
+	last_select_piece = null
+
 enum Type {
 	PAWN,
 	ROOK,

@@ -52,6 +52,15 @@ var level_names: Array[StringName] = [
 	&"res://levels/xtransform1.tscn", # {medium}
 	&"res://levels/big_x.tscn", # {hard? hardest?}
 ]
+func _before_level_load() -> void:
+	Piece.reset_statics()
+	Card.reset_statics()
+	BoardHighlighter.reset_statics()
+	
+
+func reload_level() -> void:
+	_before_level_load()
+	SceneTransition.change_scene_to_path(get_tree().current_scene.scene_file_path)
 
 func load_level(index: int) -> void:
 	if index < 0 or index >= level_names.size():
@@ -61,6 +70,7 @@ func load_level(index: int) -> void:
 	ResourceLoader.load_threaded_request(level) # Kick off the request before scene transition
 	
 	current_level = index
+	_before_level_load()
 	SceneTransition.change_scene_to_path(level)
 	
 func load_save_data() -> void:

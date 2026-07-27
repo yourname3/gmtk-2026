@@ -8,6 +8,12 @@ static var selected_hard: bool = false
 
 static var card_playing: bool = false
 
+static func reset_statics() -> void:
+	highlighted_card = null
+	selected_card = null
+	selected_hard = false
+	card_playing = false
+
 var target_position: Vector2 = position
 var target_scale: Vector2 = Vector2.ONE
 var target_rotation: float = 0.0

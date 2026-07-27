@@ -21,7 +21,7 @@ func _ready() -> void:
 		PauseMenu.instance.pause()
 	)
 	%RetryButton.pressed.connect(func():
-		SceneTransition.change_scene_to_path(get_tree().current_scene.scene_file_path)
+		Global.reload_level()
 	)
 
 func _anim_update_clock() -> void:
